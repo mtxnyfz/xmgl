@@ -35,12 +35,16 @@
                     <f:ListItem Text="院校申报用户已提交" Value="1" />
                      <f:ListItem Text="院校系统管理员已提交" Value="3" />
                 </f:DropDownList>
+
+                                 <f:Button ID="btnSaveClose" ValidateForms="SimpleForm1" Icon="SystemSaveClose" OnClick="btnSaveClose_Click"
+                        runat="server" Text="下载勾选的申报书">
+                    </f:Button>
                             </Items>
                         </f:Toolbar>
                     </Toolbars>
             <Items>
-                <f:Grid ID="Grid1" Title="表格" PageSize="20" ShowBorder="False" ShowHeader="False"
-                    runat="server" EnableCheckBoxSelect="False" AllowPaging="true" OnPageIndexChange="Grid1_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid1_RowCommand">
+                <f:Grid ID="Grid1" Title="表格" PageSize="3" ShowBorder="False" ShowHeader="False"
+                    runat="server" EnableCheckBoxSelect="true" AllowPaging="true"  ClearSelectedRowsAfterPaging="false" OnPageIndexChange="Grid1_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid1_RowCommand">
                    
                     <Columns>
                         <f:RowNumberField  ColumnID="Panel1_Grid1_ctl05" />
@@ -56,8 +60,8 @@
                     </Columns>
                 </f:Grid>
 
-                   <f:Grid ID="Grid2" Title="表格" PageSize="20" ShowBorder="False" ShowHeader="False"
-                    runat="server" EnableCheckBoxSelect="False" AllowPaging="true" OnPageIndexChange="Grid2_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid2_RowCommand">
+                   <f:Grid ID="Grid2" Title="表格" PageSize="3" ShowBorder="False" ShowHeader="False"
+                    runat="server" EnableCheckBoxSelect="true" AllowPaging="true"  ClearSelectedRowsAfterPaging="false" OnPageIndexChange="Grid2_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid2_RowCommand">
                    
                     <Columns>
                         <f:RowNumberField  ColumnID="Panel1_Grid2_ctl05" />
@@ -79,6 +83,10 @@
             IsModal="true" Width="1050px" Height="550px">
           
         </f:Window>
+         <f:HiddenField ID="hfSelectedIDS1" runat="server">
+    </f:HiddenField>
+          <f:HiddenField ID="hfSelectedIDS2" runat="server">
+    </f:HiddenField>
     </form>
 </body>
 </html>

@@ -24,13 +24,15 @@ namespace XMGL.Web.admin
 {
     public partial class XMHZB_SJW : System.Web.UI.Page
     {
+        PageBase1 pb = new PageBase1();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 ViewState["px"] = "1";
+                ViewState["pxfs"] = "xxmc";
                 ViewState["sbzt"] = "全部";
-                databind("xxmc1","全部");
+                databind("xxmc","全部");
             }
         }
 
@@ -122,6 +124,7 @@ namespace XMGL.Web.admin
                 //Grid2.Visible = true;
                 Grid1.Hidden = false;
                 Grid2.Hidden = true;
+                pb.UpdateSelectedRowIndexArray(hfSelectedIDS1, Grid1);
                 //FineUI.BoundField btn1 = Grid1.FindColumn("Panel1_Grid1_ctl07") as FineUI.BoundField;
                 //btn1.DataField = "XXMC";
                 //btn1.HeaderText = "院校名称";
@@ -145,6 +148,7 @@ namespace XMGL.Web.admin
                 //Grid2.Visible = false;
                 Grid1.Hidden = true;
                 Grid2.Hidden = false;
+                pb.UpdateSelectedRowIndexArray(hfSelectedIDS2, Grid2);
                 //FineUI.BoundField btn1 = Grid1.FindColumn("Panel1_Grid1_ctl07") as FineUI.BoundField;
                 //btn1.DataField = "XMDLMC";
                 //btn1.HeaderText = "项目类别";
@@ -163,24 +167,30 @@ namespace XMGL.Web.admin
 
         protected void Grid1_PageIndexChange(object sender, GridPageEventArgs e)
         {
+            SyncSelectedRowIndexArrayToHiddenField(hfSelectedIDS1, Grid1);
             Grid1.PageIndex = e.NewPageIndex;
+            databind(ViewState["pxfs"].ToString(), ViewState["sbzt"].ToString());
         }
 
         protected void Grid2_PageIndexChange(object sender, GridPageEventArgs e)
         {
+            SyncSelectedRowIndexArrayToHiddenField(hfSelectedIDS2, Grid2);
             Grid2.PageIndex = e.NewPageIndex;
+            databind(ViewState["pxfs"].ToString(), ViewState["sbzt"].ToString());
         }
 
         protected void btnCheckSelection_Click(object sender, EventArgs e)
         {
             databind("xxmc", ViewState["sbzt"].ToString());
             ViewState["px"] = "1";
+            ViewState["pxfs"] = "xxmc";
         }
 
         protected void btnConfirmButton_Click(object sender, EventArgs e)
         {
             ViewState["px"] = "2";
             databind("xmlb", ViewState["sbzt"].ToString());
+            ViewState["pxfs"] = "xmlb";
         }
 
         protected void DropDownList_sbzt_SelectedIndexChanged(object sender, EventArgs e)
@@ -244,6 +254,39 @@ namespace XMGL.Web.admin
 
                 }
             }
+        }
+
+
+
+
+        private void SyncSelectedRowIndexArrayToHiddenField(FineUI.HiddenField hd,FineUI.Grid grid)
+        {
+            // 重新绑定表格数据之前，将当前表格页选中行的数据同步到隐藏字段中
+            pb.SyncSelectedRowIndexArrayToHiddenField(hd, grid);
+        }
+
+        protected void btnSaveClose_Click(object sender, EventArgs e)
+        {
+            List<string> ids = null;
+            string xmbh = "";
+            if (ViewState["pxfs"].ToString() == "xxmc")
+            {
+                SyncSelectedRowIndexArrayToHiddenField(hfSelectedIDS1, Grid1);
+                ids = pb.GetSelectedIDsFromHiddenField(hfSelectedIDS1);
+            }
+            else
+            {
+                SyncSelectedRowIndexArrayToHiddenField(hfSelectedIDS2, Grid2);
+                ids = pb.GetSelectedIDsFromHiddenField(hfSelectedIDS2);
+            }
+            if (ids != null)
+            {
+                for (int i = 0; i < ids.Count; i++)
+                {
+                    xmbh = xmbh + ids[i] + ",";
+                }
+            }
+            Alert.Show(xmbh);
         }
 
     }
