@@ -35,15 +35,20 @@
                     <f:ListItem Text="院校申报用户已提交" Value="1" />
                      <f:ListItem Text="院校系统管理员已提交" Value="3" />
                 </f:DropDownList>
-
-                                 <f:Button ID="btnSaveClose" ValidateForms="SimpleForm1" Icon="SystemSaveClose" OnClick="btnSaveClose_Click"
+                                <f:ToolbarSeparator ID="ToolbarSeparator4" runat="server">
+                                </f:ToolbarSeparator>
+                                 <f:Button ID="btnSaveClose" ValidateForms="SimpleForm1" Icon="World" OnClick="btnSaveClose_Click"
                         runat="server" Text="下载勾选的申报书">
                     </f:Button>
+                                <f:ToolbarSeparator ID="ToolbarSeparator5" runat="server">
+                                </f:ToolbarSeparator>
+                                 <f:HyperLink ID="HyperLink1" Text="" Target="_blank" NavigateUrl="" runat="server">
+                                </f:HyperLink>
                             </Items>
                         </f:Toolbar>
                     </Toolbars>
             <Items>
-                <f:Grid ID="Grid1" Title="表格" PageSize="3" ShowBorder="False" ShowHeader="False"
+                <f:Grid ID="Grid1" Title="表格" PageSize="20" ShowBorder="False" ShowHeader="False"
                     runat="server" EnableCheckBoxSelect="true" AllowPaging="true"  ClearSelectedRowsAfterPaging="false" OnPageIndexChange="Grid1_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid1_RowCommand">
                    
                     <Columns>
@@ -60,7 +65,7 @@
                     </Columns>
                 </f:Grid>
 
-                   <f:Grid ID="Grid2" Title="表格" PageSize="3" ShowBorder="False" ShowHeader="False"
+                   <f:Grid ID="Grid2" Title="表格" PageSize="20" ShowBorder="False" ShowHeader="False"
                     runat="server" EnableCheckBoxSelect="true" AllowPaging="true"  ClearSelectedRowsAfterPaging="false" OnPageIndexChange="Grid2_PageIndexChange" DataKeyNames="XMBH" OnRowCommand="Grid2_RowCommand">
                    
                     <Columns>

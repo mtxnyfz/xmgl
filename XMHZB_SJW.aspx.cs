@@ -20,6 +20,7 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using Maticsoft.DBUtility;
 using Aspose.Cells;
+using ICSharpCode.SharpZipLib.Zip;
 namespace XMGL.Web.admin
 {
     public partial class XMHZB_SJW : System.Web.UI.Page
@@ -31,11 +32,25 @@ namespace XMGL.Web.admin
             {
                 ViewState["px"] = "1";
                 ViewState["pxfs"] = "xxmc";
-                ViewState["sbzt"] = "全部";
-                databind("xxmc","全部");
+                ViewState["sbzt"] = "3";
+                databind("xxmc","3");
+                dp_setvalue(DropDownList_sbzt, "3");
             }
         }
+        protected void dp_setvalue(FineUI.DropDownList ddl, string value)
+        {
+            for (int i = 0; i < ddl.Items.Count; i++)
+            {
+                if (ddl.Items[i].Value.Trim() == value)    //与数据库中查询出来的那条一样.
+                {
 
+                    ddl.SelectedIndex = i;      //这样就可以显示出来了.
+
+                    break;        //选中一条后,跳出循环.
+                }
+            }
+
+        }
 
         protected void databind(string pxfs,string sbzt)
         {
@@ -281,12 +296,161 @@ namespace XMGL.Web.admin
             }
             if (ids != null)
             {
-                for (int i = 0; i < ids.Count; i++)
+                if (ids.Count > 0)
                 {
-                    xmbh = xmbh + ids[i] + ",";
+                    string sqlstr = "select WDLJ from XMSBSWD where ";
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        xmbh = xmbh + ids[i] + ",";
+                        if (i != ids.Count - 1)
+                            sqlstr = sqlstr + " XMBH='" + ids[i] + "' or ";
+                        else
+                            sqlstr = sqlstr + " XMBH='" + ids[i] + "'";
+
+                    }
+
+                    DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
+                    string err = "";
+                    string filename = DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".zip";
+                    string savepath = HttpContext.Current.Server.MapPath("~/admin/down/" + filename);
+                    if (ZipFile(dt, savepath, out err) == true)
+                    {
+                        HyperLink1.Text = "打包成功！点击下载：" + filename;
+                        HyperLink1.NavigateUrl = "down/" + filename;
+                        Alert.Show("已成功生成打包文件，请点击文件名下载");
+                    }
+                    else
+                        Alert.Show("生成压缩包失败，无法下载");
+                    //for(int i=0;i<dt.Rows.Count;i++)
+                    //{
+                    //    if (File.Exists(dt.Rows[i]["WDLJ"].ToString().Trim()))
+                    //    {
+
+                    //    }
+                    //}
+                }
+                else
+                {
+                    Alert.Show("没有勾选行数据");
                 }
             }
-            Alert.Show(xmbh);
+            else
+            {
+                Alert.Show("没有勾选行数据");
+            }
+        }
+
+
+
+        #region 加压解压方法
+        /// <summary>
+        /// 功能：压缩文件（暂时只压缩文件夹下一级目录中的文件，文件夹及其子级被忽略）
+        /// </summary>
+        /// <param name="dirPath">被压缩的文件夹夹路径</param>
+        /// <param name="zipFilePath">生成压缩文件的路径，为空则默认与被压缩文件夹同一级目录，名称为：文件夹名+.zip</param>
+        /// <param name="err">出错信息</param>
+        /// <returns>是否压缩成功</returns>
+        //public bool ZipFile(string dirPath, string zipFilePath, out string err)
+        //{
+        //    err = "";
+        //    if (dirPath == string.Empty)
+        //    {
+        //        err = "要压缩的文件夹不能为空！";
+        //        return false;
+        //    }
+        //    if (!Directory.Exists(dirPath))
+        //    {
+        //        err = "要压缩的文件夹不存在！";
+        //        return false;
+        //    }
+        //    //压缩文件名为空时使用文件夹名＋.zip
+        //    if (zipFilePath == string.Empty)
+        //    {
+        //        if (dirPath.EndsWith("\\"))
+        //        {
+        //            dirPath = dirPath.Substring(0, dirPath.Length - 1);
+        //        }
+        //        zipFilePath = dirPath + ".zip";
+        //    }
+
+        //    try
+        //    {
+        //        string[] filenames = Directory.GetFiles(dirPath);
+        //        using (ZipOutputStream s = new ZipOutputStream(File.Create(zipFilePath)))
+        //        {
+        //            s.SetLevel(9);
+        //            byte[] buffer = new byte[4096];
+        //            foreach (string file in filenames)
+        //            {
+        //                ZipEntry entry = new ZipEntry(Path.GetFileName(file));
+        //                entry.DateTime = DateTime.Now;
+        //                s.PutNextEntry(entry);
+        //                using (FileStream fs = File.OpenRead(file))
+        //                {
+        //                    int sourceBytes;
+        //                    do
+        //                    {
+        //                        sourceBytes = fs.Read(buffer, 0, buffer.Length);
+        //                        s.Write(buffer, 0, sourceBytes);
+        //                    } while (sourceBytes > 0);
+        //                }
+        //            }
+        //            s.Finish();
+        //            s.Close();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        err = ex.Message;
+        //        return false;
+        //    }
+        //    return true;
+        //}
+        #endregion
+
+
+
+        public bool ZipFile(DataTable dt, string zipFilePath, out string err)
+        {
+            err = "";
+           
+           
+
+            try
+            {
+                //string[] filenames = Directory.GetFiles(dirPath);
+                using (ZipOutputStream s = new ZipOutputStream(File.Create(zipFilePath)))
+                {
+                    s.SetLevel(9);
+                    byte[] buffer = new byte[4096];
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (File.Exists(dt.Rows[i]["WDLJ"].ToString().Trim()))
+                        {
+                            ZipEntry entry = new ZipEntry(Path.GetFileName("@"+dt.Rows[i]["WDLJ"].ToString().Trim()));
+                            entry.DateTime = DateTime.Now;
+                            s.PutNextEntry(entry);
+                            using (FileStream fs = File.OpenRead(dt.Rows[i]["WDLJ"].ToString().Trim()))
+                            {
+                                int sourceBytes;
+                                do
+                                {
+                                    sourceBytes = fs.Read(buffer, 0, buffer.Length);
+                                    s.Write(buffer, 0, sourceBytes);
+                                } while (sourceBytes > 0);
+                            }
+                        }
+                    }
+                    s.Finish();
+                    s.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+                return false;
+            }
+            return true;
         }
 
     }
