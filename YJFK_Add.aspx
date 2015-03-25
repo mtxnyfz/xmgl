@@ -30,7 +30,7 @@
 
              <f:FormRow ID="FormRow4" runat="server">
             <Items>
-                   <f:TextArea ID="TextArea_yj" runat="server" Height="150px" Label="退回意见" 
+                   <f:TextArea ID="TextArea_yj" runat="server" Height="150px" Label="意见" 
                    
                        Width="550px">
                  </f:TextArea>
