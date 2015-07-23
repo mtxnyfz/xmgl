@@ -44,11 +44,11 @@ namespace XMGL.Web.admin
                 DatePicker_yqwcsj.MinDate = DateTime.Now.AddDays(1);
                 //DatePicker_yqwcsj.MaxDate = DateTime.Now.AddDays(1);
                 DatePicker_sqzxjfzxjsrq.MinDate = DateTime.Now.AddDays(1);
-                
+
                 //DatePicker_sqzxjfzxksrq.MaxDate = DateTime.Now.AddDays(1);
                 DatePicker_xxptjfzxjsrq.MinDate = DateTime.Now.AddDays(1);
                 //DatePicker_xxptjfzxjsrq.MaxDate = DateTime.Now.AddDays(1);
-               
+
                 //ViewState["xmbh"] = AutoNumber("2015-01-");
                 string userid = pb.GetIdentityId();
                 string sqlstr = "select xxdm,xxmc from Users where user_uid='" + userid + "'";
@@ -109,16 +109,16 @@ namespace XMGL.Web.admin
                 {
                     if (dt.Rows[i]["ZYFXDM"].ToString().Trim() == "")
                     {
-                        dt.Rows[i]["ZYDM"] = dt.Rows[i]["ZYDM"].ToString().Trim() + "," +"@"+ i.ToString();
+                        dt.Rows[i]["ZYDM"] = dt.Rows[i]["ZYDM"].ToString().Trim() + "," + "@" + i.ToString();
                     }
                     else
                     {
                         dt.Rows[i]["ZYDM"] = dt.Rows[i]["ZYDM"].ToString().Trim() + "," + dt.Rows[i]["ZYFXDM"].ToString().Trim();
                     }
                     dt.Rows[i]["ZYMC"] = dt.Rows[i]["ZYFXMC"].ToString().Trim();
-                        
+
                 }
-                
+
             }
 
             ZYMC.DataSource = dt;
@@ -129,154 +129,117 @@ namespace XMGL.Web.admin
 
 
             string sqlstr = "select ID, ZYDM,ZYMC from YLZY where XMBH='" + ViewState["xmbh"].ToString() + "'";
-             BLL.YLZY YLZY_Bll = new BLL.YLZY();
-             Model.YLZY YLZY_Model =null;
-             Model.JFYS JFYS_Model = null;
+            BLL.YLZY YLZY_Bll = new BLL.YLZY();
+            Model.YLZY YLZY_Model = null;
+            Model.JFYS JFYS_Model = null;
 
-           
-             BLL.JFYS JFYS_Bll = new BLL.JFYS();
+
+            BLL.JFYS JFYS_Bll = new BLL.JFYS();
             SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
-            string m = "", d = "", sj = "";
             if (sdr.Read())
             {
-                
+
                 YLZY_Model = YLZY_Bll.GetModel(Convert.ToInt32(sdr["ID"].ToString().Trim()));
-                ViewState["ID"] = YLZY_Model.ID;
-                TextBox_xmmc.Text = YLZY_Model.XMMC;
-                dp_setvalue1(ZYMC, YLZY_Model.ZYMC);
-                ZYDM.Text = YLZY_Model.ZYDM;
-                //YLZY_Model.ZYMC = ZYMC.SelectedText.Trim();
-                ZYSSDL.Text = YLZY_Model.ZYSSDL;
-                ZYSSEJL.Text = YLZY_Model.ZYSSEJL;
-                ZYFZR_XM.Text = YLZY_Model.ZYFZR_XM;
-                ZYFZR_XZZW.Text = YLZY_Model.ZYFZR_XZZW;
-                ZYFZR_ZYJSZW.Text = YLZY_Model.ZYFZR_ZYJSZW;
-                ZYFZR_ZYZGZS.Text = YLZY_Model.ZYFZR_ZYZGZS;
-                ZYFZR_BGSDH.Text = YLZY_Model.ZYFZR_BGSDH;
-                ZYFZR_CZ.Text = YLZY_Model.ZYFZR_CZ;
-                ZYFZR_SJ.Text = YLZY_Model.ZYFZR_SJ;
-                ZYFZR_DZYX.Text = YLZY_Model.ZYFZR_DZYX;
-                //YLZY_Model.ZYTD = zytd;
-                for (int i = 0; i < RadioButtonList_zytd.Items.Count; i++)
+                if (YLZY_Model != null)
                 {
-                    if (RadioButtonList_zytd.Items[i].Text == YLZY_Model.ZYTD)
+                    ViewState["ID"] = YLZY_Model.ID;
+                    TextBox_xmmc.Text = YLZY_Model.XMMC;
+                    dp_setvalue1(ZYMC, YLZY_Model.ZYMC);
+                    ZYDM.Text = YLZY_Model.ZYDM;
+                    //YLZY_Model.ZYMC = ZYMC.SelectedText.Trim();
+                    ZYSSDL.Text = YLZY_Model.ZYSSDL;
+                    ZYSSEJL.Text = YLZY_Model.ZYSSEJL;
+                    ZYFZR_XM.Text = YLZY_Model.ZYFZR_XM;
+                    ZYFZR_XZZW.Text = YLZY_Model.ZYFZR_XZZW;
+                    ZYFZR_ZYJSZW.Text = YLZY_Model.ZYFZR_ZYJSZW;
+                    ZYFZR_ZYZGZS.Text = YLZY_Model.ZYFZR_ZYZGZS;
+                    ZYFZR_BGSDH.Text = YLZY_Model.ZYFZR_BGSDH;
+                    ZYFZR_CZ.Text = YLZY_Model.ZYFZR_CZ;
+                    ZYFZR_SJ.Text = YLZY_Model.ZYFZR_SJ;
+                    ZYFZR_DZYX.Text = YLZY_Model.ZYFZR_DZYX;
+                    //YLZY_Model.ZYTD = zytd;
+                    for (int i = 0; i < RadioButtonList_zytd.Items.Count; i++)
                     {
-                        RadioButtonList_zytd.Items[i].Selected = true;
-                        break;
+                        if (RadioButtonList_zytd.Items[i].Text == YLZY_Model.ZYTD)
+                        {
+                            RadioButtonList_zytd.Items[i].Selected = true;
+                            break;
+                        }
                     }
-                }
-                ZYKBSJ.Text = YLZY_Model.ZYKBSJ;
-                //YLZY_Model.SFKSZS = kszs;
-                string v1 = "";
-                if (YLZY_Model.SFKSZS == 1)
-                    v1 = "是";
-                else
-                    v1 = "否";
-                for (int i = 0; i < SFKSZS.Items.Count; i++)
-                {
-                    if (SFKSZS.Items[i].Text == v1)
+                    ZYKBSJ.Text = YLZY_Model.ZYKBSJ;
+                    //YLZY_Model.SFKSZS = kszs;
+                    string v1 = "";
+                    if (YLZY_Model.SFKSZS == 1)
+                        v1 = "是";
+                    else
+                        v1 = "否";
+                    for (int i = 0; i < SFKSZS.Items.Count; i++)
                     {
-                        SFKSZS.Items[i].Selected = true;
-                        break;
+                        if (SFKSZS.Items[i].Text == v1)
+                        {
+                            SFKSZS.Items[i].Selected = true;
+                            break;
+                        }
                     }
-                }
 
-                v1 = YLZY_Model.ZYTD.Trim();
+                    v1 = YLZY_Model.ZYTD.Trim();
 
-                for (int i = 0; i < RadioButtonList_zytd.Items.Count; i++)
-                {
-                    if (RadioButtonList_zytd.Items[i].Text == v1)
+                    for (int i = 0; i < RadioButtonList_zytd.Items.Count; i++)
                     {
-                        RadioButtonList_zytd.Items[i].Selected = true;
-                        break;
+                        if (RadioButtonList_zytd.Items[i].Text == v1)
+                        {
+                            RadioButtonList_zytd.Items[i].Selected = true;
+                            break;
+                        }
                     }
+                    ZRJSS.Text = YLZY_Model.ZRJSS.ToString();
+                    JZJSS.Text = YLZY_Model.JZJSS.ToString();
+                    XYZSSXSMJ.Text = YLZY_Model.XYZSSXSMJ.ToString();
+                    XYTYSXSMJ.Text = YLZY_Model.XYTYSXSMJ.ToString(); ;
+                    XYSXSBZZ.Text = YLZY_Model.XYSXSBZZ.ToString();
+                    XYSXYQSB.Text = YLZY_Model.XYSXYQSB.ToString();
+
+                    SBLY.Text = YLZY_Model.SBLY;
+                    JSMB.Text = YLZY_Model.JSMB;
+                    JTJC.Text = YLZY_Model.JTJC;
+                    JFAP.Text = YLZY_Model.JFAP;
+                    SSJH.Text = YLZY_Model.SSJH;
+
+                    TextBox1_yxmc.Text = YLZY_Model.BGZYYXMC;
+                    TextBox2_zymc.Text = YLZY_Model.BGZYZYMC;
+                    TextArea_xzly.Text = YLZY_Model.XZLY;
+                    TextArea_dbfx.Text = YLZY_Model.DBFX;
+
+                    NumberBox_sqzxjfhj.Text = YLZY_Model.SQZXJF.ToString();
+                    DatePicker_sqzxjfzxksrq.Text = YLZY_Model.SQZXJFZXKSSJ;
+                    DatePicker_sqzxjfzxjsrq.Text = YLZY_Model.SQZXJFZXJSSJ;
+
+                    NumberBox_xxptjfhj.Text = YLZY_Model.XXPTJF.ToString();
+                    DatePicker_xxptjfzxksrq.Text = YLZY_Model.XXPTJFZXKSSJ;
+                    DatePicker_xxptjfzxjsrq.Text = YLZY_Model.XXPTJFZXJSSJ;
+                    sdr.Dispose();
+
+
+                    bind_zsyjqk1();
+
+                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSXM] as jsxm,[CSNY] as csny,[ZZJZ] as zjz,[SFSS] as sfss,[XL] as xl,[XW] as xw,[ZCDJ] as zcdj  from [JSXX] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
+                    dt = DbHelperSQL.Query(sqlstr).Tables[0];
+                    Grid2.DataSource = dt;
+                    Grid2.DataBind();
+                    ViewState["dt2"] = dt;
+
+
+
+                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSMB] as jsmb,[YQWCSJ] as yqwcsj,[YSYD] as ysyd   from [YSZB] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
+                    dt = DbHelperSQL.Query(sqlstr).Tables[0];
+                    Grid3.DataSource = dt;
+                    Grid3.DataBind();
+                    ViewState["dt3"] = dt;
                 }
-                ZRJSS.Text = YLZY_Model.ZRJSS.ToString();
-                JZJSS.Text = YLZY_Model.JZJSS.ToString();
-                XYZSSXSMJ.Text = YLZY_Model.XYZSSXSMJ.ToString();
-                XYTYSXSMJ.Text = YLZY_Model.XYTYSXSMJ.ToString(); ;
-                XYSXSBZZ.Text = YLZY_Model.XYSXSBZZ.ToString();
-                XYSXYQSB.Text = YLZY_Model.XYSXYQSB.ToString();
-
-                SBLY.Text = YLZY_Model.SBLY;
-                JSMB.Text = YLZY_Model.JSMB;
-                JTJC.Text = YLZY_Model.JTJC;
-                JFAP.Text = YLZY_Model.JFAP;
-                SSJH.Text = YLZY_Model.SSJH;
-
-
-                TextBox1_yxmc.Text = YLZY_Model.BGZYYXMC;
-                TextBox2_zymc.Text = YLZY_Model.BGZYZYMC;
-                TextArea_xzly.Text = YLZY_Model.XZLY;
-                TextArea_dbfx.Text = YLZY_Model.DBFX;
-
-                NumberBox_sqzxjfhj.Text = YLZY_Model.SQZXJF.ToString();
-                DatePicker_sqzxjfzxksrq.Text = YLZY_Model.SQZXJFZXKSSJ;
-                DatePicker_sqzxjfzxjsrq.Text = YLZY_Model.SQZXJFZXJSSJ;
-               
-
-                
-
-
-
-
-
-                NumberBox_xxptjfhj.Text = YLZY_Model.XXPTJF.ToString();
-                DatePicker_xxptjfzxksrq.Text = YLZY_Model.XXPTJFZXKSSJ;
-                DatePicker_xxptjfzxjsrq.Text = YLZY_Model.XXPTJFZXJSSJ;
-               
-
-                //YLZY_Model.XXPTJFKCJCJF = Convert.ToDecimal(NumberBox_xxptkcjcjf.Text.Trim());
-                //YLZY_Model.XXPTJFKCJCJFGSYJ = TextArea_xxptkcjcjfgsyj.Text.Trim();
-                //YLZY_Model.XXPTJFKCJCJFBZ = TextArea_xxptkcjcjfbz.Text.Trim();
-
-                //YLZY_Model.XXPTJFSZPXJF = Convert.ToDecimal(NumberBox_xxptszpxf.Text.Trim());
-                //YLZY_Model.XXPTJFSZPXJFGSYJ = TextArea_xxptszpxfgsyj.Text.Trim();
-                //YLZY_Model.XXPTJFSZPXJFBZ = TextArea_xxptszpxfbz.Text.Trim();
-
-                //YLZY_Model.XXPTJFSBHCJF = Convert.ToDecimal(NumberBox_xxptyqsbjf.Text.Trim());
-                //YLZY_Model.XXPTJFSBHCJFGSYJ = TextArea_xxptyqsbjfgsyj.Text.Trim();
-                //YLZY_Model.XXPTJFSBHCJFBZ = TextArea_xxptyqsbjfbz.Text.Trim();
-
-                //YLZY_Model.XXPTJFWPRYJF = Convert.ToDecimal(NumberBox_xxptwpryfy.Text.Trim());
-                //YLZY_Model.XXPTJFWPRYJFGSYJ = TextArea_xxptwpryfygsyj.Text.Trim();
-                //YLZY_Model.XXPTJFWPRYJFBZ = TextArea_xxptwpryfybz.Text.Trim();
-
-                //YLZY_Model.XXPTJFYWF = Convert.ToDecimal(NumberBox_xxptywf.Text.Trim());
-                //YLZY_Model.XXPTJFYWFGSYJ = TextArea_xxptywfgsyj.Text.Trim();
-                //YLZY_Model.XXPTJFYWFBZ = TextArea_xxptywfbz.Text.Trim();
-                //YLZY_Model.XXPTJFJFGSHJ = Convert.ToDecimal(NumberBox_xxptgshj.Text.Trim());
-              
-
-                sdr.Dispose();
-
-
-                bind_zsyjqk1();
-
-                sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSXM] as jsxm,[CSNY] as csny,[ZZJZ] as zjz,[SFSS] as sfss,[XL] as xl,[XW] as xw,[ZCDJ] as zcdj  from [JSXX] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
-                dt = DbHelperSQL.Query(sqlstr).Tables[0];
-                Grid2.DataSource = dt;
-                Grid2.DataBind();
-                ViewState["dt2"] = dt;
-
-
-
-                sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSMB] as jsmb,[YQWCSJ] as yqwcsj,[YSYD] as ysyd   from [YSZB] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
-                dt = DbHelperSQL.Query(sqlstr).Tables[0];
-                Grid3.DataSource = dt;
-                Grid3.DataBind();
-                ViewState["dt3"] = dt;
-
-               
-
-              
-
             }
             else
             {
                 sdr.Dispose();
-                //assist.WebMessageBox(this.Page, "专业数据读取错误！");
-              
             }
             sqlstr = "select * from JFYS where XMBH='" + ViewState["xmbh"].ToString() + "'";
             dt = DbHelperSQL.Query(sqlstr).Tables[0];
@@ -337,10 +300,13 @@ namespace XMGL.Web.admin
 
             Model.XMFJ XMFJ_Mode = null;
             BLL.XMFJ XMFJ_Bll = new BLL.XMFJ();
-            XMFJ_Mode = XMFJ_Bll.GetModelList("XMBH='" + ViewState["xmbh"].ToString() + "'")[0];
-            ViewState["file1"] = XMFJ_Mode.XMKXXFXBGWJM;
-            ViewState["file2"] = XMFJ_Mode.YXXSALWJM;
-            ViewState["file3"] = XMFJ_Mode.XMYSMXWJM;
+            XMFJ_Mode = XMFJ_Bll._GetModel(ViewState["xmbh"].ToString());
+            if (XMFJ_Mode != null)
+            {
+                ViewState["file1"] = XMFJ_Mode.XMKXXFXBGWJM;
+                ViewState["file2"] = XMFJ_Mode.YXXSALWJM;
+                ViewState["file3"] = XMFJ_Mode.XMYSMXWJM;
+            }
 
 
         }
@@ -731,7 +697,7 @@ namespace XMGL.Web.admin
                 dr["yqwcsj"] = DatePicker_yqwcsj.Text.Trim();
                 dr["ysyd"] = TextArea_ysyd.Text.Trim();
                 dt.Rows.Add(dr);
-               
+
             }
             Grid3.DataSource = dt;
             Grid3.DataBind();
@@ -760,30 +726,9 @@ namespace XMGL.Web.admin
                 return;
             }
 
-            //if (CheckBox1.Checked)
-            //    zytd = "国际领先型";
-            //if (CheckBox2.Checked)
-            //{
-            //    if (zytd != "")
-            //        zytd = zytd + "，民生需求型";
-            //    else
-            //        zytd = "民生需求型";
-            //}
-            //if (CheckBox3.Checked)
-            //{
-            //    if (zytd != "")
-            //        zytd = zytd + "，行业特色型";
-            //    else
-            //        zytd = "行业特色型";
-            //}
 
-            //if (zytd == "")
-            //{
-            //    Alert.Show("请选择专业特点");
-            //    return;
-            //}
 
-            Model.YLZY YLZY_Model =null;
+            Model.YLZY YLZY_Model = null;
             Model.XXJBQK XXJBQK_Model = null;
             Model.ZYZSJYQK ZYZSJYQK_Model = new Model.ZYZSJYQK();
             Model.JSXX JSXX_Model = new Model.JSXX();
@@ -799,9 +744,9 @@ namespace XMGL.Web.admin
 
 
             YLZY_Model = YLZY_Bll.GetModel(Convert.ToInt32(ViewState["ID"].ToString().Trim()));
-           
 
-           
+
+
             ViewState["xmbh"] = YLZY_Model.XMBH;
             YLZY_Model.XXDM = ViewState["xxdm"].ToString();
             YLZY_Model.XMMC = TextBox_xmmc.Text.Trim();
@@ -841,6 +786,18 @@ namespace XMGL.Web.admin
             YLZY_Model.ZYFZR_SJ = ZYFZR_SJ.Text.Trim();
             YLZY_Model.ZYFZR_DZYX = ZYFZR_DZYX.Text.Trim();
             YLZY_Model.ZYTD = zytd;
+
+            YLZY_Model.BGZYYXMC = TextBox1_yxmc.Text.Trim();
+            YLZY_Model.BGZYZYMC = TextBox2_zymc.Text.Trim();
+            YLZY_Model.XZLY = TextArea_xzly.Text.Trim();
+            YLZY_Model.DBFX = TextArea_dbfx.Text.Trim();
+
+            YLZY_Model.SBLY = SBLY.Text.Trim();
+            YLZY_Model.JSMB = JSMB.Text.Trim();
+            YLZY_Model.JTJC = JTJC.Text.Trim();
+            YLZY_Model.JFAP = JFAP.Text.Trim();
+            YLZY_Model.SSJH = SSJH.Text.Trim();
+
             YLZY_Model.ZYKBSJ = ZYKBSJ.Text.Trim();
             YLZY_Model.SFKSZS = kszs;
             YLZY_Model.ZRJSS = Convert.ToInt32(ZRJSS.Text.Trim());
@@ -850,76 +807,22 @@ namespace XMGL.Web.admin
             YLZY_Model.XYSXSBZZ = Convert.ToDecimal(XYSXSBZZ.Text.Trim());
             YLZY_Model.XYSXYQSB = Convert.ToInt32(XYSXYQSB.Text.Trim());
 
-            YLZY_Model.SBLY = SBLY.Text.Trim();
-            YLZY_Model.JSMB = JSMB.Text.Trim();
-            YLZY_Model.JTJC = JTJC.Text.Trim();
-            YLZY_Model.JFAP = JFAP.Text.Trim();
-            YLZY_Model.SSJH = SSJH.Text.Trim();
 
 
-            YLZY_Model.BGZYYXMC = TextBox1_yxmc.Text.Trim();
-            YLZY_Model.BGZYZYMC = TextBox2_zymc.Text.Trim();
-            YLZY_Model.XZLY = TextArea_xzly.Text.Trim();
-            YLZY_Model.DBFX = TextArea_dbfx.Text.Trim();
+
+
 
             YLZY_Model.SQZXJF = Convert.ToDecimal(NumberBox_sqzxjfhj.Text.Trim());
             YLZY_Model.SQZXJFZXKSSJ = DatePicker_sqzxjfzxksrq.Text.Trim();
             YLZY_Model.SQZXJFZXJSSJ = DatePicker_sqzxjfzxjsrq.Text.Trim();
-
-            //YLZY_Model.SQZXJFKCJCJF = Convert.ToDecimal(NumberBox_sqzxjfkcjcjf.Text.Trim());
-            //YLZY_Model.SQZXJFKCJCJFGSYJ = TextArea_sqzxjfkcjcjfgsyj.Text.Trim();
-            //YLZY_Model.SQZXJFKCJCJFBZ = TextArea_sqzxjfkcjcjfbz.Text.Trim();
-
-            //YLZY_Model.SQZXJFSZPXJF = Convert.ToDecimal(NumberBox_sqzxjfszpxjf.Text.Trim());
-            //YLZY_Model.SQZXJFSZPXJFGSYJ = TextArea_sqzxjfszpxjfgsyj.Text.Trim();
-            //YLZY_Model.SQZXJFSZPXJFBZ = TextArea_sqzxjfszpxjfbz.Text.Trim();
-
-            //YLZY_Model.SQZXJFYQSBJF = Convert.ToDecimal(NumberBox_sqzxjfyqsbjf.Text.Trim());
-            //YLZY_Model.SQZXJFYQSBJFGSYJ = TextArea_sqzxjfyqsbjfgsyj.Text.Trim();
-            //YLZY_Model.SQZXJFYQSBJFBZ = TextArea_sqzxjfyqsbjfbz.Text.Trim();
-
-            //YLZY_Model.SQZXJFWPRYJF = Convert.ToDecimal(NumberBox_sqzxjfwpryfy.Text.Trim());
-            //YLZY_Model.SQZXJFWPRYJFGSYJ = TextArea_sqzxjfwpryfygsyj.Text.Trim();
-            //YLZY_Model.SQZXJFWPRYJFBZ = TextArea_sqzxjfwpryfybz.Text.Trim();
-
-            //YLZY_Model.SQZXJFYWF = Convert.ToDecimal(NumberBox_sqzxjfywf.Text.Trim());
-            //YLZY_Model.SQZXJFYWFGSYJ = TextArea_sqzxjfywfgsyj.Text.Trim();
-            //YLZY_Model.SQZXJFYWFBZ = TextArea_sqzxjfywfbz.Text.Trim();
-            //YLZY_Model.SQZXJFJFGSHJ = Convert.ToDecimal(NumberBox_sqzxjfgshj.Text.Trim());
-
-          
-
-
 
 
             YLZY_Model.XXPTJF = Convert.ToDecimal(NumberBox_xxptjfhj.Text.Trim());
             YLZY_Model.XXPTJFZXKSSJ = DatePicker_xxptjfzxksrq.Text.Trim();
             YLZY_Model.XXPTJFZXJSSJ = DatePicker_xxptjfzxjsrq.Text.Trim();
 
-            //YLZY_Model.XXPTJFKCJCJF = Convert.ToDecimal(NumberBox_xxptkcjcjf.Text.Trim());
-            //YLZY_Model.XXPTJFKCJCJFGSYJ = TextArea_xxptkcjcjfgsyj.Text.Trim();
-            //YLZY_Model.XXPTJFKCJCJFBZ = TextArea_xxptkcjcjfbz.Text.Trim();
 
-            //YLZY_Model.XXPTJFSZPXJF = Convert.ToDecimal(NumberBox_xxptszpxf.Text.Trim());
-            //YLZY_Model.XXPTJFSZPXJFGSYJ = TextArea_xxptszpxfgsyj.Text.Trim();
-            //YLZY_Model.XXPTJFSZPXJFBZ = TextArea_xxptszpxfbz.Text.Trim();
-
-            //YLZY_Model.XXPTJFSBHCJF = Convert.ToDecimal(NumberBox_xxptyqsbjf.Text.Trim());
-            //YLZY_Model.XXPTJFSBHCJFGSYJ = TextArea_xxptyqsbjfgsyj.Text.Trim();
-            //YLZY_Model.XXPTJFSBHCJFBZ = TextArea_xxptyqsbjfbz.Text.Trim();
-
-            //YLZY_Model.XXPTJFWPRYJF = Convert.ToDecimal(NumberBox_xxptwpryfy.Text.Trim());
-            //YLZY_Model.XXPTJFWPRYJFGSYJ = TextArea_xxptwpryfygsyj.Text.Trim();
-            //YLZY_Model.XXPTJFWPRYJFBZ = TextArea_xxptwpryfybz.Text.Trim();
-
-            //YLZY_Model.XXPTJFYWF = Convert.ToDecimal(NumberBox_xxptywf.Text.Trim());
-            //YLZY_Model.XXPTJFYWFGSYJ = TextArea_xxptywfgsyj.Text.Trim();
-            //YLZY_Model.XXPTJFYWFBZ = TextArea_xxptywfbz.Text.Trim();
-            //YLZY_Model.XXPTJFJFGSHJ = Convert.ToDecimal(NumberBox_xxptgshj.Text.Trim());
             YLZY_Model.user_uid = pb.GetIdentityId();
-            //YLZY_Model.ZT = 1;
-            //YLZY_Model.SFSC = 0;
-            //YLZY_Model.TBRQ = DateTime.Now.ToString("yyyy-MM-dd");
 
 
             DataTable dt = null;
@@ -1052,20 +955,36 @@ namespace XMGL.Web.admin
 
             }
 
-            Model.XMFJ XMFJ_Mode =null;
+            Model.XMFJ XMFJ_Mode = null;
             BLL.XMFJ XMFJ_Bll = new BLL.XMFJ();
-            XMFJ_Mode = XMFJ_Bll.GetModelList("XMBH='" + YLZY_Model.XMBH + "'")[0];
-            //XMFJ_Mode.XMBH=ViewState["xmbh"].ToString().Trim();
-            if (ViewState["file1"] != null)
-                XMFJ_Mode.XMKXXFXBGWJM = ViewState["file1"].ToString();
-            if (ViewState["file2"] != null)
-                XMFJ_Mode.YXXSALWJM = ViewState["file2"].ToString();
-            if (ViewState["file3"] != null)
-                XMFJ_Mode.XMYSMXWJM = ViewState["file3"].ToString();
+            XMFJ_Mode = XMFJ_Bll._GetModel(YLZY_Model.XMBH);
+            if (XMFJ_Mode != null)
+            {
+                if (ViewState["file1"] != null)
+                    XMFJ_Mode.XMKXXFXBGWJM = ViewState["file1"].ToString();
+                if (ViewState["file2"] != null)
+                    XMFJ_Mode.YXXSALWJM = ViewState["file2"].ToString();
+                if (ViewState["file3"] != null)
+                    XMFJ_Mode.XMYSMXWJM = ViewState["file3"].ToString();
+                XMFJ_Bll.Update(XMFJ_Mode);
+            }
+            else
+            {
+                XMFJ_Mode = new Model.XMFJ();
+                XMFJ_Mode.XMBH = YLZY_Model.XMBH;
+                if (ViewState["file1"] != null || ViewState["file2"] != null || ViewState["file3"] != null)
+                {
+                    if (ViewState["file1"] != null)
+                        XMFJ_Mode.XMKXXFXBGWJM = ViewState["file1"].ToString();
+                    if (ViewState["file2"] != null)
+                        XMFJ_Mode.YXXSALWJM = ViewState["file2"].ToString();
+                    if (ViewState["file3"] != null)
+                        XMFJ_Mode.XMYSMXWJM = ViewState["file3"].ToString();
+                    XMFJ_Bll.Add(XMFJ_Mode);
+                }
+            }
 
-            XMFJ_Bll.Update(XMFJ_Mode);
 
-           
 
             if (YLZY_Bll.Update(YLZY_Model))
             {
@@ -1138,11 +1057,22 @@ namespace XMGL.Web.admin
                 {
                     BLL.XMSBSWD wordBll = new BLL.XMSBSWD();
                     Model.XMSBSWD model = null;
-                    model = wordBll.GetModelList("XMBH='" + YLZY_Model.XMBH + "'")[0];
-                    //model.XMBH = YLZY_Model.XMBH;
-                    model.XMMC = YLZY_Model.XMMC;
-                    model.WDLJ = savepath;
-                    wordBll.Update(model);
+                    model = wordBll._GetModel(YLZY_Model.XMBH);
+                    if (model != null)
+                    {
+                        //model.XMBH = YLZY_Model.XMBH;
+                        model.XMMC = YLZY_Model.XMMC;
+                        model.WDLJ = savepath;
+                        wordBll.Update(model);
+                    }
+                    else
+                    {
+                        model = new Model.XMSBSWD();
+                        model.XMBH = YLZY_Model.XMBH;
+                        model.XMMC = YLZY_Model.XMMC;
+                        model.WDLJ = savepath;
+                        wordBll.Add(model);
+                    }
                 }
             }
             PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());
@@ -1167,7 +1097,7 @@ namespace XMGL.Web.admin
                 //string zydm1 = "";
                 string sqlstr = "select *  FROM ZYB1 where ZYDM='" + zydm1 + "' and ZYFXDM='" + zyfxdm + "' and XXDM='" + ViewState["xxdm"].ToString().Trim() + "'";
                 SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
-                string m="",d="", sj = "";
+                string m = "", d = "", sj = "";
 
                 if (sdr.Read())
                 {
@@ -1189,7 +1119,7 @@ namespace XMGL.Web.admin
                     ZYFZR_SJ.Text = "";
                     ZYFZR_DZYX.Text = "";
 
-                    sj=sdr["ZYKBSJ"].ToString().Trim();
+                    sj = sdr["ZYKBSJ"].ToString().Trim();
                     //if (sj.Length == 6)
                     //{
                     //    try
@@ -1229,11 +1159,11 @@ namespace XMGL.Web.admin
                 }
                 else
                 {
-                    ZYDM.Text =  "";
+                    ZYDM.Text = "";
                     ZYFZR_XM.Text = "";
-                    ZYSSDL.Text =  "";
-                    ZYSSEJL.Text =  "";
-                  
+                    ZYSSDL.Text = "";
+                    ZYSSEJL.Text = "";
+
                     ZYFZR_ZYJSZW.Text = "";
                     ZYKBSJ.Text = "";
                     //ZYFZR_XM.Text = "";
@@ -1290,7 +1220,7 @@ namespace XMGL.Web.admin
         //}
 
 
-        protected void bind_zsyjqk(string zydm,string zyfxdm)
+        protected void bind_zsyjqk(string zydm, string zyfxdm)
         {
             //string zydm = ZYDM.Text.Trim();
             //string nf = DropDownList_nf.SelectedValue.Trim();
@@ -1303,8 +1233,8 @@ namespace XMGL.Web.admin
 
                 if (sdr.Read())
                 {
-                   
-                  
+
+
                     if (i == 2012)
                     {
                         dt = new DataTable();
@@ -1319,7 +1249,7 @@ namespace XMGL.Web.admin
 
                         DataRow dr = dt.NewRow();
                         dr["id"] = Guid.NewGuid().ToString();
-                        dr["nf"] =i.ToString();
+                        dr["nf"] = i.ToString();
                         dr["NumberBox_sjzss"] = sdr["SJZSS"].ToString().Trim();
                         dr["NumberBox_xsbdl"] = sdr["XSBDL"].ToString().Trim();
                         dr["NumberBox_qrzzxss"] = sdr["QRZZXSS"].ToString().Trim();
@@ -1330,22 +1260,22 @@ namespace XMGL.Web.admin
                     }
                     else
                     {
-                       
 
 
-                            DataRow dr = dt.NewRow();
-                            dr["id"] = Guid.NewGuid().ToString();
-                            dr["nf"] = i.ToString();
-                            dr["NumberBox_sjzss"] = sdr["SJZSS"].ToString().Trim();
-                            dr["NumberBox_xsbdl"] = sdr["XSBDL"].ToString().Trim();
-                            dr["NumberBox_qrzzxss"] = sdr["QRZZXSS"].ToString().Trim();
-                            dr["NumberBox_ddpyrs"] = sdr["DDPYRS"].ToString().Trim();
-                            dr["NumberBox_byss"] = sdr["BYSRS"].ToString().Trim();
-                            dr["NumberBox_ccjyl"] = sdr["CCJYL"].ToString().Trim();
-                            dt.Rows.Add(dr);
-                      
+
+                        DataRow dr = dt.NewRow();
+                        dr["id"] = Guid.NewGuid().ToString();
+                        dr["nf"] = i.ToString();
+                        dr["NumberBox_sjzss"] = sdr["SJZSS"].ToString().Trim();
+                        dr["NumberBox_xsbdl"] = sdr["XSBDL"].ToString().Trim();
+                        dr["NumberBox_qrzzxss"] = sdr["QRZZXSS"].ToString().Trim();
+                        dr["NumberBox_ddpyrs"] = sdr["DDPYRS"].ToString().Trim();
+                        dr["NumberBox_byss"] = sdr["BYSRS"].ToString().Trim();
+                        dr["NumberBox_ccjyl"] = sdr["CCJYL"].ToString().Trim();
+                        dt.Rows.Add(dr);
+
                     }
-                   
+
 
                 }
                 else
@@ -1366,7 +1296,7 @@ namespace XMGL.Web.admin
                         dr["id"] = Guid.NewGuid().ToString();
                         dr["nf"] = i.ToString();
                         dr["NumberBox_sjzss"] = 0;
-                        dr["NumberBox_xsbdl"] =0;
+                        dr["NumberBox_xsbdl"] = 0;
                         dr["NumberBox_qrzzxss"] = 0;
                         dr["NumberBox_ddpyrs"] = 0;
                         dr["NumberBox_byss"] = 0;
@@ -1409,7 +1339,7 @@ namespace XMGL.Web.admin
             Grid1.DataSource = dv;
             Grid1.DataBind();
             ViewState["dt1"] = dt;
-          
+
         }
 
         protected void bind_zsyjqk1()
@@ -1953,7 +1883,7 @@ namespace XMGL.Web.admin
                 Alert.Show("请选中一条数据！", "系统提示", MessageBoxIcon.Warning);
                 Grid1.SelectedRowIndexArray = null; // 清空当前选中的项
             }
-            
+
         }
 
         protected void btnSubmit1_Click(object sender, EventArgs e)
@@ -2022,7 +1952,7 @@ namespace XMGL.Web.admin
                     {
                         Alert.ShowInTop("请上传word格式的文件！");
                     }
-                        
+
                 }
                 catch (Exception ex)
                 {
@@ -2109,7 +2039,7 @@ namespace XMGL.Web.admin
                 lb11.Text = "";
             //else if (lb.Text.Trim() == "5")
             //    lb.Text = "审核通过";
-           
+
 
         }
 

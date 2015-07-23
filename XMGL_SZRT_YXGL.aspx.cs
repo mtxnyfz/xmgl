@@ -339,7 +339,7 @@ namespace XMGL.Web.admin
 
             else if (e.CommandName == "tj")
             {
-                if (Convert.ToInt32(zt) == 2)
+                if (Convert.ToInt32(zt) == 2 || Convert.ToInt32(zt) == 4 || Convert.ToInt32(zt) == 6)
                 {
                     string sqlstr = "update SZRT set ZT=3 where ID=" + Convert.ToInt32(selectedID);
                     if (DbHelperSQL.ExecuteSql(sqlstr) != 0)

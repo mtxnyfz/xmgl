@@ -53,7 +53,7 @@
                    
                     <Columns>
                         <f:RowNumberField  ColumnID="Panel1_Grid1_ctl05" />
-                         <f:BoundField Width="180px" DataField="XXMC"  HeaderText="院校名称" ID="BoundField1" ColumnID="Panel1_Grid1_ctl07" DataToolTipField="XXMC" />
+                         <f:BoundField Width="180px" DataField="XXMC"  HeaderText="单位名称" ID="BoundField1" ColumnID="Panel1_Grid1_ctl07" DataToolTipField="XXMC" />
                          <f:BoundField Width="120px" DataField="XMDLMC"  HeaderText="项目类别" ID="ctl08" ColumnID="Panel1_Grid1_ctl08" />
                          <f:BoundField Width="120px" DataField="XMMC"  HeaderText="项目名称" ID="BoundField2" ColumnID="Panel1_Grid1_ctl06"  DataToolTipField="XMMC"/>
                         <f:BoundField Width="150px" DataField="ZYFZR_XM" HeaderText="项目负责人" ID="ctl09" ColumnID="Panel1_Grid1_ctl09" />

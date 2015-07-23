@@ -297,12 +297,12 @@
                                                         <f:RowNumberField HeaderText="序号" Width="50px" />
                                                         <f:BoundField Width="100px" DataField="ZYMC" HeaderText="专业名称" />
 
-                                                        <f:BoundField DataField="KSNF" HeaderText="开设年份" Width="100px" />
+                                                        <f:BoundField DataField="ZYKBSJ" HeaderText="开设年份" Width="100px" />
                                                         <f:BoundField HeaderText="2015年招生计划人数" DataField="NZSJHRS2015" ExpandUnusedSpace="true" />
                                                         <f:BoundField HeaderText="在校生人数" DataField="ZXSRS" ExpandUnusedSpace="true" />
                                                         <f:BoundField DataField="JSNPJJYL" HeaderText="近三年平均就业率" ExpandUnusedSpace="true" />
                                                         <f:BoundField DataField="JSNZXSHDZGZSBL" HeaderText="近三年在校生获得中级及以上<br/>职业资格证书比例" ExpandUnusedSpace="true" TextAlign="Center" />
-                                                        <f:BoundField Width="80px" DataField="SFW085GCZDZY" HeaderText="是否为“085”工程重点专业" ExpandUnusedSpace="true" />
+                                                        <f:CheckBoxField Width="80px" RenderAsStaticField="true" DataField="SFW085GCZDZY" HeaderText="是否为“085”工程重点专业" ExpandUnusedSpace="true" />
                                                     </Columns>
                                                 </f:Grid>
                                             </Items>
@@ -328,22 +328,22 @@
                                                         <f:TextArea ID="txt_JDZZGJSX" runat="server" Height="500px" Label="基地组织构架设想" Margin="10 5 10 0" EmptyText="请通过文字或图表方式阐述本申报基地的组织构架及相关管理人员情况（不超过500字）" Required="true" ShowRedStar="true" MaxLength="800" ColumnWidth="98%"></f:TextArea>
                                                     </Items>
                                                 </f:Panel>
-                                                 <f:Panel ID="Panel57" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
+                                                <f:Panel ID="Panel57" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                     <Items>
-                                                          <f:SimpleForm ID="SimpleForm5" BodyPadding="5px" runat="server"   EnableCollapse="true"
-            ShowBorder="True" Title="&nbsp;" ShowHeader="false"  ColumnWidth="50%">
-            <Items>
-               
-                 <f:FileUpload runat="server" ID="FileUpload4" EmptyText="如果需要图表方式阐述本申报基地的组织构架及相关管理人员情况，请选择图片上传" Label="上传图片"  AcceptFileTypes="image/*" >
-                </f:FileUpload>
-                
-                <f:Button ID="Button5" runat="server" OnClick="Button5_Click"  
-                    Text="上传">
-                </f:Button>
-            </Items>
-        </f:SimpleForm>
-                                                      
-                                                        
+                                                        <f:SimpleForm ID="SimpleForm5" BodyPadding="5px" runat="server" EnableCollapse="true"
+                                                            ShowBorder="True" Title="&nbsp;" ShowHeader="false" ColumnWidth="50%">
+                                                            <Items>
+
+                                                                <f:FileUpload runat="server" ID="FileUpload4" EmptyText="如果需要图表方式阐述本申报基地的组织构架及相关管理人员情况，请选择图片上传" Label="上传图片" AcceptFileTypes="image/*">
+                                                                </f:FileUpload>
+
+                                                                <f:Button ID="Button5" runat="server" OnClick="Button5_Click"
+                                                                    Text="上传">
+                                                                </f:Button>
+                                                            </Items>
+                                                        </f:SimpleForm>
+
+
                                                     </Items>
                                                 </f:Panel>
                                             </Items>
@@ -403,16 +403,16 @@
                                                                 </f:Panel>
                                                                 <f:Panel ID="Panel11" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_QYMC2" Label="企业名称"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXRXMJZW2" Label="联系人姓名及职务"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXFS2" Label="联系方式"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_QYMC2" Label="企业名称" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXRXMJZW2" Label="联系人姓名及职务" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXFS2" Label="联系方式" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                                 <f:Panel ID="Panel12" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_QYMC3" Label="企业名称"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXRXMJZW3" Label="联系人姓名及职务"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
-                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXFS3" Label="联系方式"  ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_QYMC3" Label="企业名称" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXRXMJZW3" Label="联系人姓名及职务" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txt_JSGYHCPKF_LXFS3" Label="联系方式" ColumnWidth="25%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -803,7 +803,7 @@
                                                                 <f:Panel ID="Panel35" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_sqzxjfwpryfy_2015" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2015" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2015" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
 
                                                                         <f:NumberBox ID="NumberBox_sqzxjfgshj_2015" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
                                                                     </Items>
@@ -826,7 +826,7 @@
                                                                 <f:Panel ID="Panel39" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_sqzxjfwpryfy_2016" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2016" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2016" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
 
                                                                         <f:NumberBox ID="NumberBox_sqzxjfgshj_2016" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
                                                                     </Items>
@@ -850,7 +850,7 @@
                                                                 <f:Panel ID="Panel59" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_sqzxjfwpryfy_2017" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2017" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_sqzxjfywf_2017" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_sqzxjfywf_TextChanged" AutoPostBack="true"></f:NumberBox>
 
                                                                         <f:NumberBox ID="NumberBox_sqzxjfgshj_2017" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
                                                                     </Items>
@@ -885,7 +885,7 @@
                                                                 <f:Panel ID="Panel44" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_xxptwpryfy_2015" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_xxptywf_2015" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_xxptywf_2015" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
                                                                         <f:NumberBox ID="NumberBox_xxptgshj_2015" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
 
                                                                     </Items>
@@ -909,7 +909,7 @@
                                                                 <f:Panel ID="Panel47" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_xxptwpryfy_2016" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_xxptywf_2016" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_xxptywf_2016" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
                                                                         <f:NumberBox ID="NumberBox_xxptgshj_2016" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
 
                                                                     </Items>
@@ -932,7 +932,7 @@
                                                                 <f:Panel ID="Panel61" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
                                                                         <f:NumberBox ID="NumberBox_xxptwpryfy_2017" runat="server" Label="外聘人员费用(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptwpryfy_TextChanged" AutoPostBack="true"></f:NumberBox>
-                                                                        <f:NumberBox ID="NumberBox_xxptywf_2017" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
+                                                                        <f:NumberBox ID="NumberBox_xxptywf_2017" runat="server" Label="业务费（包括差旅、印刷、交通等）(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" OnTextChanged="NumberBox_xxptywf_TextChanged" AutoPostBack="true"></f:NumberBox>
                                                                         <f:NumberBox ID="NumberBox_xxptgshj_2017" runat="server" Label="经费概算合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="5 0 5 2" Readonly="true" Enabled="false" EmptyText="系统自动汇总"></f:NumberBox>
 
                                                                     </Items>

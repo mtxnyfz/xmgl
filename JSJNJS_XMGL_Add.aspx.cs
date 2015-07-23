@@ -67,6 +67,9 @@ namespace XMGL.Web.admin
             txtDWDM.Text = xxdm;
             //生成项目编码
             ViewState["xmbh"] = AutoNumber("2015-05-");
+            //直接将编号插入数据库
+            xm_model.XMBH = ViewState["xmbh"].ToString();
+            xm_bll.Add(xm_model);
 
             //绑定Grid
             BindGridXMCY();
@@ -132,6 +135,7 @@ namespace XMGL.Web.admin
                 xm_model.XMFZRXX_CZ = txtXMFZRXX_CZ.Text.Trim();
                 xm_model.XMFZRXX_SJ = txtXMFZRXX_SJ.Text.Trim();
                 xm_model.XMFZRXX_DZYX = txtXMFZRXX_DZYX.Text.Trim();
+                xm_model.User_Uid = pb.GetIdentityId();
                 if (IsAdd)
                 {
                     return xm_bll.Add(xm_model) > 0;
@@ -307,9 +311,9 @@ namespace XMGL.Web.admin
                 xm_model.JFYS_ZXJF_YWF_JFYS = decimal.Parse(txtJFYS_ZXJF_YWF_JFYS.Text);
                 xm_model.JFYS_ZXJF_YWF_BZ = txtJFYS_ZXJF_YWF_BZ.Text;
 
-                xm_model.JFYS_ZXJF_JFGSHJ_SM = txtJFYS_ZXJF_JFGSHJ_SM.Text;
+                //xm_model.JFYS_ZXJF_JFGSHJ_SM = txtJFYS_ZXJF_JFGSHJ_SM.Text;
                 xm_model.JFYS_ZXJF_JFGSHJ_JFYS = decimal.Parse(txtJFYS_ZXJF_JFGSHJ_JFYS.Text);
-                xm_model.JFYS_ZXJF_JFGSHJ_BZ = txtJFYS_ZXJF_JFGSHJ_BZ.Text;
+                //xm_model.JFYS_ZXJF_JFGSHJ_BZ = txtJFYS_ZXJF_JFGSHJ_BZ.Text;
 
                 //学校配套经费
                 xm_model.JFYS_XXPTJF = decimal.Parse(txtJFYS_XXPTJF.Text);
@@ -336,11 +340,11 @@ namespace XMGL.Web.admin
                 xm_model.JFYS_XXPTJF_YWF_JFYS = decimal.Parse(txtJFYS_XXPTJF_YWF_JFYS.Text);
                 xm_model.JFYS_XXPTJF_YWF_BZ = txtJFYS_XXPTJF_YWF_BZ.Text;
 
-                xm_model.JFYS_XXPTJF_JFGSHJ_SM = txtJFYS_XXPTJF_JFGSHJ_SM.Text;
+                //xm_model.JFYS_XXPTJF_JFGSHJ_SM = txtJFYS_XXPTJF_JFGSHJ_SM.Text;
                 xm_model.JFYS_XXPTJF_JFGSHJ_JFYS = decimal.Parse(txtJFYS_XXPTJF_JFGSHJ_JFYS.Text);
-                xm_model.JFYS_XXPTJF_JFGSHJ_BZ = txtJFYS_XXPTJF_JFGSHJ_BZ.Text;
+                //xm_model.JFYS_XXPTJF_JFGSHJ_BZ = txtJFYS_XXPTJF_JFGSHJ_BZ.Text;
 
-                xm_model.User_Uid = pb.GetIdentityId();
+
 
                 if (IsAdd)
                 {
@@ -651,7 +655,7 @@ namespace XMGL.Web.admin
                 XMFJ_Bll.Add(XMFJ_Mode);
 
                 //2、生成word 
-                string filename = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + ViewState["xxdm"] + ".doc";
+                string filename = string.Format("{0}_{1}_{2}.doc", ViewState["xxdm"], ViewState["xmbh"], DateTime.Now.ToString("yyyyMMddHHmmssfff"));
                 var tmppath = HttpContext.Current.Server.MapPath("~/admin/WordMaster/2015项目申报书(技术技能竞赛)150228.doc");
                 var savepath = HttpContext.Current.Server.MapPath("~/admin/down/" + filename);
 

@@ -24,149 +24,120 @@ namespace XMGL.Web.admin
 {
     public partial class jsxx_Add : System.Web.UI.Page
     {
+        Model.JSXX jsxx_model = new Model.JSXX();
+        BLL.JSXX jsxx_bll = new BLL.JSXX();
+
+        Model.YLZY ylzy_model = new Model.YLZY();
+        BLL.YLZY ylzy_bll = new BLL.YLZY();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Request.QueryString[0] != null)
                 {
-                    ViewState["ZRJSS"] = Request.QueryString[0];
-                    ViewState["JZJSS"] = Request.QueryString[1];
+                    //ViewState["ZRJSS"] = Request.QueryString[0];
+                    //ViewState["JZJSS"] = Request.QueryString[1];
+                    ViewState["XMBH"] = Request.QueryString[0];
                 }
             }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            DataTable dt = null;
-            string zjz = DropDownList_zjz.SelectedValue;
-            string sfss = DropDownList_ss.SelectedValue;
-            string xl = DropDownList_xl1.SelectedValue;
-            string xw = DropDownList_xw1.SelectedValue;
-            string zcdj = DropDownList_zcdj1.SelectedValue;
-            if (zjz == "请选择")
+            try
             {
-                Alert.ShowInTop("请选择专/兼职");
-                return;
-            }
-            if (sfss == "请选择")
-            {
-                Alert.ShowInTop("请选择是否双师");
-                return;
-            }
-            if (xl == "请选择")
-            {
-                Alert.ShowInTop("请选择学历");
-                return;
-            }
-            if (xw == "请选择")
-            {
-                Alert.ShowInTop("请选择学位");
-                return;
-            }
-            if (zcdj == "请选择")
-            {
-                Alert.ShowInTop("请选择职称等级");
-                return;
-            }
-
-            int _zrjss = 0, _jzjss = 0;
-            //try
-            //{
-            //    _zrjss = Convert.ToInt32(ViewState["ZRJSS"].ToString().Trim());
-            //}
-            //catch
-            //{
-            //    Alert.ShowInTop("请先填写专任教师数");
-            //    return;
-            //}
-          
-
-
-
-            //try
-            //{
-            //    _jzjss = Convert.ToInt32(ViewState["JZJSS"].ToString().Trim());
-            //}
-            //catch
-            //{
-            //    Alert.ShowInTop("请先填写兼职教师数");
-            //    return;
-            //}
-
-          
-                //if (zjz == "1")
-                //{
-                //    if (_zrjss < 1)
-                //    {
-                //        Alert.ShowInTop("您添加的专任教师信息的条数和您输入的专任教师数的人数不一致");
-                //        return;
-                //    }
-                //}
-
-                //if (zjz == "2")
-                //{
-                //    if (_jzjss < 1)
-                //    {
-                //        Alert.ShowInTop("您添加的专任教师信息的条数和您输入的专任教师数的人数不一致");
-                //        return;
-                //    }
-                //}
-
-                string csny = DatePicker_csny.Text.Replace("-","");
-                string jsxm=TextBox1_jsxm.Text.Trim();
-                string sqlstr = "select JSXM from JSXXB where JSXM='" + jsxm + "' and CSNY like'%" + csny + "%'";
-                SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
-
-             
-                if (sdr.Read())
+                bool IsAdd = false;
+                string jsxm = TextBox1_jsxm.Text.Trim();
+                if (jsxm == "")
                 {
-                   
-                    sdr.Dispose();
-                    Alert.ShowInTop("您添加的专任教师信息在数据库中已存在，请在前一个页面中输入姓名后选中即可");
+                    Alert.Show("教师姓名为必选项");
                     return;
+                }
+                jsxx_model = jsxx_bll.GetModel(ViewState["XMBH"].ToString(), jsxm);
+                if (jsxx_model == null)//新增
+                {
+                    IsAdd = true;
+                    jsxx_model = new Model.JSXX();
+                }
+                string zjz = DropDownList_zjz.SelectedValue;
+                string sfss = DropDownList_ss.SelectedValue;
+                string xl = DropDownList_xl1.SelectedValue;
+                string xw = DropDownList_xw1.SelectedValue;
+                string zcdj = DropDownList_zcdj1.SelectedValue;
+                if (zjz == "请选择")
+                {
+                    Alert.ShowInTop("请选择专/兼职");
+                    return;
+                }
+                if (sfss == "请选择")
+                {
+                    Alert.ShowInTop("请选择是否双师");
+                    return;
+                }
+                if (xl == "请选择")
+                {
+                    Alert.ShowInTop("请选择学历");
+                    return;
+                }
+                if (xw == "请选择")
+                {
+                    Alert.ShowInTop("请选择学位");
+                    return;
+                }
+                if (zcdj == "请选择")
+                {
+                    Alert.ShowInTop("请选择职称等级");
+                    return;
+                }
 
+                jsxx_model.XXDM = Session["xxdm"].ToString();
+                jsxx_model.XMBH = ViewState["XMBH"].ToString();
+                jsxx_model.JSXM = jsxm;
+                jsxx_model.CSNY = DatePicker_csny.Text.Replace("-", "");
+                jsxx_model.ZZJZ =int.Parse( zjz);
+                jsxx_model.SFSS = int.Parse(sfss);
+                jsxx_model.XL = xl;
+                jsxx_model.XW = xw;
+                jsxx_model.ZCDJ = zcdj;
+                if (IsAdd)
+                {
+                    if (jsxx_bll.Add(jsxx_model) > 0)
+                    {
+                        ylzy_model = ylzy_bll.GetModel(Session["xxdm"].ToString(), ViewState["XMBH"].ToString());
+                        if (ylzy_model == null)
+                        {
+                            ylzy_model = new Model.YLZY();
+                            ylzy_model.XMBH = ViewState["xmbh"].ToString();
+                            ylzy_model.XXDM = Session["xxdm"].ToString();
+                            ylzy_bll.Add(ylzy_model);
+                        }
+                        Alert.Show("添加成功");
+                    }
+                        
                 }
                 else
-               sdr.Dispose();
-                
-
-                dt = new DataTable();
-                dt.Columns.Add("id");
-                dt.Columns.Add("jsxm");
-                dt.Columns.Add("csny");
-                dt.Columns.Add("zjz");
-                dt.Columns.Add("sfss");
-                dt.Columns.Add("xl");
-                dt.Columns.Add("xw");
-                dt.Columns.Add("zcdj");
-
-                DataRow dr = dt.NewRow();
-                dr["id"] = Guid.NewGuid().ToString();
-                dr["jsxm"] = TextBox1_jsxm.Text.Trim();
-                dr["csny"] = DatePicker_csny.Text;
-                dr["zjz"] = zjz;
-                dr["sfss"] = sfss;
-                dr["xl"] = xl;
-                dr["xw"] = xw;
-                dr["zcdj"] = zcdj;
-                Session["dr"] = dr;
-                PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());
-        
-           
-           
-        }
-
-
-        protected int Getzjzrs(string zjz, DataTable dt)
-        {
-            int count = 0;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                if (dt.Rows[i]["zjz"].ToString().Trim() == zjz)
-                    count++;
+                {
+                    if ( jsxx_bll.Update(jsxx_model)==true)
+                        Alert.Show("添加成功");
+                }
             }
-            return count;
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                //return false;
+            }
+            PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());
         }
+        //protected int Getzjzrs(string zjz, DataTable dt)
+        //{
+        //    int count = 0;
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        if (dt.Rows[i]["zjz"].ToString().Trim() == zjz)
+        //            count++;
+        //    }
+        //    return count;
+        //}
     }
 }

@@ -1201,15 +1201,6 @@ namespace XMGL.Web.admin {
         protected global::FineUI.GroupPanel GroupPanels22;
         
         /// <summary>
-        /// ZXJF_JFHJ_SYSM 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextArea ZXJF_JFHJ_SYSM;
-        
-        /// <summary>
         /// ZXJF_JFHJ_JFYS 控件。
         /// </summary>
         /// <remarks>
@@ -1217,15 +1208,6 @@ namespace XMGL.Web.admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUI.NumberBox ZXJF_JFHJ_JFYS;
-        
-        /// <summary>
-        /// ZXJF_JFHJ_BZ 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextArea ZXJF_JFHJ_BZ;
         
         /// <summary>
         /// Panelxxptjf1 控件。
@@ -1543,15 +1525,6 @@ namespace XMGL.Web.admin {
         protected global::FineUI.GroupPanel GroupPanel26;
         
         /// <summary>
-        /// PTJF_JFHJ_SYSM 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextArea PTJF_JFHJ_SYSM;
-        
-        /// <summary>
         /// PTJF_JFHJ_JFYS 控件。
         /// </summary>
         /// <remarks>
@@ -1559,15 +1532,6 @@ namespace XMGL.Web.admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUI.NumberBox PTJF_JFHJ_JFYS;
-        
-        /// <summary>
-        /// PTJF_JFHJ_BZ 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextArea PTJF_JFHJ_BZ;
         
         /// <summary>
         /// Toolbar10 控件。

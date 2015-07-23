@@ -52,7 +52,7 @@
                             <div id="processor">
                                 <ol class="processorBox oh">
                                     <li class="current" id="li1">
-                                        <div class="step_inner fl">
+                                        <div class="step_inner">
                                             <asp:Button ID="Button_step1" runat="server" Text="1" CssClass="icon_step" OnClick="Button_step1_Click" BorderStyle="None" UseSubmitBehavior="false" />
                                             <h4>单位承诺及填表说明</h4>
                                         </div>
@@ -244,31 +244,31 @@
                                             <Items>
                                                 <f:GroupPanel ID="GroupPanel32" Layout="Anchor" Title="<strong>申报理由</strong>" runat="server">
                                                     <Items>
-                                                        <f:TextArea ID="txtSBXMJSFA_SBLY" Label="申报理由" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请说明开展本赛项的必要性和可行性。（不超过500字）" MaxLength="500">
+                                                        <f:TextArea ID="txtSBXMJSFA_SBLY" Label="申报理由" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请说明开展本赛项的必要性和可行性。（不超过500字）" MaxLength="700">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:GroupPanel>
                                                 <f:GroupPanel ID="GroupPanel33" Layout="Anchor" Title="<strong>建设目标</strong>" runat="server">
                                                     <Items>
-                                                        <f:TextArea ID="txtSBXMJSFA_JSMB" Label="建设目标" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述本赛项要达到的总体目标。（不超过500字）" MaxLength="500">
+                                                        <f:TextArea ID="txtSBXMJSFA_JSMB" Label="建设目标" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述本赛项要达到的总体目标。（不超过500字）" MaxLength="700">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:GroupPanel>
                                                 <f:GroupPanel ID="GroupPanel34" Layout="Anchor" Title="<strong>具体举措</strong>" runat="server">
                                                     <Items>
-                                                        <f:TextArea ID="txtSBXMJSFA_JTJC" Label="具体举措" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述赛项举办内容及具体举措。（不超过1000字）" MaxLength="1000">
+                                                        <f:TextArea ID="txtSBXMJSFA_JTJC" Label="具体举措" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述赛项举办内容及具体举措。（不超过1000字）" MaxLength="1200">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:GroupPanel>
                                                 <f:GroupPanel ID="GroupPanel35" Layout="Anchor" Title="<strong>经费安排</strong>" runat="server">
                                                     <Items>
-                                                        <f:TextArea ID="txtSBXMJSFA_JFAP" Label="经费安排" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述本赛项总体需要经费、来源和主要用途。（不超过500字）" MaxLength="500">
+                                                        <f:TextArea ID="txtSBXMJSFA_JFAP" Label="经费安排" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述本赛项总体需要经费、来源和主要用途。（不超过500字）" MaxLength="700">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:GroupPanel>
                                                 <f:GroupPanel ID="GroupPanel36" Layout="Anchor" Title="<strong>实施计划</strong>" runat="server">
                                                     <Items>
-                                                        <f:TextArea ID="txtSBXMJSFA_SSJH" Label="实施计划" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述赛项组织实施计划，按照筹备、实施、总结等流程分别填写。（不超过500字）" MaxLength="500">
+                                                        <f:TextArea ID="txtSBXMJSFA_SSJH" Label="实施计划" Required="true" ShowRedStar="true" ColumnWidth="100%" runat="server" Margin="0 5 2 0" Height="200px" EmptyText="请阐述赛项组织实施计划，按照筹备、实施、总结等流程分别填写。（不超过500字）" MaxLength="700">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:GroupPanel>
@@ -366,7 +366,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_ZXJF_JSFA_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_JSFA_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="ZXJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_JSFA_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_JSFA_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -376,9 +376,9 @@
                                                             <Items>
                                                                 <f:Panel ID="Panel4" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWPX_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWPX_SM" Label="具体使用说明"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_YWPX_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="ZXJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWPX_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWPX_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -389,7 +389,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_ZXJF_YQSB_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_YQSB_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="ZXJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_YQSB_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_YQSB_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -400,7 +400,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_ZXJF_WPRY_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_WPRY_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="ZXJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_WPRY_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_WPRY_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -411,7 +411,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_ZXJF_YWF_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_YWF_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="ZXJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWF_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_ZXJF_YWF_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -420,9 +420,9 @@
                                                             <Items>
                                                                 <f:Panel ID="Panel10" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_JFGSHJ_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <%--<f:TextBox ID="txtJFYS_ZXJF_JFGSHJ_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>--%>
                                                                         <f:NumberBox ID="txtJFYS_ZXJF_JFGSHJ_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" Enabled="false" Text="0" EmptyText="自动合计"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_ZXJF_JFGSHJ_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <%--<f:TextBox ID="txtJFYS_ZXJF_JFGSHJ_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>--%>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -434,7 +434,7 @@
                                                     <Items>
                                                         <f:Panel ID="Panel11" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                             <Items>
-                                                                <f:NumberBox ID="txtJFYS_XXPTJF" runat="server" Label="申请专项经费合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="30%" Margin="0 5 5 0" EmptyText="系统自动汇总" Readonly="true" Enabled="false" Text="0"></f:NumberBox>
+                                                                <f:NumberBox ID="txtJFYS_XXPTJF" runat="server" Label="学校配套经费合计(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="30%" Margin="0 5 5 0" EmptyText="系统自动汇总" Readonly="true" Enabled="false" Text="0"></f:NumberBox>
                                                                 <f:DatePicker runat="server" Required="true" EnableEdit="false" DateFormatString="yyyy-MM-dd" Label="执行开始日期" EmptyText="请选择日期" ID="dpJFYS_XXPTJF_ZXKSSJ" ShowRedStar="True" ColumnWidth="30%" Margin="0 5 5 5"></f:DatePicker>
                                                                 <f:DatePicker runat="server" Required="true" EnableEdit="false" DateFormatString="yyyy-MM-dd" CompareControl="dpJFYS_XXPTJF_ZXKSSJ" CompareOperator="GreaterThan" CompareMessage="结束日期应该大于开始日期" Label="执行结束日期" EmptyText="请选择日期" ID="dpJFYS_XXPTJF_ZXJSSJ" ShowRedStar="True" ColumnWidth="30%" Margin="0 5 5 5"></f:DatePicker>
 
@@ -447,7 +447,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_XXPTJF_JSFA_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_JSFA_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="XXPTJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_JSFA_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_XXPTJF_JSFA_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -459,7 +459,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_XXPTJF_YWPX_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_YWPX_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="XXPTJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YWPX_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YWPX_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -470,7 +470,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_XXPTJF_YQSB_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_YQSB_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="XXPTJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YQSB_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YQSB_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -481,7 +481,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_XXPTJF_WPRY_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_WPRY_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="XXPTJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_WPRY_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_XXPTJF_WPRY_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -492,7 +492,7 @@
                                                                     <Items>
                                                                         <f:TextBox ID="txtJFYS_XXPTJF_YWF_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_YWF_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" OnTextChanged="XXPTJFSum_TextChanged"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YWF_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <f:TextBox ID="txtJFYS_XXPTJF_YWF_BZ" Label="备注"  ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>
@@ -501,9 +501,9 @@
                                                             <Items>
                                                                 <f:Panel ID="Panel17" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                                     <Items>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_JFGSHJ_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <%--<f:TextBox ID="txtJFYS_XXPTJF_JFGSHJ_SM" Label="具体使用说明" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>--%>
                                                                         <f:NumberBox ID="txtJFYS_XXPTJF_JFGSHJ_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="33%" Margin="0 5 2 0" AutoPostBack="true" Enabled="false" Text="0" EmptyText="自动合计"></f:NumberBox>
-                                                                        <f:TextBox ID="txtJFYS_XXPTJF_JFGSHJ_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>
+                                                                        <%--<f:TextBox ID="txtJFYS_XXPTJF_JFGSHJ_BZ" Label="备注" Required="true" ShowRedStar="true" ColumnWidth="33%" runat="server" Margin="0 5 2 0"></f:TextBox>--%>
                                                                     </Items>
                                                                 </f:Panel>
                                                             </Items>

@@ -80,18 +80,19 @@ namespace XMGL.Web.admin
                 XMSB_XMMC.Text = XmsbModel.XMMC;
                 XMSB_DWMC.Text = XmsbModel.DWMC;
 
+                if (XmcyFZRModel != null)
+                {
+                    XMCY_FZR_CYXM.Text = XmcyFZRModel.CYXM;
+                    XMCY_FZR_BM.Text = XmcyFZRModel.BM;
+                    XMCY_FZR_ZYJSZW.Text = XmcyFZRModel.ZYJSZW;
+                    XMCY_FZR_XZZW.Text = XmcyFZRModel.XZZW;
+                    XMCY_FZR_BGSDH.Text = XmcyFZRModel.BGSDH;
+                    XMCY_FZR_CZ.Text = XmcyFZRModel.CZ;
+                    XMCY_FZR_SJ.Text = XmcyFZRModel.SJ;
+                    XMCY_FZR_DZYX.Text = XmcyFZRModel.DZYX;
+                }
 
-                XMCY_FZR_CYXM.Text = XmcyFZRModel.CYXM;
-                XMCY_FZR_BM.Text = XmcyFZRModel.BM;
-                XMCY_FZR_ZYJSZW.Text = XmcyFZRModel.ZYJSZW;
-                XMCY_FZR_XZZW.Text = XmcyFZRModel.XZZW;
-                XMCY_FZR_BGSDH.Text = XmcyFZRModel.BGSDH;
-                XMCY_FZR_CZ.Text = XmcyFZRModel.CZ;
-                XMCY_FZR_SJ.Text = XmcyFZRModel.SJ;
-                XMCY_FZR_DZYX.Text = XmcyFZRModel.DZYX;
-
-
-                string xmcy_sql_str = "select ID as UID,CYXM as XMCY_CY_CYXM,BMJZW as XMCY_CY_BMJZW,RWFG as XMCY_CY_RWFG,SJ as XMCY_CY_SJ,DZYX as XMCY_CY_DZYX from SZPX_XMCY where XMBH = '" + XMBH + "' and CYLX='CY' ";
+                string xmcy_sql_str = "select cast(ID as varchar(max))as UID,CYXM as XMCY_CY_CYXM,BMJZW as XMCY_CY_BMJZW,RWFG as XMCY_CY_RWFG,SJ as XMCY_CY_SJ,DZYX as XMCY_CY_DZYX from SZPX_XMCY where XMBH = '" + XMBH + "' and CYLX='CY' ";
                 var dt = DbHelperSQL.Query(xmcy_sql_str).Tables[0];
                 XMCY_CY_List_Grid.DataSource = dt;
                 XMCY_CY_List_Grid.DataBind();
@@ -102,18 +103,20 @@ namespace XMGL.Web.admin
 
 
                 var JsfaModel = SZPX_JsfaBLL.GetModelList("XMBH = '" + XMBH + "'").FirstOrDefault();
-                JSFA_SBLY.Text = JsfaModel.SBLY;
-                JSFA_JSMB.Text = JsfaModel.JSMB;
-                JSFA_JTJC.Text = JsfaModel.JTJC;
-                JSFA_JFAP.Text = JsfaModel.JFAP;
-                JSFA_SSJH.Text = JsfaModel.SSJH;
+                if (JsfaModel != null)
+                {
+                    JSFA_SBLY.Text = JsfaModel.SBLY;
+                    JSFA_JSMB.Text = JsfaModel.JSMB;
+                    JSFA_JTJC.Text = JsfaModel.JTJC;
+                    JSFA_JFAP.Text = JsfaModel.JFAP;
+                    JSFA_SSJH.Text = JsfaModel.SSJH;
+
+                }
 
 
 
 
-
-
-                string Yszb_sql_str = "select ID as UID,JSMB as YSZB_JSMB,JHYSRQ as YSZB_YQWCSJ,YSYD as YSZB_YSYD  from SZPX_YSZB where XMBH = '" + XMBH + "'";
+                string Yszb_sql_str = "select cast(ID as varchar(max))as UID,JSMB as YSZB_JSMB,JHYSRQ as YSZB_YQWCSJ,YSYD as YSZB_YSYD  from SZPX_YSZB where XMBH = '" + XMBH + "'";
                 var Yszb_dt = DbHelperSQL.Query(Yszb_sql_str).Tables[0];
                 YSZB_list_Grid.DataSource = Yszb_dt;
                 YSZB_list_Grid.DataBind();
@@ -124,87 +127,88 @@ namespace XMGL.Web.admin
 
                 var Jfys_ZXJF_Model = SZPX_JfysBLL.GetModelList("XMBH = '" + XMBH + "' and JFLX='ZXJF'").FirstOrDefault();
                 var Jfys_PTJF_Model = SZPX_JfysBLL.GetModelList("XMBH = '" + XMBH + "' and JFLX='PTJF'").FirstOrDefault();
+                if (Jfys_ZXJF_Model != null)
+                {
+                    ZXJF_JFYS.Text = Jfys_ZXJF_Model.JFYS;
 
-                ZXJF_JFYS.Text = Jfys_ZXJF_Model.JFYS;
+                    ZXJF_ZXKSSJ.Text = Jfys_ZXJF_Model.ZXKSSJ.Value.ToString("yyyy-MM-dd");
+                    ZXJF_ZXJSSJ.Text = Jfys_ZXJF_Model.ZXJSSJ.Value.ToString("yyyy-MM-dd");
 
-                ZXJF_ZXKSSJ.Text = Jfys_ZXJF_Model.ZXKSSJ.Value.ToString("yyyy-MM-dd");
-                ZXJF_ZXJSSJ.Text = Jfys_ZXJF_Model.ZXJSSJ.Value.ToString("yyyy-MM-dd");
+                    ZXJF_KCJCJZLF_SYSM.Text = Jfys_ZXJF_Model.KCJCJZLF_SYSM;
+                    ZXJF_KCJCJZLF_JFYS.Text = Jfys_ZXJF_Model.KCJCJZLF_JFYS;
+                    ZXJF_KCJCJZLF_BZ.Text = Jfys_ZXJF_Model.KCJCJZLF_BZ;
 
-                ZXJF_KCJCJZLF_SYSM.Text = Jfys_ZXJF_Model.KCJCJZLF_SYSM;
-                ZXJF_KCJCJZLF_JFYS.Text = Jfys_ZXJF_Model.KCJCJZLF_JFYS;
-                ZXJF_KCJCJZLF_BZ.Text = Jfys_ZXJF_Model.KCJCJZLF_BZ;
+                    ZXJF_YQSBJHCF_SYSM.Text = Jfys_ZXJF_Model.YQSBJHCF_SYSM;
+                    ZXJF_YQSBJHCF_JFYS.Text = Jfys_ZXJF_Model.YQSBJHCF_JFYS;
+                    ZXJF_YQSBJHCF_BZ.Text = Jfys_ZXJF_Model.YQSBJHCF_BZ;
 
-                ZXJF_YQSBJHCF_SYSM.Text = Jfys_ZXJF_Model.YQSBJHCF_SYSM;
-                ZXJF_YQSBJHCF_JFYS.Text = Jfys_ZXJF_Model.YQSBJHCF_JFYS;
-                ZXJF_YQSBJHCF_BZ.Text = Jfys_ZXJF_Model.YQSBJHCF_BZ;
+                    ZXJF_WPRYJF_SYSM.Text = Jfys_ZXJF_Model.WPRYJF_SYSM;
+                    ZXJF_WPRYJF_JFYS.Text = Jfys_ZXJF_Model.WPRYJF_JFYS;
+                    ZXJF_WPRYJF_BZ.Text = Jfys_ZXJF_Model.WPRYJF_BZ;
 
-                ZXJF_WPRYJF_SYSM.Text = Jfys_ZXJF_Model.WPRYJF_SYSM;
-                ZXJF_WPRYJF_JFYS.Text = Jfys_ZXJF_Model.WPRYJF_JFYS;
-                ZXJF_WPRYJF_BZ.Text = Jfys_ZXJF_Model.WPRYJF_BZ;
+                    ZXJF_CDF_SYSM.Text = Jfys_ZXJF_Model.CDF_SYSM;
+                    ZXJF_CDF_JFYS.Text = Jfys_ZXJF_Model.CDF_JFYS;
+                    ZXJF_CDF_BZ.Text = Jfys_ZXJF_Model.CDF_BZ;
 
-                ZXJF_CDF_SYSM.Text = Jfys_ZXJF_Model.CDF_SYSM;
-                ZXJF_CDF_JFYS.Text = Jfys_ZXJF_Model.CDF_JFYS;
-                ZXJF_CDF_BZ.Text = Jfys_ZXJF_Model.CDF_BZ;
+                    ZXJF_CYF_SYSM.Text = Jfys_ZXJF_Model.CYF_SYSM;
+                    ZXJF_CYF_JFYS.Text = Jfys_ZXJF_Model.CYF_JFYS;
+                    ZXJF_CYF_BZ.Text = Jfys_ZXJF_Model.CYF_BZ;
 
-                ZXJF_CYF_SYSM.Text = Jfys_ZXJF_Model.CYF_SYSM;
-                ZXJF_CYF_JFYS.Text = Jfys_ZXJF_Model.CYF_JFYS;
-                ZXJF_CYF_BZ.Text = Jfys_ZXJF_Model.CYF_BZ;
+                    ZXJF_ZSF_SYSM.Text = Jfys_ZXJF_Model.ZSF_SYSM;
+                    ZXJF_ZSF_JFYS.Text = Jfys_ZXJF_Model.ZSF_JFYS;
+                    ZXJF_ZSF_BZ.Text = Jfys_ZXJF_Model.ZSF_BZ;
 
-                ZXJF_ZSF_SYSM.Text = Jfys_ZXJF_Model.ZSF_SYSM;
-                ZXJF_ZSF_JFYS.Text = Jfys_ZXJF_Model.ZSF_JFYS;
-                ZXJF_ZSF_BZ.Text = Jfys_ZXJF_Model.ZSF_BZ;
+                    ZXJF_JTF_SYSM.Text = Jfys_ZXJF_Model.JTF_SYSM;
+                    ZXJF_JTF_JFYS.Text = Jfys_ZXJF_Model.JTF_JFYS;
+                    ZXJF_JTF_BZ.Text = Jfys_ZXJF_Model.JTF_BZ;
 
-                ZXJF_JTF_SYSM.Text = Jfys_ZXJF_Model.JTF_SYSM;
-                ZXJF_JTF_JFYS.Text = Jfys_ZXJF_Model.JTF_JFYS;
-                ZXJF_JTF_BZ.Text = Jfys_ZXJF_Model.JTF_BZ;
+                    //ZXJF_JFHJ_SYSM.Text = Jfys_ZXJF_Model.JFHJ_SYSM;
+                    ZXJF_JFHJ_JFYS.Text = Jfys_ZXJF_Model.JFHJ_JFYS;
+                    //ZXJF_JFHJ_BZ.Text = Jfys_ZXJF_Model.JFHJ_BZ;
 
-                ZXJF_JFHJ_SYSM.Text = Jfys_ZXJF_Model.JFHJ_SYSM;
-                ZXJF_JFHJ_JFYS.Text = Jfys_ZXJF_Model.JFHJ_JFYS;
-                ZXJF_JFHJ_BZ.Text = Jfys_ZXJF_Model.JFHJ_BZ;
+                }
 
+                if (Jfys_PTJF_Model != null)
+                {
+                    PTJF_JFYS.Text = Jfys_PTJF_Model.JFYS;
+                    PTJF_ZXKSSJ.Text = Jfys_PTJF_Model.ZXKSSJ.Value.ToString("yyyy-MM-dd");
 
-
-
-
-                PTJF_JFYS.Text = Jfys_PTJF_Model.JFYS;
-                PTJF_ZXKSSJ.Text = Jfys_PTJF_Model.ZXKSSJ.Value.ToString("yyyy-MM-dd");
-
-                PTJF_ZXJSSJ.Text = Jfys_PTJF_Model.ZXJSSJ.Value.ToString("yyyy-MM-dd");
-
-
-                PTJF_KCJCJZLF_SYSM.Text = Jfys_PTJF_Model.KCJCJZLF_SYSM;
-                PTJF_KCJCJZLF_JFYS.Text = Jfys_PTJF_Model.KCJCJZLF_JFYS;
-                PTJF_KCJCJZLF_BZ.Text = Jfys_PTJF_Model.KCJCJZLF_BZ;
-
-                PTJF_YQSBJHCF_SYSM.Text = Jfys_PTJF_Model.YQSBJHCF_SYSM;
-                PTJF_YQSBJHCF_JFYS.Text = Jfys_PTJF_Model.YQSBJHCF_JFYS;
-                PTJF_YQSBJHCF_BZ.Text = Jfys_PTJF_Model.YQSBJHCF_BZ;
-
-                PTJF_WPRYJF_SYSM.Text = Jfys_PTJF_Model.WPRYJF_SYSM;
-                PTJF_WPRYJF_JFYS.Text = Jfys_PTJF_Model.WPRYJF_JFYS;
-                PTJF_WPRYJF_BZ.Text = Jfys_PTJF_Model.WPRYJF_BZ;
-
-                PTJF_CDF_SYSM.Text = Jfys_PTJF_Model.CDF_SYSM;
-                PTJF_CDF_JFYS.Text = Jfys_PTJF_Model.CDF_JFYS;
-                PTJF_CDF_BZ.Text = Jfys_PTJF_Model.CDF_BZ;
-
-                PTJF_CYF_SYSM.Text = Jfys_PTJF_Model.CYF_SYSM;
-                PTJF_CYF_JFYS.Text = Jfys_PTJF_Model.CYF_JFYS;
-                PTJF_CYF_BZ.Text = Jfys_PTJF_Model.CYF_BZ;
-
-                PTJF_ZSF_SYSM.Text = Jfys_PTJF_Model.ZSF_SYSM;
-                PTJF_ZSF_JFYS.Text = Jfys_PTJF_Model.ZSF_JFYS;
-                PTJF_ZSF_BZ.Text = Jfys_PTJF_Model.ZSF_BZ;
-
-                PTJF_JTF_SYSM.Text = Jfys_PTJF_Model.JTF_SYSM;
-                PTJF_JTF_JFYS.Text = Jfys_PTJF_Model.JTF_JFYS;
-                PTJF_JTF_BZ.Text = Jfys_PTJF_Model.JTF_BZ;
-
-                PTJF_JFHJ_SYSM.Text = Jfys_PTJF_Model.JFHJ_SYSM;
-                PTJF_JFHJ_JFYS.Text = Jfys_PTJF_Model.JFHJ_JFYS;
-                PTJF_JFHJ_BZ.Text = Jfys_PTJF_Model.JFHJ_BZ;
+                    PTJF_ZXJSSJ.Text = Jfys_PTJF_Model.ZXJSSJ.Value.ToString("yyyy-MM-dd");
 
 
+                    PTJF_KCJCJZLF_SYSM.Text = Jfys_PTJF_Model.KCJCJZLF_SYSM;
+                    PTJF_KCJCJZLF_JFYS.Text = Jfys_PTJF_Model.KCJCJZLF_JFYS;
+                    PTJF_KCJCJZLF_BZ.Text = Jfys_PTJF_Model.KCJCJZLF_BZ;
+
+                    PTJF_YQSBJHCF_SYSM.Text = Jfys_PTJF_Model.YQSBJHCF_SYSM;
+                    PTJF_YQSBJHCF_JFYS.Text = Jfys_PTJF_Model.YQSBJHCF_JFYS;
+                    PTJF_YQSBJHCF_BZ.Text = Jfys_PTJF_Model.YQSBJHCF_BZ;
+
+                    PTJF_WPRYJF_SYSM.Text = Jfys_PTJF_Model.WPRYJF_SYSM;
+                    PTJF_WPRYJF_JFYS.Text = Jfys_PTJF_Model.WPRYJF_JFYS;
+                    PTJF_WPRYJF_BZ.Text = Jfys_PTJF_Model.WPRYJF_BZ;
+
+                    PTJF_CDF_SYSM.Text = Jfys_PTJF_Model.CDF_SYSM;
+                    PTJF_CDF_JFYS.Text = Jfys_PTJF_Model.CDF_JFYS;
+                    PTJF_CDF_BZ.Text = Jfys_PTJF_Model.CDF_BZ;
+
+                    PTJF_CYF_SYSM.Text = Jfys_PTJF_Model.CYF_SYSM;
+                    PTJF_CYF_JFYS.Text = Jfys_PTJF_Model.CYF_JFYS;
+                    PTJF_CYF_BZ.Text = Jfys_PTJF_Model.CYF_BZ;
+
+                    PTJF_ZSF_SYSM.Text = Jfys_PTJF_Model.ZSF_SYSM;
+                    PTJF_ZSF_JFYS.Text = Jfys_PTJF_Model.ZSF_JFYS;
+                    PTJF_ZSF_BZ.Text = Jfys_PTJF_Model.ZSF_BZ;
+
+                    PTJF_JTF_SYSM.Text = Jfys_PTJF_Model.JTF_SYSM;
+                    PTJF_JTF_JFYS.Text = Jfys_PTJF_Model.JTF_JFYS;
+                    PTJF_JTF_BZ.Text = Jfys_PTJF_Model.JTF_BZ;
+
+                    //PTJF_JFHJ_SYSM.Text = Jfys_PTJF_Model.JFHJ_SYSM;
+                    PTJF_JFHJ_JFYS.Text = Jfys_PTJF_Model.JFHJ_JFYS;
+                    //PTJF_JFHJ_BZ.Text = Jfys_PTJF_Model.JFHJ_BZ;
+
+                }
 
 
                 #region
@@ -327,24 +331,42 @@ namespace XMGL.Web.admin
                 //负责人
 
                 var Xmcy_FZR_Model = XmcyBLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "' and CYLX='FZR' ").FirstOrDefault();
+                if (Xmcy_FZR_Model != null)
+                {
+                    Xmcy_FZR_Model.CYXM = XMCY_FZR_CYXM.Text.Trim();
+                    Xmcy_FZR_Model.BM = XMCY_FZR_BM.Text.Trim();
+                    Xmcy_FZR_Model.ZYJSZW = XMCY_FZR_ZYJSZW.Text.Trim();
+                    Xmcy_FZR_Model.XZZW = XMCY_FZR_XZZW.Text.Trim();
+                    Xmcy_FZR_Model.BGSDH = XMCY_FZR_BGSDH.Text.Trim();
+                    Xmcy_FZR_Model.CZ = XMCY_FZR_CZ.Text.Trim();
+                    Xmcy_FZR_Model.SJ = XMCY_FZR_SJ.Text.Trim();
+                    Xmcy_FZR_Model.DZYX = XMCY_FZR_DZYX.Text.Trim();
 
-                Xmcy_FZR_Model.CYXM = XMCY_FZR_CYXM.Text.Trim();
-                Xmcy_FZR_Model.BM = XMCY_FZR_BM.Text.Trim();
-                Xmcy_FZR_Model.ZYJSZW = XMCY_FZR_ZYJSZW.Text.Trim();
-                Xmcy_FZR_Model.XZZW = XMCY_FZR_XZZW.Text.Trim();
-                Xmcy_FZR_Model.BGSDH = XMCY_FZR_BGSDH.Text.Trim();
-                Xmcy_FZR_Model.CZ = XMCY_FZR_CZ.Text.Trim();
-                Xmcy_FZR_Model.SJ = XMCY_FZR_SJ.Text.Trim();
-                Xmcy_FZR_Model.DZYX = XMCY_FZR_DZYX.Text.Trim();
+                    XmcyBLL.Update(Xmcy_FZR_Model);
 
-                XmcyBLL.Update(Xmcy_FZR_Model);
+                }
+                else
+                {
+                    //负责人
+                    Model.SZPX_XMCY new_Xmcy_FZR_Model = new Model.SZPX_XMCY();
+                    new_Xmcy_FZR_Model.XMBH = XmsbModel.XMBH;
+                    new_Xmcy_FZR_Model.CYLX = "FZR";
+                    new_Xmcy_FZR_Model.CYXM = XMCY_FZR_CYXM.Text.Trim();
+                    new_Xmcy_FZR_Model.BM = XMCY_FZR_BM.Text.Trim();
+                    new_Xmcy_FZR_Model.ZYJSZW = XMCY_FZR_ZYJSZW.Text.Trim();
+                    new_Xmcy_FZR_Model.XZZW = XMCY_FZR_XZZW.Text.Trim();
+                    new_Xmcy_FZR_Model.BGSDH = XMCY_FZR_BGSDH.Text.Trim();
+                    new_Xmcy_FZR_Model.CZ = XMCY_FZR_CZ.Text.Trim();
+                    new_Xmcy_FZR_Model.SJ = XMCY_FZR_SJ.Text.Trim();
+                    new_Xmcy_FZR_Model.DZYX = XMCY_FZR_DZYX.Text.Trim();
 
-
+                    XmcyBLL.Add(new_Xmcy_FZR_Model);
+                }
 
                 string xmcy_delete_sql_str = "delete from SZPX_XMCY where XMBH = '" + ViewState["xmbh"] + "' and CYLX='CY' ";
 
 
-                if (DbHelperSQL.ExecuteSql(xmcy_delete_sql_str) > 0)
+                if (DbHelperSQL.ExecuteSql(xmcy_delete_sql_str) >= 0)
                 {
                     //成员
                     if (ViewState["XMCY_CY_list"] != null)
@@ -371,40 +393,56 @@ namespace XMGL.Web.admin
 
 
                 var JsfaModel = JsfaBLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "'").FirstOrDefault();
+                if (JsfaModel != null)
+                {
 
 
+                    JsfaModel.SBLY = JSFA_SBLY.Text.Trim();
+                    JsfaModel.JSMB = JSFA_JSMB.Text.Trim();
+                    JsfaModel.JTJC = JSFA_JTJC.Text.Trim();
+                    JsfaModel.JFAP = JSFA_JFAP.Text.Trim();
+                    JsfaModel.SSJH = JSFA_SSJH.Text.Trim();
 
-                JsfaModel.SBLY = JSFA_SBLY.Text.Trim();
-                JsfaModel.JSMB = JSFA_JSMB.Text.Trim();
-                JsfaModel.JTJC = JSFA_JTJC.Text.Trim();
-                JsfaModel.JFAP = JSFA_JFAP.Text.Trim();
-                JsfaModel.SSJH = JSFA_SSJH.Text.Trim();
+                    JsfaBLL.Update(JsfaModel);
+                }
+                else
+                {
+                    #region 建设方案
+                    Model.SZPX_JSFA New_JsfaModel = new Model.SZPX_JSFA();
+                    New_JsfaModel.XMBH = ViewState["xmbh"].ToString();
+                    New_JsfaModel.SBLY = JSFA_SBLY.Text.Trim();
+                    New_JsfaModel.JSMB = JSFA_JSMB.Text.Trim();
+                    New_JsfaModel.JTJC = JSFA_JTJC.Text.Trim();
+                    New_JsfaModel.JFAP = JSFA_JFAP.Text.Trim();
+                    New_JsfaModel.SSJH = JSFA_SSJH.Text.Trim();
 
-                JsfaBLL.Update(JsfaModel);
+                    JsfaBLL.Add(New_JsfaModel);
 
+                    #endregion
+                }
                 #endregion
 
                 #region 验收指标
 
                 string yszb_delete_sql_str = "delete from SZPX_YSZB where XMBH = '" + ViewState["xmbh"] + "' ";
-                if (DbHelperSQL.ExecuteSql(yszb_delete_sql_str) > 0)
+                DbHelperSQL.ExecuteSql(yszb_delete_sql_str);
+
+                if (ViewState["YSZB_list"] != null)
                 {
-                    if (ViewState["YSZB_list"] != null)
+                    var dt = ViewState["YSZB_list"] as DataTable;
+                    foreach (DataRow item in dt.Rows)
                     {
-                        var dt = ViewState["YSZB_list"] as DataTable;
-                        foreach (DataRow item in dt.Rows)
-                        {
-                            Model.SZPX_YSZB YSZB_Model = new Model.SZPX_YSZB();
-                            YSZB_Model.XMBH = XmsbModel.XMBH;
+                        Model.SZPX_YSZB YSZB_Model = new Model.SZPX_YSZB();
+                        YSZB_Model.XMBH = XmsbModel.XMBH;
 
-                            YSZB_Model.JSMB = item["YSZB_JSMB"].ToString();
-                            YSZB_Model.JHYSRQ = Convert.ToDateTime(item["YSZB_YQWCSJ"].ToString());
-                            YSZB_Model.YSYD = item["YSZB_YSYD"].ToString();
+                        YSZB_Model.JSMB = item["YSZB_JSMB"].ToString();
+                        YSZB_Model.JHYSRQ = Convert.ToDateTime(item["YSZB_YQWCSJ"].ToString());
+                        YSZB_Model.YSYD = item["YSZB_YSYD"].ToString();
 
-                            YszbBLL.Add(YSZB_Model);
-                        }
+                        YszbBLL.Add(YSZB_Model);
                     }
                 }
+
 
                 #endregion
 
@@ -416,87 +454,179 @@ namespace XMGL.Web.admin
 
                 //专项经费
                 Model.SZPX_JFYS ZXJF_JfysModel = JfysBLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "' and JFLX='ZXJF'").FirstOrDefault();
+                if (ZXJF_JfysModel != null)
+                {
+                    ZXJF_JfysModel.JFYS = ZXJF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.ZXKSSJ = Convert.ToDateTime(ZXJF_ZXKSSJ.Text.Trim());
+                    ZXJF_JfysModel.ZXJSSJ = Convert.ToDateTime(ZXJF_ZXJSSJ.Text.Trim());
 
-                ZXJF_JfysModel.JFYS = ZXJF_JFYS.Text.Trim();
-                ZXJF_JfysModel.ZXKSSJ = Convert.ToDateTime(ZXJF_ZXKSSJ.Text.Trim());
-                ZXJF_JfysModel.ZXJSSJ = Convert.ToDateTime(ZXJF_ZXJSSJ.Text.Trim());
+                    ZXJF_JfysModel.KCJCJZLF_SYSM = ZXJF_KCJCJZLF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.KCJCJZLF_JFYS = ZXJF_KCJCJZLF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.KCJCJZLF_BZ = ZXJF_KCJCJZLF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.KCJCJZLF_SYSM = ZXJF_KCJCJZLF_SYSM.Text.Trim();
-                ZXJF_JfysModel.KCJCJZLF_JFYS = ZXJF_KCJCJZLF_JFYS.Text.Trim();
-                ZXJF_JfysModel.KCJCJZLF_BZ = ZXJF_KCJCJZLF_BZ.Text.Trim();
+                    ZXJF_JfysModel.YQSBJHCF_SYSM = ZXJF_YQSBJHCF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.YQSBJHCF_JFYS = ZXJF_YQSBJHCF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.YQSBJHCF_BZ = ZXJF_YQSBJHCF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.YQSBJHCF_SYSM = ZXJF_YQSBJHCF_SYSM.Text.Trim();
-                ZXJF_JfysModel.YQSBJHCF_JFYS = ZXJF_YQSBJHCF_JFYS.Text.Trim();
-                ZXJF_JfysModel.YQSBJHCF_BZ = ZXJF_YQSBJHCF_BZ.Text.Trim();
+                    ZXJF_JfysModel.WPRYJF_SYSM = ZXJF_WPRYJF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.WPRYJF_JFYS = ZXJF_WPRYJF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.WPRYJF_BZ = ZXJF_WPRYJF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.WPRYJF_SYSM = ZXJF_WPRYJF_SYSM.Text.Trim();
-                ZXJF_JfysModel.WPRYJF_JFYS = ZXJF_WPRYJF_JFYS.Text.Trim();
-                ZXJF_JfysModel.WPRYJF_BZ = ZXJF_WPRYJF_BZ.Text.Trim();
+                    ZXJF_JfysModel.CDF_SYSM = ZXJF_CDF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.CDF_JFYS = ZXJF_CDF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.CDF_BZ = ZXJF_CDF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.CDF_SYSM = ZXJF_CDF_SYSM.Text.Trim();
-                ZXJF_JfysModel.CDF_JFYS = ZXJF_CDF_JFYS.Text.Trim();
-                ZXJF_JfysModel.CDF_BZ = ZXJF_CDF_BZ.Text.Trim();
+                    ZXJF_JfysModel.CYF_SYSM = ZXJF_CYF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.CYF_JFYS = ZXJF_CYF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.CYF_BZ = ZXJF_CYF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.CYF_SYSM = ZXJF_CYF_SYSM.Text.Trim();
-                ZXJF_JfysModel.CYF_JFYS = ZXJF_CYF_JFYS.Text.Trim();
-                ZXJF_JfysModel.CYF_BZ = ZXJF_CYF_BZ.Text.Trim();
+                    ZXJF_JfysModel.ZSF_SYSM = ZXJF_ZSF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.ZSF_JFYS = ZXJF_ZSF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.ZSF_BZ = ZXJF_ZSF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.ZSF_SYSM = ZXJF_ZSF_SYSM.Text.Trim();
-                ZXJF_JfysModel.ZSF_JFYS = ZXJF_ZSF_JFYS.Text.Trim();
-                ZXJF_JfysModel.ZSF_BZ = ZXJF_ZSF_BZ.Text.Trim();
+                    ZXJF_JfysModel.JTF_SYSM = ZXJF_JTF_SYSM.Text.Trim();
+                    ZXJF_JfysModel.JTF_JFYS = ZXJF_JTF_JFYS.Text.Trim();
+                    ZXJF_JfysModel.JTF_BZ = ZXJF_JTF_BZ.Text.Trim();
 
-                ZXJF_JfysModel.JTF_SYSM = ZXJF_JTF_SYSM.Text.Trim();
-                ZXJF_JfysModel.JTF_JFYS = ZXJF_JTF_JFYS.Text.Trim();
-                ZXJF_JfysModel.JTF_BZ = ZXJF_JTF_BZ.Text.Trim();
+                    //ZXJF_JfysModel.JFHJ_SYSM = ZXJF_JFHJ_SYSM.Text.Trim();
+                    ZXJF_JfysModel.JFHJ_JFYS = ZXJF_JFHJ_JFYS.Text.Trim();
+                    //ZXJF_JfysModel.JFHJ_BZ = ZXJF_JFHJ_BZ.Text.Trim();
 
-                ZXJF_JfysModel.JFHJ_SYSM = ZXJF_JFHJ_SYSM.Text.Trim();
-                ZXJF_JfysModel.JFHJ_JFYS = ZXJF_JFHJ_JFYS.Text.Trim();
-                ZXJF_JfysModel.JFHJ_BZ = ZXJF_JFHJ_BZ.Text.Trim();
+                    JfysBLL.Update(ZXJF_JfysModel);
 
-                JfysBLL.Update(ZXJF_JfysModel);
+                }
+                else
+                {
+                    //专项经费
+                    Model.SZPX_JFYS New_ZXJF_JfysModel = new Model.SZPX_JFYS();
+                    New_ZXJF_JfysModel.XMBH = ViewState["xmbh"].ToString();
+                    New_ZXJF_JfysModel.JFLX = "ZXJF";
+                    New_ZXJF_JfysModel.JFYS = ZXJF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.ZXKSSJ = Convert.ToDateTime(ZXJF_ZXKSSJ.Text.Trim());
+                    New_ZXJF_JfysModel.ZXJSSJ = Convert.ToDateTime(ZXJF_ZXJSSJ.Text.Trim());
 
+                    New_ZXJF_JfysModel.KCJCJZLF_SYSM = ZXJF_KCJCJZLF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.KCJCJZLF_JFYS = ZXJF_KCJCJZLF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.KCJCJZLF_BZ = ZXJF_KCJCJZLF_BZ.Text.Trim();
 
+                    New_ZXJF_JfysModel.YQSBJHCF_SYSM = ZXJF_YQSBJHCF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.YQSBJHCF_JFYS = ZXJF_YQSBJHCF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.YQSBJHCF_BZ = ZXJF_YQSBJHCF_BZ.Text.Trim();
+
+                    New_ZXJF_JfysModel.WPRYJF_SYSM = ZXJF_WPRYJF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.WPRYJF_JFYS = ZXJF_WPRYJF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.WPRYJF_BZ = ZXJF_WPRYJF_BZ.Text.Trim();
+
+                    New_ZXJF_JfysModel.CDF_SYSM = ZXJF_CDF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.CDF_JFYS = ZXJF_CDF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.CDF_BZ = ZXJF_CDF_BZ.Text.Trim();
+
+                    New_ZXJF_JfysModel.CYF_SYSM = ZXJF_CYF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.CYF_JFYS = ZXJF_CYF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.CYF_BZ = ZXJF_CYF_BZ.Text.Trim();
+
+                    New_ZXJF_JfysModel.ZSF_SYSM = ZXJF_ZSF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.ZSF_JFYS = ZXJF_ZSF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.ZSF_BZ = ZXJF_ZSF_BZ.Text.Trim();
+
+                    New_ZXJF_JfysModel.JTF_SYSM = ZXJF_JTF_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.JTF_JFYS = ZXJF_JTF_JFYS.Text.Trim();
+                    New_ZXJF_JfysModel.JTF_BZ = ZXJF_JTF_BZ.Text.Trim();
+
+                    //New_ZXJF_JfysModel.JFHJ_SYSM = ZXJF_JFHJ_SYSM.Text.Trim();
+                    New_ZXJF_JfysModel.JFHJ_JFYS = ZXJF_JFHJ_JFYS.Text.Trim();
+                    //New_ZXJF_JfysModel.JFHJ_BZ = ZXJF_JFHJ_BZ.Text.Trim();
+
+                    JfysBLL.Add(New_ZXJF_JfysModel);
+                }
 
                 //配套经费
                 Model.SZPX_JFYS PTJF_JfysModel = JfysBLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "' and JFLX='PTJF'").FirstOrDefault();
 
-                PTJF_JfysModel.JFYS = PTJF_JFYS.Text.Trim();
-                PTJF_JfysModel.ZXKSSJ = Convert.ToDateTime(PTJF_ZXKSSJ.Text.Trim());
-                PTJF_JfysModel.ZXJSSJ = Convert.ToDateTime(PTJF_ZXJSSJ.Text.Trim());
+                if (PTJF_JfysModel != null)
+                {
+                    PTJF_JfysModel.JFYS = PTJF_JFYS.Text.Trim();
+                    PTJF_JfysModel.ZXKSSJ = Convert.ToDateTime(PTJF_ZXKSSJ.Text.Trim());
+                    PTJF_JfysModel.ZXJSSJ = Convert.ToDateTime(PTJF_ZXJSSJ.Text.Trim());
 
-                PTJF_JfysModel.KCJCJZLF_SYSM = PTJF_KCJCJZLF_SYSM.Text.Trim();
-                PTJF_JfysModel.KCJCJZLF_JFYS = PTJF_KCJCJZLF_JFYS.Text.Trim();
-                PTJF_JfysModel.KCJCJZLF_BZ = PTJF_KCJCJZLF_BZ.Text.Trim();
+                    PTJF_JfysModel.KCJCJZLF_SYSM = PTJF_KCJCJZLF_SYSM.Text.Trim();
+                    PTJF_JfysModel.KCJCJZLF_JFYS = PTJF_KCJCJZLF_JFYS.Text.Trim();
+                    PTJF_JfysModel.KCJCJZLF_BZ = PTJF_KCJCJZLF_BZ.Text.Trim();
 
-                PTJF_JfysModel.YQSBJHCF_SYSM = PTJF_YQSBJHCF_SYSM.Text.Trim();
-                PTJF_JfysModel.YQSBJHCF_JFYS = PTJF_YQSBJHCF_JFYS.Text.Trim();
-                PTJF_JfysModel.YQSBJHCF_BZ = PTJF_YQSBJHCF_BZ.Text.Trim();
+                    PTJF_JfysModel.YQSBJHCF_SYSM = PTJF_YQSBJHCF_SYSM.Text.Trim();
+                    PTJF_JfysModel.YQSBJHCF_JFYS = PTJF_YQSBJHCF_JFYS.Text.Trim();
+                    PTJF_JfysModel.YQSBJHCF_BZ = PTJF_YQSBJHCF_BZ.Text.Trim();
 
-                PTJF_JfysModel.WPRYJF_SYSM = PTJF_WPRYJF_SYSM.Text.Trim();
-                PTJF_JfysModel.WPRYJF_JFYS = PTJF_WPRYJF_JFYS.Text.Trim();
-                PTJF_JfysModel.WPRYJF_BZ = PTJF_WPRYJF_BZ.Text.Trim();
+                    PTJF_JfysModel.WPRYJF_SYSM = PTJF_WPRYJF_SYSM.Text.Trim();
+                    PTJF_JfysModel.WPRYJF_JFYS = PTJF_WPRYJF_JFYS.Text.Trim();
+                    PTJF_JfysModel.WPRYJF_BZ = PTJF_WPRYJF_BZ.Text.Trim();
 
-                PTJF_JfysModel.CDF_SYSM = PTJF_CDF_SYSM.Text.Trim();
-                PTJF_JfysModel.CDF_JFYS = PTJF_CDF_JFYS.Text.Trim();
-                PTJF_JfysModel.CDF_BZ = PTJF_CDF_BZ.Text.Trim();
+                    PTJF_JfysModel.CDF_SYSM = PTJF_CDF_SYSM.Text.Trim();
+                    PTJF_JfysModel.CDF_JFYS = PTJF_CDF_JFYS.Text.Trim();
+                    PTJF_JfysModel.CDF_BZ = PTJF_CDF_BZ.Text.Trim();
 
-                PTJF_JfysModel.CYF_SYSM = PTJF_CYF_SYSM.Text.Trim();
-                PTJF_JfysModel.CYF_JFYS = PTJF_CYF_JFYS.Text.Trim();
-                PTJF_JfysModel.CYF_BZ = PTJF_CYF_BZ.Text.Trim();
+                    PTJF_JfysModel.CYF_SYSM = PTJF_CYF_SYSM.Text.Trim();
+                    PTJF_JfysModel.CYF_JFYS = PTJF_CYF_JFYS.Text.Trim();
+                    PTJF_JfysModel.CYF_BZ = PTJF_CYF_BZ.Text.Trim();
 
-                PTJF_JfysModel.ZSF_SYSM = PTJF_ZSF_SYSM.Text.Trim();
-                PTJF_JfysModel.ZSF_JFYS = PTJF_ZSF_JFYS.Text.Trim();
-                PTJF_JfysModel.ZSF_BZ = PTJF_ZSF_BZ.Text.Trim();
+                    PTJF_JfysModel.ZSF_SYSM = PTJF_ZSF_SYSM.Text.Trim();
+                    PTJF_JfysModel.ZSF_JFYS = PTJF_ZSF_JFYS.Text.Trim();
+                    PTJF_JfysModel.ZSF_BZ = PTJF_ZSF_BZ.Text.Trim();
 
-                PTJF_JfysModel.JTF_SYSM = PTJF_JTF_SYSM.Text.Trim();
-                PTJF_JfysModel.JTF_JFYS = PTJF_JTF_JFYS.Text.Trim();
-                PTJF_JfysModel.JTF_BZ = PTJF_JTF_BZ.Text.Trim();
+                    PTJF_JfysModel.JTF_SYSM = PTJF_JTF_SYSM.Text.Trim();
+                    PTJF_JfysModel.JTF_JFYS = PTJF_JTF_JFYS.Text.Trim();
+                    PTJF_JfysModel.JTF_BZ = PTJF_JTF_BZ.Text.Trim();
 
-                PTJF_JfysModel.JFHJ_SYSM = PTJF_JFHJ_SYSM.Text.Trim();
-                PTJF_JfysModel.JFHJ_JFYS = PTJF_JFHJ_JFYS.Text.Trim();
-                PTJF_JfysModel.JFHJ_BZ = PTJF_JFHJ_BZ.Text.Trim();
+                    //PTJF_JfysModel.JFHJ_SYSM = PTJF_JFHJ_SYSM.Text.Trim();
+                    PTJF_JfysModel.JFHJ_JFYS = PTJF_JFHJ_JFYS.Text.Trim();
+                    //PTJF_JfysModel.JFHJ_BZ = PTJF_JFHJ_BZ.Text.Trim();
 
-                JfysBLL.Update(PTJF_JfysModel);
+                    JfysBLL.Update(PTJF_JfysModel);
+                }
+                else
+                {
+                    //配套经费
+                    Model.SZPX_JFYS New_PTJF_JfysModel = new Model.SZPX_JFYS();
+                    New_PTJF_JfysModel.XMBH = ViewState["xmbh"].ToString();
+                    New_PTJF_JfysModel.JFLX = "PTJF";
+                    New_PTJF_JfysModel.JFYS = PTJF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.ZXKSSJ = Convert.ToDateTime(PTJF_ZXKSSJ.Text.Trim());
+                    New_PTJF_JfysModel.ZXJSSJ = Convert.ToDateTime(PTJF_ZXJSSJ.Text.Trim());
+
+                    New_PTJF_JfysModel.KCJCJZLF_SYSM = PTJF_KCJCJZLF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.KCJCJZLF_JFYS = PTJF_KCJCJZLF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.KCJCJZLF_BZ = PTJF_KCJCJZLF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.YQSBJHCF_SYSM = PTJF_YQSBJHCF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.YQSBJHCF_JFYS = PTJF_YQSBJHCF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.YQSBJHCF_BZ = PTJF_YQSBJHCF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.WPRYJF_SYSM = PTJF_WPRYJF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.WPRYJF_JFYS = PTJF_WPRYJF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.WPRYJF_BZ = PTJF_WPRYJF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.CDF_SYSM = PTJF_CDF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.CDF_JFYS = PTJF_CDF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.CDF_BZ = PTJF_CDF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.CYF_SYSM = PTJF_CYF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.CYF_JFYS = PTJF_CYF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.CYF_BZ = PTJF_CYF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.ZSF_SYSM = PTJF_ZSF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.ZSF_JFYS = PTJF_ZSF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.ZSF_BZ = PTJF_ZSF_BZ.Text.Trim();
+
+                    New_PTJF_JfysModel.JTF_SYSM = PTJF_JTF_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.JTF_JFYS = PTJF_JTF_JFYS.Text.Trim();
+                    New_PTJF_JfysModel.JTF_BZ = PTJF_JTF_BZ.Text.Trim();
+
+                    //New_PTJF_JfysModel.JFHJ_SYSM = PTJF_JFHJ_SYSM.Text.Trim();
+                    New_PTJF_JfysModel.JFHJ_JFYS = PTJF_JFHJ_JFYS.Text.Trim();
+                    //New_PTJF_JfysModel.JFHJ_BZ = PTJF_JFHJ_BZ.Text.Trim();
+
+                    JfysBLL.Add(New_PTJF_JfysModel);
+                }
                 #endregion
 
 
@@ -726,26 +856,42 @@ namespace XMGL.Web.admin
                 //#endregion
                 #endregion
 
-                
 
-               
 
-                if (ViewState["uploadfile1"] != null)
+
+
+
+                var FJYSMX_BLL = new BLL.SZPX_FJYSMX();
+
+                var FJYSMX_Model = FJYSMX_BLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "'").FirstOrDefault();
+
+
+
+                if (FJYSMX_Model != null)
                 {
-                   
-                    var FJYSMX_BLL = new BLL.SZPX_FJYSMX();
-
-                    var FJYSMX_Model = FJYSMX_BLL.GetModelList("XMBH = '" + ViewState["xmbh"] + "'").FirstOrDefault();
-
-
-                   
-                    FJYSMX_Model.FJYSMX = ViewState["uploadfile1"].ToString();
-                   
+                    if (ViewState["uploadfile1"] != null)
+                    {
+                        FJYSMX_Model.FJYSMX = ViewState["uploadfile1"].ToString();
+                    }
                     FJYSMX_BLL.Update(FJYSMX_Model);
+                }
+                else
+                {
+                    var New_FJYSMX_Model = new Model.SZPX_FJYSMX();
+
+
+                    New_FJYSMX_Model.XMBH = ViewState["xmbh"].ToString();
+
+                    if (ViewState["uploadfile1"] != null)
+                        New_FJYSMX_Model.FJYSMX = ViewState["uploadfile1"].ToString();
+
+
+                    FJYSMX_BLL.Add(New_FJYSMX_Model);
 
                 }
 
-               
+
+
 
                 #endregion
 
@@ -754,7 +900,8 @@ namespace XMGL.Web.admin
 
 
 
-                string filename = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + pb.GetIdentityId() + ".doc";
+                var xxdm = ViewState["xxdm"].ToString();
+                string filename = xxdm + "_" + XmsbModel.XMBH + "_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".doc";
                 var tmppath = HttpContext.Current.Server.MapPath("~/admin/WordMaster/2015项目申报书(师资培训)150124.doc");
                 var savepath = HttpContext.Current.Server.MapPath("~/admin/down/SZPX/" + filename);
 
@@ -767,9 +914,9 @@ namespace XMGL.Web.admin
 
 
                     BLL.XMSBSWD wordBll = new BLL.XMSBSWD();
-                   
-                    var  model = wordBll.GetModelList("XMBH='" + XmsbModel.XMBH + "'").FirstOrDefault();
-                    if (model !=null)
+
+                    var model = wordBll.GetModelList("XMBH='" + XmsbModel.XMBH + "'").FirstOrDefault();
+                    if (model != null)
                     {
                         model.XMMC = XmsbModel.XMMC;
                         model.WDLJ = savepath;
@@ -777,13 +924,14 @@ namespace XMGL.Web.admin
                     }
                     else
                     {
-                        Model.XMSBSWD word_model = new Model.XMSBSWD() {
+                        Model.XMSBSWD word_model = new Model.XMSBSWD()
+                        {
                             XMBH = XmsbModel.XMBH,
                             XMMC = XmsbModel.XMMC,
                             WDLJ = savepath
                         };
 
-                        wordBll.Add(word_model);    
+                        wordBll.Add(word_model);
                     }
                 }
 
@@ -887,7 +1035,7 @@ namespace XMGL.Web.admin
                 return;
             }
 
-            if (XMCY_CY_BMJZW_value.Length >= 100)
+            if (XMCY_CY_BMJZW_value.Length >= 150)
             {
                 Alert.ShowInTop("您填写的项目成员所属部门及职务过长，请重新填写");
                 return;
@@ -1033,7 +1181,7 @@ namespace XMGL.Web.admin
                 Alert.ShowInTop("请填写建设目标");
                 return;
             }
-            if (JSMB.Length >= 200)
+            if (JSMB.Length >= 700)
             {
                 Alert.ShowInTop("您填写的建设目标过长，请重新填写");
                 return;
@@ -1051,7 +1199,7 @@ namespace XMGL.Web.admin
                 Alert.ShowInTop("请填写验收要点");
                 return;
             }
-            if (YSYD.Length >= 500)
+            if (YSYD.Length >= 700)
             {
                 Alert.ShowInTop("您填写的验收要点过长，请重新填写");
                 return;

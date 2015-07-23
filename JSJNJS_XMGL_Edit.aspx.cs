@@ -127,9 +127,9 @@ namespace XMGL.Web.admin
             txtJFYS_ZXJF_YWF_JFYS.Text = xm_model.JFYS_ZXJF_YWF_JFYS.ToString();
             txtJFYS_ZXJF_YWF_BZ.Text = xm_model.JFYS_ZXJF_YWF_BZ;
 
-            txtJFYS_ZXJF_JFGSHJ_SM.Text = xm_model.JFYS_ZXJF_JFGSHJ_SM;
+            //txtJFYS_ZXJF_JFGSHJ_SM.Text = xm_model.JFYS_ZXJF_JFGSHJ_SM;
             txtJFYS_ZXJF_JFGSHJ_JFYS.Text = xm_model.JFYS_ZXJF_JFGSHJ_JFYS.ToString();
-            txtJFYS_ZXJF_JFGSHJ_BZ.Text = xm_model.JFYS_ZXJF_JFGSHJ_BZ;
+            //txtJFYS_ZXJF_JFGSHJ_BZ.Text = xm_model.JFYS_ZXJF_JFGSHJ_BZ;
 
             //学校配套
             txtJFYS_XXPTJF.Text = xm_model.JFYS_XXPTJF.ToString();
@@ -157,9 +157,15 @@ namespace XMGL.Web.admin
             txtJFYS_XXPTJF_YWF_JFYS.Text = xm_model.JFYS_XXPTJF_YWF_JFYS.ToString();
             txtJFYS_XXPTJF_YWF_BZ.Text = xm_model.JFYS_XXPTJF_YWF_BZ;
 
-            txtJFYS_XXPTJF_JFGSHJ_SM.Text = xm_model.JFYS_XXPTJF_JFGSHJ_SM;
+            //txtJFYS_XXPTJF_JFGSHJ_SM.Text = xm_model.JFYS_XXPTJF_JFGSHJ_SM;
             txtJFYS_XXPTJF_JFGSHJ_JFYS.Text = xm_model.JFYS_XXPTJF_JFGSHJ_JFYS.ToString();
-            txtJFYS_XXPTJF_JFGSHJ_BZ.Text = xm_model.JFYS_XXPTJF_JFGSHJ_BZ;
+            //txtJFYS_XXPTJF_JFGSHJ_BZ.Text = xm_model.JFYS_XXPTJF_JFGSHJ_BZ;
+
+            ///加载fileupload
+            Model.XMFJ XMFJ_Mode = new Model.XMFJ();
+            BLL.XMFJ XMFJ_Bll = new BLL.XMFJ();
+            XMFJ_Mode = XMFJ_Bll.GetModelList("XMBH='" + xm_model.XMBH + "'").Count > 0 ? XMFJ_Bll.GetModelList("XMBH='" + xm_model.XMBH + "'")[0] : null;
+            FileUpload3.EmptyText = XMFJ_Mode == null ? "未上传附件" : XMFJ_Mode.XMYSMXWJM;
             #endregion
 
             //绑定Grid
@@ -598,9 +604,9 @@ namespace XMGL.Web.admin
                 xm_model.JFYS_ZXJF_YWF_JFYS = decimal.Parse(txtJFYS_ZXJF_YWF_JFYS.Text);
                 xm_model.JFYS_ZXJF_YWF_BZ = txtJFYS_ZXJF_YWF_BZ.Text;
 
-                xm_model.JFYS_ZXJF_JFGSHJ_SM = txtJFYS_ZXJF_JFGSHJ_SM.Text;
+                //xm_model.JFYS_ZXJF_JFGSHJ_SM = txtJFYS_ZXJF_JFGSHJ_SM.Text;
                 xm_model.JFYS_ZXJF_JFGSHJ_JFYS = decimal.Parse(txtJFYS_ZXJF_JFGSHJ_JFYS.Text);
-                xm_model.JFYS_ZXJF_JFGSHJ_BZ = txtJFYS_ZXJF_JFGSHJ_BZ.Text;
+                //xm_model.JFYS_ZXJF_JFGSHJ_BZ = txtJFYS_ZXJF_JFGSHJ_BZ.Text;
 
                 //学校配套经费
                 xm_model.JFYS_XXPTJF = decimal.Parse(txtJFYS_XXPTJF.Text);
@@ -627,9 +633,9 @@ namespace XMGL.Web.admin
                 xm_model.JFYS_XXPTJF_YWF_JFYS = decimal.Parse(txtJFYS_XXPTJF_YWF_JFYS.Text);
                 xm_model.JFYS_XXPTJF_YWF_BZ = txtJFYS_XXPTJF_YWF_BZ.Text;
 
-                xm_model.JFYS_XXPTJF_JFGSHJ_SM = txtJFYS_XXPTJF_JFGSHJ_SM.Text;
+                //xm_model.JFYS_XXPTJF_JFGSHJ_SM = txtJFYS_XXPTJF_JFGSHJ_SM.Text;
                 xm_model.JFYS_XXPTJF_JFGSHJ_JFYS = decimal.Parse(txtJFYS_XXPTJF_JFGSHJ_JFYS.Text);
-                xm_model.JFYS_XXPTJF_JFGSHJ_BZ = txtJFYS_XXPTJF_JFGSHJ_BZ.Text;
+                //xm_model.JFYS_XXPTJF_JFGSHJ_BZ = txtJFYS_XXPTJF_JFGSHJ_BZ.Text;
 
                 return xm_bll.Update(xm_model);
             }
@@ -650,16 +656,25 @@ namespace XMGL.Web.admin
                     Alert.Show("修改数据保存失败！");
                     return;
                 }
-                //1、附件
+                //1、附件              
                 Model.XMFJ XMFJ_Mode = new Model.XMFJ();
                 BLL.XMFJ XMFJ_Bll = new BLL.XMFJ();
-                XMFJ_Mode = XMFJ_Bll.GetModelList("XMBH='" + xm_model.XMBH + "'")[0];
+                var List_XMFJ = XMFJ_Bll.GetModelList("XMBH='" + ViewState["xmbh"] + "'");
+                XMFJ_Mode = List_XMFJ.Count > 0 ? List_XMFJ[0] : new Model.XMFJ();
                 if (ViewState["file3"] != null)
                     XMFJ_Mode.XMYSMXWJM = ViewState["file3"].ToString();
-                XMFJ_Bll.Update(XMFJ_Mode);
+                if (List_XMFJ.Count <= 0)
+                {
+                    XMFJ_Mode.XMBH = ViewState["xmbh"].ToString();
+                    XMFJ_Bll.Add(XMFJ_Mode);
+                }
+                else
+                {
+                    XMFJ_Bll.Update(XMFJ_Mode);
+                }
 
                 //2、生成word 
-                string filename = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + ViewState["xxdm"] + ".doc";
+                string filename = string.Format("{0}_{1}_{2}.doc", ViewState["xxdm"], ViewState["xmbh"], DateTime.Now.ToString("yyyyMMddHHmmssfff"));
                 var tmppath = HttpContext.Current.Server.MapPath("~/admin/WordMaster/2015项目申报书(技术技能竞赛)150228.doc");
                 var savepath = HttpContext.Current.Server.MapPath("~/admin/down/" + filename);
 

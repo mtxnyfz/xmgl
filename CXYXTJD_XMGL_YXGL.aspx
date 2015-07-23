@@ -7,15 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
       <script src="../res/js/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         $(function () {
 
             if (/msie/.test(navigator.userAgent.toLowerCase())) {
-                alert('系统暂不支持IE内核模式的浏览器，请使用谷歌，火狐浏览器或遨游，360浏览器的极速模式');
+
+            }
+            else {
+                alert('为了能正常播放视频，请使用支持兼容模式的浏览器，如遨游，360等浏览器');
             }
 
         })
-        </script>
+        </script>--%>
 </head>
 <body>
     <form id="form1" runat="server">

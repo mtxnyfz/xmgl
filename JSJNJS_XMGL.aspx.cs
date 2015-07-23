@@ -21,7 +21,6 @@ using System.Text.RegularExpressions;
 using Maticsoft.DBUtility;
 using Aspose.Cells;
 using XMGL.BLL;
-using ExcelHelp;
 
 namespace XMGL.Web.admin
 {
@@ -49,7 +48,7 @@ namespace XMGL.Web.admin
 
         protected void databind()
         {
-            string sqlstr = string.Format("SELECT dbo.JSJNJS_XM.ID, dbo.JSJNJS_XM.XMBH, dbo.JSJNJS_XM.XMMC, dbo.JSJNJS_XM.JFYS_ZXJF, dbo.JSJNJS_XM.JFYS_XXPTJF, dbo.XMFJ.XMYSMXWJM, dbo.JSJNJS_XM.SFSC, dbo.JSJNJS_XM.ZT, dbo.JSJNJS_XM.User_Uid FROM dbo.JSJNJS_XM INNER JOIN dbo.XMFJ ON dbo.JSJNJS_XM.XMBH = dbo.XMFJ.XMBH WHERE User_Uid = '{0}' AND SFSC != 1", pb.GetIdentityId());
+            string sqlstr = string.Format("SELECT dbo.JSJNJS_XM.ID, dbo.JSJNJS_XM.XMBH, dbo.JSJNJS_XM.XMMC, dbo.JSJNJS_XM.JFYS_ZXJF, dbo.JSJNJS_XM.JFYS_XXPTJF, dbo.XMFJ.XMYSMXWJM, dbo.JSJNJS_XM.SFSC, dbo.JSJNJS_XM.ZT, dbo.JSJNJS_XM.User_Uid FROM dbo.JSJNJS_XM LEFT JOIN dbo.XMFJ ON dbo.JSJNJS_XM.XMBH = dbo.XMFJ.XMBH WHERE User_Uid = '{0}' AND SFSC != 1", pb.GetIdentityId());
             DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
             Grid1.DataSource = dt;
             Grid1.DataBind();

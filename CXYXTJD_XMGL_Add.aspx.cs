@@ -61,7 +61,11 @@ namespace XMGL.Web.admin
                 txt_xxmc.Text = xxmc;
                 txt_xxdm.Text = xxdm;
                 databind_zymc();
-                //ViewState [ "xmbh" ] = AutoNumber( "2015-03-" );
+                ViewState["xmbh"] = AutoNumber("2015-03-");
+                //直接将编号插入数据库
+                xm_model.XMBH = ViewState["xmbh"].ToString();
+                xm_bll.Add(xm_model);
+
                 BindYTZYGrid();//绑定依托专业grid
                 BindJSHCPGrid();//技术和产品指标
                 BindSXSXGrid();//实习实训指标
@@ -452,6 +456,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(1);");
         }
         protected void Button_step2_Click(object sender, EventArgs e)
@@ -466,10 +471,66 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(2);");
+        }
+        /// <summary>
+        /// 保存实习实训情况
+        /// </summary>
+        /// <returns></returns>
+        /// DateTime：2015-03-25 18:17
+        /// Author：By risfeng
+        /// Author Email：risfeng@126.com
+        public bool Save_SXSXQK()
+        {
+            try
+            {
+                bool IsAdd = false;
+                string xmbh = ViewState["xmbh"].ToString();
+                xm_model = xm_bll.GetModel(xmbh);
+                if (xm_model == null)
+                {
+                    IsAdd = true;
+                    xm_model = new Model.CJYXTJD_XM();
+                }
+                //赋值
+                xm_model.XMBH = ViewState["xmbh"].ToString();
+                xm_model.JDMC = TextBox_jdmc.Text;
+                xm_model.XXMC = txt_xxmc.Text;
+                xm_model.XXDM = txt_xxdm.Text;
+                xm_model.TBRQ = DateTime.Now;
+                xm_model.SXSXQK_SXSXCSSZMJ = decimal.Parse(txt_SXSXQK_SXSXCSSZMJ.Text);
+                xm_model.SXSXQK_SXSXCSJZMJ = decimal.Parse(txt_SXSXQK_SXSXCSJZMJ.Text);
+                xm_model.SXSXQK_XYSXSBZZ = decimal.Parse(txt_SXSXQK_XYSXSBZZ.Text);
+                xm_model.SXSXQK_XYSXYQSB = int.Parse(txt_SXSXQK_XYSXYQSB.Text);
+                xm_model.SXSXQK_SBSJ = decimal.Parse(txt_SXSXQK_SBSJ.Text);
+                xm_model.SXSXQK_SXSXKCMS = int.Parse(txt_SXSXQK_SXSXKCMS.Text);
+                xm_model.SXSXQK_JSNNJPXRS = int.Parse(txt_SXSXQK_JSNNJPXRS.Text);
+
+                xm_model.User_Uid = pb.GetIdentityId();
+                if (IsAdd)
+                {
+                    return xm_bll.Add(xm_model) > 0;
+                }
+                else
+                {
+                    return xm_bll.Update(xm_model);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                return false;
+            }
+
         }
         protected void Button_step3_Click(object sender, EventArgs e)
         {
+            if (!Save_SXSXQK())
+            {
+                Alert.Show("实习实训情况数据保存失败，请检查数据正确性！");
+                return;
+            }
             ContentPanel_step1.Hidden = true;
             SimpleForm_step2.Hidden = true;
             SimpleForm_step3.Hidden = false;
@@ -478,10 +539,64 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(3);");
+        }
+
+        /// <summary>
+        /// 保存基地负责人信息
+        /// </summary>
+        /// <returns></returns>
+        /// DateTime：2015-03-25 18:17
+        /// Author：By risfeng
+        /// Author Email：risfeng@126.com
+        public bool Save_JDFZRXX()
+        {
+            try
+            {
+                bool IsAdd = false;
+                string xmbh = ViewState["xmbh"].ToString();
+                xm_model = xm_bll.GetModel(xmbh);
+                if (xm_model == null)
+                {
+                    IsAdd = true;
+                    xm_model = new Model.CJYXTJD_XM();
+                }
+                //赋值
+                xm_model.XMBH = ViewState["xmbh"].ToString();
+                xm_model.JDFZRXX_XM = txt_JDFZRXX_XM.Text;
+                xm_model.JDFZRXX_BMJZF = txt_JDFZRXX_BMJZF.Text;
+                xm_model.JDFZRXX_ZYJSZW = txt_JDFZRXX_ZYJSZW.Text;
+                xm_model.JDFZRXX_ZYZGZS = txt_JDFZRXX_ZYZGZS.Text;
+                xm_model.JDFZRXX_BGDH = txt_JDFZRXX_BGDH.Text;
+                xm_model.JDFZRXX_CZ = txt_JDFZRXX_CZ.Text;
+                xm_model.JDFZRXX_SJ = txt_JDFZRXX_SJ.Text;
+                xm_model.JDFZRXX_DZYX = txt_JDFZRXX_DZYX.Text;
+                xm_model.JDFZRXX_JSYFYFW = txt_JDFZRXX_JSYFYFW.Text;
+                xm_model.JDFZRXX_BRZHYQYJZ = txt_JDFZRXX_BRZHYQYJZ.Text;
+                if (IsAdd)
+                {
+                    return xm_bll.Add(xm_model) > 0;
+                }
+                else
+                {
+                    return xm_bll.Update(xm_model);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                return false;
+            }
+
         }
         protected void Button_step4_Click(object sender, EventArgs e)
         {
+            if (!Save_JDFZRXX())
+            {
+                Alert.Show("基地负责人信息数据保存失败，请检查数据正确性！");
+                return;
+            }
 
             ContentPanel_step1.Hidden = true;
             SimpleForm_step2.Hidden = true;
@@ -491,9 +606,11 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(4);");
             //Alert.ShowInTop("4");
         }
+
         protected void Button_step5_Click(object sender, EventArgs e)
         {
             //判断是否添加了依托专业
@@ -513,8 +630,54 @@ namespace XMGL.Web.admin
             PageContext.RegisterStartupScript("a(5);");
 
         }
+
+        /// <summary>
+        /// 保存基地组织构架设想
+        /// </summary>
+        /// <returns></returns>
+        /// DateTime：2015-03-25 18:17
+        /// Author：By risfeng
+        /// Author Email：risfeng@126.com
+        public bool Save_JDZZJGSX()
+        {
+            try
+            {
+                bool IsAdd = false;
+                string xmbh = ViewState["xmbh"].ToString();
+                xm_model = xm_bll.GetModel(xmbh);
+                if (xm_model == null)
+                {
+                    IsAdd = true;
+                    xm_model = new Model.CJYXTJD_XM();
+                }
+                //赋值
+                xm_model.XMBH = ViewState["xmbh"].ToString();
+                xm_model.JDZZGJSX = txt_JDZZGJSX.Text;
+                if (ViewState["file_zzjg"] != null)
+                    xm_model.JDZZGJSXTP = ViewState["file_zzjg"].ToString().Trim();
+                if (IsAdd)
+                {
+                    return xm_bll.Add(xm_model) > 0;
+                }
+                else
+                {
+                    return xm_bll.Update(xm_model);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                return false;
+            }
+
+        }
         protected void Button_step6_Click(object sender, EventArgs e)
         {
+            if (!Save_JDZZJGSX())
+            {
+                Alert.Show("基地组织构架设想数据保存失败，请检查数据正确性！");
+                return;
+            }
             ContentPanel_step1.Hidden = true;
             SimpleForm_step2.Hidden = true;
             SimpleForm_step3.Hidden = true;
@@ -523,11 +686,124 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = false;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(6);");
+
+        }
+
+        /// <summary>
+        /// 保存基地建设方案
+        /// </summary>
+        /// <returns></returns>
+        /// DateTime：2015-03-25 18:17
+        /// Author：By risfeng
+        /// Author Email：risfeng@126.com
+        public bool Save_JDJSFA()
+        {
+            try
+            {
+                bool IsAdd = false;
+                string xmbh = ViewState["xmbh"].ToString();
+                xm_model = xm_bll.GetModel(xmbh);
+                if (xm_model == null)
+                {
+                    IsAdd = true;
+                    xm_model = new Model.CJYXTJD_XM();
+                }
+                //赋值
+                xm_model.XMBH = ViewState["xmbh"].ToString();
+
+                xm_model.JDJSFA_SBLY = txt_JDJSFA_SBLY.Text;
+                xm_model.JSGYHCPKF_PTMC = txt_JSGYHCPKF_PTMC.Text;
+                xm_model.JSGYHCPKF_XM = txt_JSGYHCPKF_XM.Text;
+                xm_model.JSGYHCPKF_BMJXZZF = txt_JSGYHCPKF_BMJXZZF.Text;
+                xm_model.JSGYHCPKF_ZYJSZW = txt_JSGYHCPKF_ZYJSZW.Text;
+                xm_model.JSGYHCPKF_ZYZGZS = txt_JSGYHCPKF_ZYZGZS.Text;
+                xm_model.JSGYHCPKF_BGDH = txt_JSGYHCPKF_BGDH.Text;
+                xm_model.JSGYHCPKF_CZ = txt_JSGYHCPKF_CZ.Text;
+                xm_model.JSGYHCPKF_SJ = txt_JSGYHCPKF_SJ.Text;
+                xm_model.JSGYHCPKF_DZYX = txt_JSGYHCPKF_DZYX.Text;
+
+                xm_model.JSGYHCPKF_QYMC1 = txt_JSGYHCPKF_QYMC1.Text;
+                xm_model.JSGYHCPKF_LXRXMJZW1 = txt_JSGYHCPKF_LXRXMJZW1.Text;
+                xm_model.JSGYHCPKF_LXFS1 = txt_JSGYHCPKF_LXFS1.Text;
+                xm_model.JSGYHCPKF_QYMC2 = txt_JSGYHCPKF_QYMC2.Text;
+                xm_model.JSGYHCPKF_LXRXMJZW2 = txt_JSGYHCPKF_LXRXMJZW2.Text;
+                xm_model.JSGYHCPKF_LXFS2 = txt_JSGYHCPKF_LXFS2.Text;
+                xm_model.JSGYHCPKF_QYMC3 = txt_JSGYHCPKF_QYMC3.Text;
+                xm_model.JSGYHCPKF_LXRXMJZW3 = txt_JSGYHCPKF_LXRXMJZW3.Text;
+                xm_model.JSGYHCPKF_LXFS3 = txt_JSGYHCPKF_LXFS3.Text;
+
+                //研发领域-选项（用|分隔）
+                List<string> kfly_xx_list = new List<string>();
+                foreach (var cbl in cbl_JSGYHCPKF_YFLY_XX.Items)
+                {
+                    if (cbl.Selected)
+                    {
+                        kfly_xx_list.Add(cbl.Value);
+                    }
+                }
+                xm_model.JSGYHCPKF_YFLY_XX = string.Join("|", kfly_xx_list.ToArray());
+
+                xm_model.JSGYHCPKF_YFLY_QT = txt_JSGYHCPKF_YFLY_QT.Text;
+                xm_model.JSGYHCPKF_PTGNJJ = txt_JSGYHCPKF_PTGNJJ.Text;
+                xm_model.JSGYHCPKF_PTWLGYHJJZB = txt_JSGYHCPKF_PTWLGYHJJZB.Text;
+                xm_model.SXSXPT_PTMC = txt_SXSXPT_PTMC.Text;
+                xm_model.SXSXPT_XM = txt_SXSXPT_XM.Text;
+                xm_model.SXSXPT_BMJXZZW = txt_SXSXPT_BMJXZZW.Text;
+                xm_model.SXSXPT_ZYJSZW = txt_SXSXPT_ZYJSZW.Text;
+                xm_model.SXSXPT_ZYZGZS = txt_SXSXPT_ZYZGZS.Text;
+                xm_model.SXSXPT_BGDH = txt_SXSXPT_BGDH.Text;
+                xm_model.SXSXPT_CZ = txt_SXSXPT_CZ.Text;
+                xm_model.SXSXPT_SJ = txt_SXSXPT_SJ.Text;
+                xm_model.SXSXPT_DZYX = txt_SXSXPT_DZYX.Text;
+                xm_model.SXSXPT_PTGNJJ = txt_SXSXPT_PTGNJJ.Text;
+                xm_model.SXSXPT_PTWLSNJSMB = txt_SXSXPT_PTWLSNJSMB.Text;
+                xm_model.JNDSGZS_GZSMC = txt_JNDSGZS_GZSMC.Text;
+                xm_model.JNDSGZS_XM = txt_JNDSGZS_XM.Text;
+                xm_model.JNDSGZS_XB = rbtn_JNDSGZS_XB.SelectedValue;
+                xm_model.JNDSGZS_MZ = txt_JNDSGZS_MZ.Text;
+                xm_model.JNDSGZS_CSNY = dp_JNDSGZS_CSNY.SelectedDate;
+                xm_model.JNDSGZS_CJGZSJ = dp_JNDSGZS_CJGZSJ.SelectedDate;
+                xm_model.JNDSGZS_ZZMM = txt_JNDSGZS_ZZMM.Text;
+                xm_model.JNDSGZS_CSSY = txt_JNDSGZS_CSSY.Text;
+                xm_model.JNDSGZS_ZYJNDJ = txt_JNDSGZS_ZYJNDJ.Text;
+                xm_model.JNDSGZS_SJ = txt_JNDSGZS_SJ.Text;
+                xm_model.JNDSGZS_YX = txt_JNDSGZS_YX.Text;
+                xm_model.JNDSGZS_GZDWJZW = txt_JNDSGZS_GZDWJZW.Text;
+
+                xm_model.JNDSGZS_GEJL = txt_JNDSGZS_GEJL.Text;
+                xm_model.JNDSGZS_HSBJYSJLHGJZL = txt_JNDSGZS_HSBJYSJLHGJZL.Text;
+                xm_model.JNDSGZS_ZYCXFMCG = txt_JNDSGZS_ZYCXFMCG.Text;
+                xm_model.JNDSGZS_GZSJJ = txt_JNDSGZS_GZSJJ.Text;
+                xm_model.JNDSGZS_GZSWLSNJSRW = txt_JNDSGZS_GZSWLSNJSRW.Text;
+                xm_model.JTCS = txt_JTCS.Text;
+                xm_model.JFAP = txt_JFAP.Text;
+                xm_model.SSJH = txt_SSJH.Text;
+
+                if (IsAdd)
+                {
+                    return xm_bll.Add(xm_model) > 0;
+                }
+                else
+                {
+                    return xm_bll.Update(xm_model);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                return false;
+            }
 
         }
         protected void Button_step7_Click(object sender, EventArgs e)
         {
+            if (!Save_JDJSFA())
+            {
+                Alert.Show("基地建设方案数据保存失败，请检查数据正确性！");
+                return;
+            }
             ContentPanel_step1.Hidden = true;
             SimpleForm_step2.Hidden = true;
             SimpleForm_step3.Hidden = true;
@@ -536,6 +812,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = false;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(7);");
 
         }
@@ -572,6 +849,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(2);");
         }
         protected void step3()
@@ -584,6 +862,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(3);");
         }
         protected void step4()
@@ -597,6 +876,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(4);");
 
         }
@@ -610,6 +890,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(5);");
 
         }
@@ -623,6 +904,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = false;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(6);");
 
         }
@@ -636,6 +918,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = false;
             SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(7);");
 
         }
@@ -649,6 +932,7 @@ namespace XMGL.Web.admin
             SimpleForm_step6.Hidden = true;
             SimpleForm_step7.Hidden = true;
             SimpleForm_step8.Hidden = false;
+            SimpleForm_step9.Hidden = true;
             PageContext.RegisterStartupScript("a(8);");
 
         }
@@ -744,68 +1028,20 @@ namespace XMGL.Web.admin
                 }
                 sdr.Dispose();
 
-                DataTable dt = null;
-                if (ViewState["dtYTZY"] == null)
-                {
+                ytzy_model.XMBH = ViewState["xmbh"].ToString();
+                ytzy_model.ZYB_ID = Convert.ToInt32(zybID);
+                ytzy_model.NZSJHRS2015 = Convert.ToInt32(txt_NZSJHRS2015.Text.Trim());
+                ytzy_model.ZXSRS = Convert.ToInt32(txt_ZXSRS.Text.Trim());
+                ytzy_model.JSNPJJYL = Convert.ToDecimal(txt_JSNPJJYL.Text.Trim());
+                ytzy_model.JSNZXSHDZGZSBL = Convert.ToDecimal(txt_JSNZXSHDZGZSBL.Text.Trim());
+                ytzy_model.SFW085GCZDZY = cbx_SFW085GCZDZY.Checked ? 1 : 0;
+                ytzy_model.XZSJ = DateTime.Now;
+                ytzy_bll.Add(ytzy_model);
 
-                    dt = new DataTable();
-                    dt.Columns.Add("ID");
-                    dt.Columns.Add("ZYB_ID");
-                    dt.Columns.Add("ZYMC");
-                    dt.Columns.Add("KSNF");
-                    dt.Columns.Add("NZSJHRS2015");
-                    dt.Columns.Add("ZXSRS");
-                    dt.Columns.Add("JSNPJJYL");
-                    dt.Columns.Add("JSNZXSHDZGZSBL");
-                    dt.Columns.Add("SFW085GCZDZY");
-                    dt.Columns.Add("XZSJ");
+                BindYTZYGrid();
 
+                form_ytzy.Reset();
 
-                    DataRow dr = dt.NewRow();
-                    dr["ID"] = Guid.NewGuid().ToString();
-                    dr["ZYB_ID"] = zybID;
-                    dr["ZYMC"] = ddlZYMC.SelectedText.ToString();
-                    dr["KSNF"] = txt_ZYKSNF.Text;
-                    dr["NZSJHRS2015"] = txt_NZSJHRS2015.Text.Trim();
-                    dr["ZXSRS"] = txt_ZXSRS.Text.Trim();
-                    dr["JSNPJJYL"] = txt_JSNPJJYL.Text.Trim();
-                    dr["JSNZXSHDZGZSBL"] = txt_JSNZXSHDZGZSBL.Text.Trim();
-                    dr["SFW085GCZDZY"] = cbx_SFW085GCZDZY.Checked ? "是" : "否";
-                    dr["XZSJ"] = DateTime.Now;
-                    dt.Rows.Add(dr);
-                    ViewState["dtYTZY"] = dt;
-                }
-                else
-                {
-
-                    dt = ViewState["dtYTZY"] as DataTable;
-                    DataRow dr = dt.NewRow();
-                    dr["ID"] = Guid.NewGuid().ToString();
-                    dr["ZYB_ID"] = zybID;
-                    dr["ZYMC"] = ddlZYMC.SelectedText.ToString();
-                    dr["KSNF"] = txt_ZYKSNF.Text;
-                    dr["NZSJHRS2015"] = txt_NZSJHRS2015.Text.Trim();
-                    dr["ZXSRS"] = txt_ZXSRS.Text.Trim();
-                    dr["JSNPJJYL"] = txt_JSNPJJYL.Text.Trim();
-                    dr["JSNZXSHDZGZSBL"] = txt_JSNZXSHDZGZSBL.Text.Trim();
-                    dr["SFW085GCZDZY"] = cbx_SFW085GCZDZY.Checked ? "是" : "否";
-                    dr["XZSJ"] = DateTime.Now;
-                    dt.Rows.Add(dr);
-
-                }
-
-                grid_YTZY.DataSource = dt;
-                grid_YTZY.DataBind();
-                ViewState["dtYTZY"] = dt;
-
-                ddlZYMC.SelectedIndex = 0;
-                txt_ZYDM.Text = string.Empty;
-                txt_ZYKSNF.Text = string.Empty;
-                txt_NZSJHRS2015.Text = string.Empty;
-                txt_ZXSRS.Text = string.Empty;
-                txt_JSNPJJYL.Text = string.Empty;
-                txt_JSNZXSHDZGZSBL.Text = string.Empty;
-                cbx_SFW085GCZDZY.Checked = false;
             }
             catch (Exception ex)
             {
@@ -815,63 +1051,22 @@ namespace XMGL.Web.admin
         }
         public void BindYTZYGrid()
         {
-            //string Sql = string.Format("SELECT dbo.CJYXTJD_JDYTZYQK.ID, dbo.CJYXTJD_JDYTZYQK.ZYB_ID, dbo.CJYXTJD_JDYTZYQK.XMBH, dbo.CJYXTJD_JDYTZYQK.NZSJHRS2015, dbo.CJYXTJD_JDYTZYQK.ZXSRS, dbo.CJYXTJD_JDYTZYQK.JSNPJJYL, dbo.CJYXTJD_JDYTZYQK.JSNZXSHDZGZSBL, dbo.CJYXTJD_JDYTZYQK.SFW085GCZDZY, dbo.CJYXTJD_JDYTZYQK.XZSJ, dbo.ZYB1.ZYDM, dbo.ZYB1.ZYMC, dbo.ZYB1.ZYFXMC,dbo.ZYB1.ZYKBSJ FROM dbo.CJYXTJD_JDYTZYQK INNER JOIN dbo.ZYB1 ON dbo.CJYXTJD_JDYTZYQK.ZYB_ID = dbo.ZYB1.ID WHERE XMBH='{0}'", ViewState["xmbh"].ToString());
-            //DataSet ds = DbHelperSQL.Query(Sql);
-
-            grid_YTZY.DataSource = ViewState["dtYTZY"] as DataTable;
+            string Sql = string.Format("SELECT  dbo.CJYXTJD_JDYTZYQK.ID, dbo.CJYXTJD_JDYTZYQK.ZYB_ID, dbo.CJYXTJD_JDYTZYQK.XMBH, dbo.CJYXTJD_JDYTZYQK.NZSJHRS2015, dbo.CJYXTJD_JDYTZYQK.ZXSRS, dbo.CJYXTJD_JDYTZYQK.JSNPJJYL, dbo.CJYXTJD_JDYTZYQK.JSNZXSHDZGZSBL, dbo.CJYXTJD_JDYTZYQK.SFW085GCZDZY, dbo.CJYXTJD_JDYTZYQK.XZSJ, dbo.ZYB1.ZYDM, dbo.ZYB1.ZYMC, dbo.ZYB1.ZYFXMC,dbo.ZYB1.ZYKBSJ FROM dbo.CJYXTJD_JDYTZYQK INNER JOIN dbo.ZYB1 ON dbo.CJYXTJD_JDYTZYQK.ZYB_ID = dbo.ZYB1.ID WHERE XMBH='{0}'", ViewState["xmbh"].ToString());
+            DataSet ds = DbHelperSQL.Query(Sql);
+            grid_YTZY.DataSource = ds;
             grid_YTZY.DataBind();
 
         }
         protected void btnDelWTZY_Click(object sender, EventArgs e)
         {
-            //List<int> ids = GetSelectedDataKeyIDs(grid_YTZY);
-            //// 执行数据库操作
-            //for (int i = 0; i < ids.Count; i++)
-            //{
-            //    ytzy_bll.Delete(ids[i]);
-            //}
-            //BindYTZYGrid();
-
-            string selectedID = "";
-            int selectedCount = grid_YTZY.SelectedRowIndexArray.Length;
-            if (selectedCount > 0 && selectedCount < 2)
+            List<int> ids = GetSelectedDataKeyIDs(grid_YTZY);
+            // 执行数据库操作
+            for (int i = 0; i < ids.Count; i++)
             {
-                for (int i = 0; i < selectedCount; i++)
-                {
-                    int rowIndex = grid_YTZY.SelectedRowIndexArray[i];
-                    // 如果是内存分页，所有分页的数据都存在，rowIndex 就是在全部数据中的顺序，而不是当前页的顺序
-                    //if (grid_YTZY.AllowPaging && !grid_YTZY.IsDatabasePaging)
-                    //{
-                    //    rowIndex = grid_YTZY.PageIndex * grid_YTZY.PageSize + rowIndex;//获取翻页后的行号
-                    //}
-                    selectedID += grid_YTZY.DataKeys[rowIndex][0].ToString() + ",";
-                }
+                ytzy_bll.Delete(ids[i]);
             }
-            selectedID = selectedID.TrimEnd(',');//去掉最后一个，号
-            if (ViewState["dtYTZY"] != null)
-            {
-                DataTable dt = (DataTable)ViewState["dtYTZY"];
+            BindYTZYGrid();
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (dt.Rows[i][0].ToString() == selectedID)
-                    {
-                        dt.Rows.Remove(dt.Rows[i]);
-                        break;
-                    }
-                }
-                //DataView dv = new DataView(dt);
-                //dv.Sort = "nf asc";
-                grid_YTZY.DataSource = dt;
-                grid_YTZY.DataBind();
-                ViewState["dtYTZY"] = dt;
-
-            }
-            else
-            {
-                Alert.Show("请选中一条数据！", "系统提示", MessageBoxIcon.Warning);
-                grid_YTZY.SelectedRowIndexArray = null; // 清空当前选中的项
-            }
         }
         /// <summary>
         /// 获取表格选中项DataKeys的第一个值，并转化为整型列表
@@ -895,487 +1090,28 @@ namespace XMGL.Web.admin
             return ids;
         }
 
-        protected void Button_step9_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 保存经费预算
+        /// </summary>
+        /// <returns></returns>
+        /// DateTime：2015-03-25 18:17
+        /// Author：By risfeng
+        /// Author Email：risfeng@126.com
+        public bool Save_JFYS()
         {
-            ContentPanel_step1.Hidden = true;
-            SimpleForm_step2.Hidden = true;
-            SimpleForm_step3.Hidden = true;
-            SimpleForm_step4.Hidden = true;
-            SimpleForm_step5.Hidden = true;
-            SimpleForm_step6.Hidden = true;
-            SimpleForm_step7.Hidden = true;
-            SimpleForm_step8.Hidden = true;
-            SimpleForm_step9.Hidden = false;
-            PageContext.RegisterStartupScript("a(9);");
-        }
-
-        protected void btnDelJSGYHCPKFZB_Click(object sender, EventArgs e)
-        {
-            //List<int> ids = GetSelectedDataKeyIDs(grid_JSHCP);
-            //// 执行数据库操作
-            //for (int i = 0; i < ids.Count; i++)
-            //{
-            //    yszb_bll.Delete(ids[i]);
-            //}
-            //BindJSHCPGrid();
-            string selectedID = "";
-            int selectedCount = grid_JSHCP.SelectedRowIndexArray.Length;
-            if (selectedCount > 0 && selectedCount < 2)
+            try
             {
-                for (int i = 0; i < selectedCount; i++)
+                bool IsAdd = false;
+                string xmbh = ViewState["xmbh"].ToString();
+                xm_model = xm_bll.GetModel(xmbh);
+                if (xm_model == null)
                 {
-                    int rowIndex = grid_JSHCP.SelectedRowIndexArray[i];
-                    // 如果是内存分页，所有分页的数据都存在，rowIndex 就是在全部数据中的顺序，而不是当前页的顺序
-                    if (grid_JSHCP.AllowPaging && !grid_JSHCP.IsDatabasePaging)
-                    {
-                        rowIndex = grid_JSHCP.PageIndex * grid_JSHCP.PageSize + rowIndex;//获取翻页后的行号
-                    }
-                    selectedID += grid_JSHCP.DataKeys[rowIndex][0].ToString() + ",";
+                    IsAdd = true;
+                    xm_model = new Model.CJYXTJD_XM();
                 }
-            }
-            selectedID = selectedID.TrimEnd(',');//去掉最后一个，号
-
-            if (ViewState["dtJSHCP"] != null)
-            {
-                DataTable dt = (DataTable)ViewState["dtJSHCP"];
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (dt.Rows[i][0].ToString() == selectedID)
-                    {
-                        dt.Rows.Remove(dt.Rows[i]);
-                        break;
-                    }
-                }
-                //DataView dv = new DataView(dt);
-                //dv.Sort = "nf asc";
-                grid_JSHCP.DataSource = dt;
-                grid_JSHCP.DataBind();
-                ViewState["dtJSHCP"] = dt;
-
-            }
-            else
-            {
-                Alert.Show("请选中一条数据！", "系统提示", MessageBoxIcon.Warning);
-                grid_JSHCP.SelectedRowIndexArray = null; // 清空当前选中的项
-            }
-        }
-
-        protected void btnSaveJSHCP_Click(object sender, EventArgs e)
-        {
-            //yszb_model.XMBH = ViewState["xmbh"].ToString();
-            //yszb_model.JSMB = txt_JSHCP_JSMB.Text;
-            //yszb_model.YQWCSJ = dp_JSHCP_YQWCSJ.SelectedDate.ToString();
-            //yszb_model.YSYD = txt_JSHCP_YSYD.Text;
-            //yszb_model.ZBFL = 1;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
-
-            //yszb_bll.Add(yszb_model);
-
-            //BindJSHCPGrid();
-
-            DataTable dt = null;
-            if (ViewState["dtJSHCP"] == null)
-            {
-
-                dt = new DataTable();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("JSMB");
-                dt.Columns.Add("YQWCSJ");
-                dt.Columns.Add("YSYD");
-                dt.Columns.Add("ZBFL");
-
-
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_JSHCP_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_JSHCP_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_JSHCP_YSYD.Text;
-                dr["ZBFL"] = 1;
-
-                dt.Rows.Add(dr);
-                ViewState["dtJSHCP"] = dt;
-            }
-            else
-            {
-
-                dt = ViewState["dtJSHCP"] as DataTable;
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_JSHCP_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_JSHCP_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_JSHCP_YSYD.Text;
-                dr["ZBFL"] = 1;
-                dt.Rows.Add(dr);
-
-            }
-
-            grid_JSHCP.DataSource = dt;
-            grid_JSHCP.DataBind();
-            ViewState["dtJSHCP"] = dt;
-
-            txt_JSHCP_JSMB.Text = string.Empty;
-            dp_JSHCP_YQWCSJ.Text = string.Empty;
-            txt_JSHCP_YSYD.Text = string.Empty;
-        }
-
-        protected void btnSaveSXSXPT_Click(object sender, EventArgs e)
-        {
-            //yszb_model.XMBH = ViewState["xmbh"].ToString();
-            //yszb_model.JSMB = txt_SXSXPT_JSMB.Text;
-            //yszb_model.YQWCSJ = dp_SXSXPT_YQWCSJ.SelectedDate.ToString();
-            //yszb_model.YSYD = txt_SXSXPT_YSYD.Text;
-            //yszb_model.ZBFL = 2;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
-
-            //yszb_bll.Add(yszb_model);
-
-            //BindSXSXGrid();
-
-            DataTable dt = null;
-            if (ViewState["dtSXSXPT"] == null)
-            {
-
-                dt = new DataTable();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("JSMB");
-                dt.Columns.Add("YQWCSJ");
-                dt.Columns.Add("YSYD");
-                dt.Columns.Add("ZBFL");
-
-
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_SXSXPT_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_SXSXPT_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_SXSXPT_YSYD.Text;
-                dr["ZBFL"] = 2;
-
-                dt.Rows.Add(dr);
-                ViewState["dtSXSXPT"] = dt;
-            }
-            else
-            {
-
-                dt = ViewState["dtSXSXPT"] as DataTable;
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_SXSXPT_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_SXSXPT_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_SXSXPT_YSYD.Text;
-                dr["ZBFL"] = 2;
-                dt.Rows.Add(dr);
-
-            }
-
-            grid_SXSXPT.DataSource = dt;
-            grid_SXSXPT.DataBind();
-            ViewState["dtSXSXPT"] = dt;
-
-            txt_SXSXPT_JSMB.Text = string.Empty;
-            dp_SXSXPT_YQWCSJ.Text = string.Empty;
-            txt_SXSXPT_YSYD.Text = string.Empty;
-        }
-
-        protected void btnDelSXSXPT_Click(object sender, EventArgs e)
-        {
-            //List<int> ids = GetSelectedDataKeyIDs(grid_SXSXPT);
-            //// 执行数据库操作
-            //for (int i = 0; i < ids.Count; i++)
-            //{
-            //    yszb_bll.Delete(ids[i]);
-            //}
-            //BindSXSXGrid();
-            string selectedID = "";
-            int selectedCount = grid_SXSXPT.SelectedRowIndexArray.Length;
-            if (selectedCount > 0 && selectedCount < 2)
-            {
-                for (int i = 0; i < selectedCount; i++)
-                {
-                    int rowIndex = grid_SXSXPT.SelectedRowIndexArray[i];
-                    // 如果是内存分页，所有分页的数据都存在，rowIndex 就是在全部数据中的顺序，而不是当前页的顺序
-                    if (grid_SXSXPT.AllowPaging && !grid_SXSXPT.IsDatabasePaging)
-                    {
-                        rowIndex = grid_SXSXPT.PageIndex * grid_SXSXPT.PageSize + rowIndex;//获取翻页后的行号
-                    }
-                    selectedID += grid_SXSXPT.DataKeys[rowIndex][0].ToString() + ",";
-                }
-            }
-            selectedID = selectedID.TrimEnd(',');//去掉最后一个，号
-
-            if (ViewState["dtSXSXPT"] != null)
-            {
-                DataTable dt = (DataTable)ViewState["dtSXSXPT"];
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (dt.Rows[i][0].ToString() == selectedID)
-                    {
-                        dt.Rows.Remove(dt.Rows[i]);
-                        break;
-                    }
-                }
-                //DataView dv = new DataView(dt);
-                //dv.Sort = "nf asc";
-                grid_SXSXPT.DataSource = dt;
-                grid_SXSXPT.DataBind();
-                ViewState["dtSXSXPT"] = dt;
-
-            }
-            else
-            {
-                Alert.Show("请选中一条数据！", "系统提示", MessageBoxIcon.Warning);
-                grid_SXSXPT.SelectedRowIndexArray = null; // 清空当前选中的项
-            }
-        }
-
-        protected void btnSaveJNDS_Click(object sender, EventArgs e)
-        {
-            //yszb_model.XMBH = ViewState["xmbh"].ToString();
-            //yszb_model.JSMB = txt_JNDS_JSMB.Text;
-            //yszb_model.YQWCSJ = dp_JNDS_YQWCSJ.SelectedDate.ToString();
-            //yszb_model.YSYD = txt_JNDS_YSYD.Text;
-            //yszb_model.ZBFL = 3;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
-
-            //yszb_bll.Add(yszb_model);
-
-            //BindJNDSGrid();
-
-            DataTable dt = null;
-            if (ViewState["dtJNDS"] == null)
-            {
-
-                dt = new DataTable();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("JSMB");
-                dt.Columns.Add("YQWCSJ");
-                dt.Columns.Add("YSYD");
-                dt.Columns.Add("ZBFL");
-
-
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_JNDS_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_JNDS_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_JNDS_YSYD.Text;
-                dr["ZBFL"] = 3;
-
-                dt.Rows.Add(dr);
-                ViewState["dtJNDS"] = dt;
-            }
-            else
-            {
-
-                dt = ViewState["dtJNDS"] as DataTable;
-                DataRow dr = dt.NewRow();
-                dr["ID"] = Guid.NewGuid().ToString();
-                dr["JSMB"] = txt_JNDS_JSMB.Text;
-                dr["YQWCSJ"] = Convert.ToDateTime(dp_JNDS_YQWCSJ.SelectedDate.ToString()).ToString("yyyy-MM-dd");
-                dr["YSYD"] = txt_JNDS_YSYD.Text;
-                dr["ZBFL"] = 3;
-                dt.Rows.Add(dr);
-
-            }
-
-            grid_JNDS.DataSource = dt;
-            grid_JNDS.DataBind();
-            ViewState["dtJNDS"] = dt;
-
-            txt_JNDS_JSMB.Text = string.Empty;
-            dp_JNDS_YQWCSJ.Text = string.Empty;
-            txt_JNDS_YSYD.Text = string.Empty;
-        }
-
-        protected void btnDelJNDS_Click(object sender, EventArgs e)
-        {
-            //List<int> ids = GetSelectedDataKeyIDs(grid_JNDS);
-            //// 执行数据库操作
-            //for (int i = 0; i < ids.Count; i++)
-            //{
-            //    yszb_bll.Delete(ids[i]);
-            //}
-            //BindJNDSGrid();
-            string selectedID = "";
-            int selectedCount = grid_JNDS.SelectedRowIndexArray.Length;
-            if (selectedCount > 0 && selectedCount < 2)
-            {
-                for (int i = 0; i < selectedCount; i++)
-                {
-                    int rowIndex = grid_JNDS.SelectedRowIndexArray[i];
-                    // 如果是内存分页，所有分页的数据都存在，rowIndex 就是在全部数据中的顺序，而不是当前页的顺序
-                    if (grid_JNDS.AllowPaging && !grid_JNDS.IsDatabasePaging)
-                    {
-                        rowIndex = grid_JNDS.PageIndex * grid_JNDS.PageSize + rowIndex;//获取翻页后的行号
-                    }
-                    selectedID += grid_JNDS.DataKeys[rowIndex][0].ToString() + ",";
-                }
-            }
-            selectedID = selectedID.TrimEnd(',');//去掉最后一个，号
-
-            if (ViewState["dtJNDS"] != null)
-            {
-                DataTable dt = (DataTable)ViewState["dtJNDS"];
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (dt.Rows[i][0].ToString() == selectedID)
-                    {
-                        dt.Rows.Remove(dt.Rows[i]);
-                        break;
-                    }
-                }
-                //DataView dv = new DataView(dt);
-                //dv.Sort = "nf asc";
-                grid_JNDS.DataSource = dt;
-                grid_JNDS.DataBind();
-                ViewState["dtJNDS"] = dt;
-
-            }
-            else
-            {
-                Alert.Show("请选中一条数据！", "系统提示", MessageBoxIcon.Warning);
-                grid_JNDS.SelectedRowIndexArray = null; // 清空当前选中的项
-            }
-        }
-        public void BindJSHCPGrid()
-        {
-            //string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 1", ViewState["xmbh"].ToString());
-            //DataSet ds = DbHelperSQL.Query(Sql);
-            grid_JSHCP.DataSource = ViewState["dtJSHCP"] as DataTable;
-            grid_JSHCP.DataBind();
-
-        }
-        public void BindSXSXGrid()
-        {
-            //string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 2", ViewState["xmbh"].ToString());
-            //DataSet ds = DbHelperSQL.Query(Sql);
-            grid_SXSXPT.DataSource = ViewState["dtSXSXPT"] as DataTable;
-            grid_SXSXPT.DataBind();
-
-        }
-        public void BindJNDSGrid()
-        {
-            //string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 3", ViewState["xmbh"].ToString());
-            //DataSet ds = DbHelperSQL.Query(Sql);
-            grid_JNDS.DataSource = ViewState["dtJNDS"] as DataTable;
-            grid_JNDS.DataBind();
-
-        }
-
-        protected void Button13_Click(object sender, EventArgs e)
-        {
-
-            if (DatePicker_sqzxjfzxksrq.Text.Trim() == "")
-            {
-                Alert.Show("“申请专项经费执行开始日期”为必填项");
-                return;
-            }
-            if (DatePicker_sqzxjfzxjsrq.Text.Trim() == "")
-            {
-                Alert.Show("“申请专项经费执行结束日期”为必填项");
-                return;
-            }
-            if (DatePicker_xxptjfzxksrq.Text.Trim() == "")
-            {
-                Alert.Show("“学校配套经费执行开始日期”为必填项");
-                return;
-            }
-            if (DatePicker_xxptjfzxjsrq.Text.Trim() == "")
-            {
-                Alert.Show("“学校配套经费执行结束日期”为必填项");
-                return;
-            }
-            //try
-            //{
-                ViewState["xmbh"] = AutoNumber("2015-03-");
+                //赋值
                 xm_model.XMBH = ViewState["xmbh"].ToString();
-                xm_model.JDMC = TextBox_jdmc.Text;
-                xm_model.XXMC = txt_xxmc.Text;
-                xm_model.XXDM = txt_xxdm.Text;
-                xm_model.TBRQ = DateTime.Now;
-                xm_model.SXSXQK_SXSXCSSZMJ = decimal.Parse(txt_SXSXQK_SXSXCSSZMJ.Text);
-                xm_model.SXSXQK_SXSXCSJZMJ = decimal.Parse(txt_SXSXQK_SXSXCSJZMJ.Text);
-                xm_model.SXSXQK_XYSXSBZZ = decimal.Parse(txt_SXSXQK_XYSXSBZZ.Text);
-                xm_model.SXSXQK_XYSXYQSB = int.Parse(txt_SXSXQK_XYSXYQSB.Text);
-                xm_model.SXSXQK_SBSJ = decimal.Parse(txt_SXSXQK_SBSJ.Text);
-                xm_model.SXSXQK_SXSXKCMS = int.Parse(txt_SXSXQK_SXSXKCMS.Text);
-                xm_model.SXSXQK_JSNNJPXRS = int.Parse(txt_SXSXQK_JSNNJPXRS.Text);
-                xm_model.JDFZRXX_XM = txt_JDFZRXX_XM.Text;
-                xm_model.JDFZRXX_BMJZF = txt_JDFZRXX_BMJZF.Text;
-                xm_model.JDFZRXX_ZYJSZW = txt_JDFZRXX_ZYJSZW.Text;
-                xm_model.JDFZRXX_ZYZGZS = txt_JDFZRXX_ZYZGZS.Text;
-                xm_model.JDFZRXX_BGDH = txt_JDFZRXX_BGDH.Text;
-                xm_model.JDFZRXX_CZ = txt_JDFZRXX_CZ.Text;
-                xm_model.JDFZRXX_SJ = txt_JDFZRXX_SJ.Text;
-                xm_model.JDFZRXX_DZYX = txt_JDFZRXX_DZYX.Text;
-                xm_model.JDFZRXX_JSYFYFW = txt_JDFZRXX_JSYFYFW.Text;
-                xm_model.JDFZRXX_BRZHYQYJZ = txt_JDFZRXX_BRZHYQYJZ.Text;
-                xm_model.JDZZGJSX = txt_JDZZGJSX.Text;
-                xm_model.JDJSFA_SBLY = txt_JDJSFA_SBLY.Text;
-                xm_model.JSGYHCPKF_PTMC = txt_JSGYHCPKF_PTMC.Text;
-                xm_model.JSGYHCPKF_XM = txt_JSGYHCPKF_XM.Text;
-                xm_model.JSGYHCPKF_BMJXZZF = txt_JSGYHCPKF_BMJXZZF.Text;
-                xm_model.JSGYHCPKF_ZYJSZW = txt_JSGYHCPKF_ZYJSZW.Text;
-                xm_model.JSGYHCPKF_ZYZGZS = txt_JSGYHCPKF_ZYZGZS.Text;
-                xm_model.JSGYHCPKF_BGDH = txt_JSGYHCPKF_BGDH.Text;
-                xm_model.JSGYHCPKF_CZ = txt_JSGYHCPKF_CZ.Text;
-                xm_model.JSGYHCPKF_SJ = txt_JSGYHCPKF_SJ.Text;
-                xm_model.JSGYHCPKF_DZYX = txt_JSGYHCPKF_DZYX.Text;
 
-                xm_model.JSGYHCPKF_QYMC1 = txt_JSGYHCPKF_QYMC1.Text;
-                xm_model.JSGYHCPKF_LXRXMJZW1 = txt_JSGYHCPKF_LXRXMJZW1.Text;
-                xm_model.JSGYHCPKF_LXFS1 = txt_JSGYHCPKF_LXFS1.Text;
-                xm_model.JSGYHCPKF_QYMC2 = txt_JSGYHCPKF_QYMC2.Text;
-                xm_model.JSGYHCPKF_LXRXMJZW2 = txt_JSGYHCPKF_LXRXMJZW2.Text;
-                xm_model.JSGYHCPKF_LXFS2 = txt_JSGYHCPKF_LXFS2.Text;
-                xm_model.JSGYHCPKF_QYMC3 = txt_JSGYHCPKF_QYMC3.Text;
-                xm_model.JSGYHCPKF_LXRXMJZW3 = txt_JSGYHCPKF_LXRXMJZW3.Text;
-                xm_model.JSGYHCPKF_LXFS3 = txt_JSGYHCPKF_LXFS3.Text;
-
-                //研发领域-选项（用|分隔）
-                List<string> kfly_xx_list = new List<string>();
-                foreach (var cbl in cbl_JSGYHCPKF_YFLY_XX.Items)
-                {
-                    if (cbl.Selected)
-                    {
-                        kfly_xx_list.Add(cbl.Value);
-                    }
-                }
-                xm_model.JSGYHCPKF_YFLY_XX = string.Join("|", kfly_xx_list.ToArray());
-
-                xm_model.JSGYHCPKF_YFLY_QT = txt_JSGYHCPKF_YFLY_QT.Text;
-                xm_model.JSGYHCPKF_PTGNJJ = txt_JSGYHCPKF_PTGNJJ.Text;
-                xm_model.JSGYHCPKF_PTWLGYHJJZB = txt_JSGYHCPKF_PTWLGYHJJZB.Text;
-                xm_model.SXSXPT_PTMC = txt_SXSXPT_PTMC.Text;
-                xm_model.SXSXPT_XM = txt_SXSXPT_XM.Text;
-                xm_model.SXSXPT_BMJXZZW = txt_SXSXPT_BMJXZZW.Text;
-                xm_model.SXSXPT_ZYJSZW = txt_SXSXPT_ZYJSZW.Text;
-                xm_model.SXSXPT_ZYZGZS = txt_SXSXPT_ZYZGZS.Text;
-                xm_model.SXSXPT_BGDH = txt_SXSXPT_BGDH.Text;
-                xm_model.SXSXPT_CZ = txt_SXSXPT_CZ.Text;
-                xm_model.SXSXPT_SJ = txt_SXSXPT_SJ.Text;
-                xm_model.SXSXPT_DZYX = txt_SXSXPT_DZYX.Text;
-                xm_model.SXSXPT_PTGNJJ = txt_SXSXPT_PTGNJJ.Text;
-                xm_model.SXSXPT_PTWLSNJSMB = txt_SXSXPT_PTWLSNJSMB.Text;
-                xm_model.JNDSGZS_GZSMC = txt_JNDSGZS_GZSMC.Text;
-                xm_model.JNDSGZS_XM = txt_JNDSGZS_XM.Text;
-                xm_model.JNDSGZS_XB = rbtn_JNDSGZS_XB.SelectedValue;
-                xm_model.JNDSGZS_MZ = txt_JNDSGZS_MZ.Text;
-                xm_model.JNDSGZS_CSNY = dp_JNDSGZS_CSNY.SelectedDate;
-                xm_model.JNDSGZS_CJGZSJ = dp_JNDSGZS_CJGZSJ.SelectedDate;
-                xm_model.JNDSGZS_ZZMM = txt_JNDSGZS_ZZMM.Text;
-                xm_model.JNDSGZS_CSSY = txt_JNDSGZS_CSSY.Text;
-                xm_model.JNDSGZS_ZYJNDJ = txt_JNDSGZS_ZYJNDJ.Text;
-                xm_model.JNDSGZS_SJ = txt_JNDSGZS_SJ.Text;
-                xm_model.JNDSGZS_YX = txt_JNDSGZS_YX.Text;
-                xm_model.JNDSGZS_GZDWJZW = txt_JNDSGZS_GZDWJZW.Text;
-
-                xm_model.JNDSGZS_GEJL = txt_JNDSGZS_GEJL.Text;
-                xm_model.JNDSGZS_HSBJYSJLHGJZL = txt_JNDSGZS_HSBJYSJLHGJZL.Text;
-                xm_model.JNDSGZS_ZYCXFMCG = txt_JNDSGZS_ZYCXFMCG.Text;
-                xm_model.JNDSGZS_GZSJJ = txt_JNDSGZS_GZSJJ.Text;
-                xm_model.JNDSGZS_GZSWLSNJSRW = txt_JNDSGZS_GZSWLSNJSRW.Text;
-                xm_model.JTCS = txt_JTCS.Text;
-                xm_model.JFAP = txt_JFAP.Text;
-                xm_model.SSJH = txt_SSJH.Text;
                 //专项经费
                 xm_model.ZXJF_SQZXJF = decimal.Parse(NumberBox_sqzxjfhj.Text);
                 xm_model.ZXJF_ZXKSSJ = DatePicker_sqzxjfzxksrq.SelectedDate;
@@ -1439,98 +1175,152 @@ namespace XMGL.Web.admin
                 xm_model.XXPTJF_JFGSHJ2016 = decimal.Parse(NumberBox_xxptgshj_2016.Text);
                 xm_model.XXPTJF_JFGSHJ2017 = decimal.Parse(NumberBox_xxptgshj_2017.Text);
 
-                if (ViewState["file_zzjg"] != null)
-                    xm_model.JDZZGJSXTP = ViewState["file_zzjg"].ToString().Trim();
-
-                xm_model.User_Uid = pb.GetIdentityId();
-                //保存datatable
-                //1、专业
-                DataTable dtYTZY = null;
-                if (ViewState["dtYTZY"] != null)
-                    dtYTZY = ViewState["dtYTZY"] as DataTable;
+                if (IsAdd)
+                {
+                    return xm_bll.Add(xm_model) > 0;
+                }
                 else
                 {
-                    step4();
-                    Alert.Show("没有填写依托专业！");
-                    return;
+                    return xm_bll.Update(xm_model);
                 }
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+                return false;
+            }
 
-                for (int i = 0; i < dtYTZY.Rows.Count; i++)
-                {
-                    ytzy_model.XMBH = ViewState["xmbh"].ToString();
-                    ytzy_model.ZYB_ID = Convert.ToInt32(dtYTZY.Rows[i]["ZYB_ID"].ToString().Trim());
-                    ytzy_model.NZSJHRS2015 = Convert.ToInt32(dtYTZY.Rows[i]["NZSJHRS2015"].ToString().Trim());
-                    ytzy_model.ZXSRS = Convert.ToInt32(dtYTZY.Rows[i]["ZXSRS"].ToString().Trim());
-                    ytzy_model.JSNPJJYL = Convert.ToDecimal(dtYTZY.Rows[i]["JSNPJJYL"].ToString().Trim());
-                    ytzy_model.JSNZXSHDZGZSBL = Convert.ToDecimal(dtYTZY.Rows[i]["JSNZXSHDZGZSBL"].ToString().Trim());
-                    ytzy_model.SFW085GCZDZY = dtYTZY.Rows[i]["SFW085GCZDZY"].ToString().Trim().Equals("是") ? 1 : 0;
-                    ytzy_model.XZSJ = Convert.ToDateTime(dtYTZY.Rows[i]["XZSJ"].ToString().Trim());
-                    ytzy_bll.Add(ytzy_model);
-                }
+        }
+        protected void Button_step9_Click(object sender, EventArgs e)
+        {
+            if (!Save_JFYS())
+            {
+                Alert.Show("经费预算保存失败，请检查数据正确性！");
+                return;
+            }
+            ContentPanel_step1.Hidden = true;
+            SimpleForm_step2.Hidden = true;
+            SimpleForm_step3.Hidden = true;
+            SimpleForm_step4.Hidden = true;
+            SimpleForm_step5.Hidden = true;
+            SimpleForm_step6.Hidden = true;
+            SimpleForm_step7.Hidden = true;
+            SimpleForm_step8.Hidden = true;
+            SimpleForm_step9.Hidden = false;
+            PageContext.RegisterStartupScript("a(9);");
+        }
 
-                //2、技术和产品
-                DataTable dtJSHCP = null;
-                if (ViewState["dtJSHCP"] != null)
-                    dtJSHCP = ViewState["dtJSHCP"] as DataTable;
-                else
-                {
-                    step7();
-                    Alert.Show("没有填写项目验收指标！");
-                    return;
-                }
+        protected void btnDelJSGYHCPKFZB_Click(object sender, EventArgs e)
+        {
+            List<int> ids = GetSelectedDataKeyIDs(grid_JSHCP);
+            // 执行数据库操作
+            for (int i = 0; i < ids.Count; i++)
+            {
+                yszb_bll.Delete(ids[i]);
+            }
+            BindJSHCPGrid();
 
-                for (int i = 0; i < dtJSHCP.Rows.Count; i++)
-                {
-                    yszb_model.XMBH = ViewState["xmbh"].ToString();
-                    yszb_model.JSMB = dtJSHCP.Rows[i]["JSMB"].ToString().Trim();
-                    yszb_model.YQWCSJ = dtJSHCP.Rows[i]["YQWCSJ"].ToString().Trim();
-                    yszb_model.YSYD = dtJSHCP.Rows[i]["YSYD"].ToString().Trim();
-                    yszb_model.ZBFL = Convert.ToInt32(dtJSHCP.Rows[i]["ZBFL"].ToString().Trim());
-                    yszb_bll.Add(yszb_model);
-                }
-                //3、实训实习
-                DataTable dtSXSXPT = null;
-                if (ViewState["dtSXSXPT"] != null)
-                    dtSXSXPT = ViewState["dtSXSXPT"] as DataTable;
-                else
-                {
-                    step7();
-                    Alert.Show("没有填写项目验收指标！");
-                    return;
-                }
+        }
 
-                for (int i = 0; i < dtSXSXPT.Rows.Count; i++)
-                {
-                    yszb_model.XMBH = ViewState["xmbh"].ToString();
-                    yszb_model.JSMB = dtSXSXPT.Rows[i]["JSMB"].ToString().Trim();
-                    yszb_model.YQWCSJ = dtSXSXPT.Rows[i]["YQWCSJ"].ToString().Trim();
-                    yszb_model.YSYD = dtSXSXPT.Rows[i]["YSYD"].ToString().Trim();
-                    yszb_model.ZBFL = Convert.ToInt32(dtSXSXPT.Rows[i]["ZBFL"].ToString().Trim());
-                    yszb_bll.Add(yszb_model);
-                }
-                //4、技能大师
-                DataTable dtJNDS = null;
-                if (ViewState["dtJNDS"] != null)
-                    dtJNDS = ViewState["dtJNDS"] as DataTable;
-                else
-                {
-                    step7();
-                    Alert.Show("没有填写项目验收指标！");
-                    return;
-                }
+        protected void btnSaveJSHCP_Click(object sender, EventArgs e)
+        {
+            yszb_model.XMBH = ViewState["xmbh"].ToString();
+            yszb_model.JSMB = txt_JSHCP_JSMB.Text;
+            yszb_model.YQWCSJ = dp_JSHCP_YQWCSJ.SelectedDate.ToString();
+            yszb_model.YSYD = txt_JSHCP_YSYD.Text;
+            yszb_model.ZBFL = 1;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
 
-                for (int i = 0; i < dtJNDS.Rows.Count; i++)
-                {
-                    yszb_model.XMBH = ViewState["xmbh"].ToString();
-                    yszb_model.JSMB = dtJNDS.Rows[i]["JSMB"].ToString().Trim();
-                    yszb_model.YQWCSJ = dtJNDS.Rows[i]["YQWCSJ"].ToString().Trim();
-                    yszb_model.YSYD = dtJNDS.Rows[i]["YSYD"].ToString().Trim();
-                    yszb_model.ZBFL = Convert.ToInt32(dtJNDS.Rows[i]["ZBFL"].ToString().Trim());
-                    yszb_bll.Add(yszb_model);
-                }
+            yszb_bll.Add(yszb_model);
 
-                //xm_bll.Add( xm_model );
+            BindJSHCPGrid();
 
+            GroupPanel28.Reset();
+
+        }
+
+        protected void btnSaveSXSXPT_Click(object sender, EventArgs e)
+        {
+            yszb_model.XMBH = ViewState["xmbh"].ToString();
+            yszb_model.JSMB = txt_SXSXPT_JSMB.Text;
+            yszb_model.YQWCSJ = dp_SXSXPT_YQWCSJ.SelectedDate.ToString();
+            yszb_model.YSYD = txt_SXSXPT_YSYD.Text;
+            yszb_model.ZBFL = 2;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
+
+            yszb_bll.Add(yszb_model);
+
+            BindSXSXGrid();
+            GroupPanel29.Reset();
+
+        }
+
+        protected void btnDelSXSXPT_Click(object sender, EventArgs e)
+        {
+            List<int> ids = GetSelectedDataKeyIDs(grid_SXSXPT);
+            // 执行数据库操作
+            for (int i = 0; i < ids.Count; i++)
+            {
+                yszb_bll.Delete(ids[i]);
+            }
+            BindSXSXGrid();
+
+        }
+
+        protected void btnSaveJNDS_Click(object sender, EventArgs e)
+        {
+            yszb_model.XMBH = ViewState["xmbh"].ToString();
+            yszb_model.JSMB = txt_JNDS_JSMB.Text;
+            yszb_model.YQWCSJ = dp_JNDS_YQWCSJ.SelectedDate.ToString();
+            yszb_model.YSYD = txt_JNDS_YSYD.Text;
+            yszb_model.ZBFL = 3;//指标分类(1-技术工艺和产品开发平台 2-实习实训平台 3-技能大师工作室）
+
+            yszb_bll.Add(yszb_model);
+
+            BindJNDSGrid();
+
+            GroupPanel30.Reset();
+
+        }
+
+        protected void btnDelJNDS_Click(object sender, EventArgs e)
+        {
+            List<int> ids = GetSelectedDataKeyIDs(grid_JNDS);
+            // 执行数据库操作
+            for (int i = 0; i < ids.Count; i++)
+            {
+                yszb_bll.Delete(ids[i]);
+            }
+            BindJNDSGrid();
+
+        }
+        public void BindJSHCPGrid()
+        {
+            string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 1", ViewState["xmbh"].ToString());
+            DataSet ds = DbHelperSQL.Query(Sql);
+            grid_JSHCP.DataSource = ds;
+            grid_JSHCP.DataBind();
+
+        }
+        public void BindSXSXGrid()
+        {
+            string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 2", ViewState["xmbh"].ToString());
+            DataSet ds = DbHelperSQL.Query(Sql);
+            grid_SXSXPT.DataSource = ds;
+            grid_SXSXPT.DataBind();
+
+        }
+        public void BindJNDSGrid()
+        {
+            string Sql = string.Format("SELECT dbo.CJYXTJD_XMYSZB.ID, dbo.CJYXTJD_XMYSZB.XMBH, dbo.CJYXTJD_XMYSZB.JSMB, dbo.CJYXTJD_XMYSZB.YQWCSJ, dbo.CJYXTJD_XMYSZB.YSYD, dbo.CJYXTJD_XMYSZB.ZBFL FROM dbo.CJYXTJD_XMYSZB WHERE XMBH ='{0}' AND ZBFL = 3", ViewState["xmbh"].ToString());
+            DataSet ds = DbHelperSQL.Query(Sql);
+            grid_JNDS.DataSource = ds;
+            grid_JNDS.DataBind();
+
+        }
+
+        protected void Button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 //附件
                 Model.XMFJ XMFJ_Mode = new Model.XMFJ();
                 BLL.XMFJ XMFJ_Bll = new BLL.XMFJ();
@@ -1545,10 +1335,12 @@ namespace XMGL.Web.admin
                 XMFJ_Bll.Add(XMFJ_Mode);
 
                 //文档管理
-                string filename = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + ViewState["xxdm"] + ".doc";
+                string filename = string.Format("{0}_{1}_{2}.doc", ViewState["xxdm"], ViewState["xmbh"], DateTime.Now.ToString("yyyyMMddHHmmssfff"));
                 var tmppath = HttpContext.Current.Server.MapPath("~/admin/WordMaster/2015项目申报书(产教研协同基地)150226.doc");
                 var savepath = HttpContext.Current.Server.MapPath("~/admin/down/" + filename);
-                xm_bll.Add(xm_model);
+
+                xm_model = xm_bll.GetModel(ViewState["xmbh"].ToString());//加载项目信息
+
                 if (new BuildWord().BuildWord_2015ProjectDeclaration_CJYXTJD(tmppath, savepath, xm_model.XMBH))
                 {
                     BLL.XMSBSWD wordBll = new BLL.XMSBSWD();
@@ -1561,21 +1353,16 @@ namespace XMGL.Web.admin
                 }
                 else
                 {
-                    string sqlstr = "delete CJYXTJD_XM  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "';delete CJYXTJD_JDYTZYQK  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "';delete CJYXTJD_XMYSZB  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "'";
-                    DbHelperSQL.ExecuteSql(sqlstr);
-                    Alert.Show("保存失败");
+                    Alert.Show("生成Word失败！");
                     return;
                 }
-                //PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());
                 PageContext.RegisterStartupScript("alert('已成功保存,系统将自动关闭此页面');CloseWebPage();");
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    string sqlstr = "delete CJYXTJD_XM  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "';delete CJYXTJD_JDYTZYQK  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "';delete CJYXTJD_XMYSZB  where XMBH='" + ViewState["xmbh"].ToString().Trim() + "'";
-            //    DbHelperSQL.ExecuteSql(sqlstr);
-            //    Alert.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Alert.Show(ex.Message);
+            }
 
         }
 

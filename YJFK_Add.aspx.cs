@@ -63,6 +63,18 @@ namespace XMGL.Web.admin
                     {
                         sqlstr = "update CJYXTJD_XM set SFSC=0, ZT=6 where XMBH='" + ViewState["xmbh"].ToString() + "'";
                     }
+                    else if (ViewState["xmbh"].ToString().Contains("2015-05"))
+                    {
+                        sqlstr = "update JSJNJS_XM set SFSC=0, ZT=6 where XMBH='" + ViewState["xmbh"].ToString() + "'";
+                    }
+                    else if (ViewState["xmbh"].ToString().Contains("2015-06"))
+                    {
+                        sqlstr = "update XXGLPT_XM set SFSC=0, ZT=6 where XMBH='" + ViewState["xmbh"].ToString() + "'";
+                    }
+                    else if (ViewState["xmbh"].ToString().Contains("2015-07"))
+                    {
+                        sqlstr = "update TYL_XM set SFSC=0, ZT=6 where XMBH='" + ViewState["xmbh"].ToString() + "'";
+                    }
                     if (DbHelperSQL.ExecuteSql(sqlstr) != 0)
                     {
                        

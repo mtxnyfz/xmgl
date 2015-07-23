@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../res/jqueryuiautocomplete/jquery-ui.min.css" />
     <link rel="stylesheet" href="../res/jqueryuiautocomplete/theme-start/theme.css" />
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/layout4.css" />
     <script src="../res/js/jquery.min.js" type="text/javascript"></script>
     <style>
         .ui-autocomplete-loading
@@ -52,7 +52,7 @@
                             <ol class="processorBox oh">
                                 <li class="current" id="li1">
                                     <%--   <li  id="li1">--%>
-                                    <div class="step_inner fl">
+                                    <div class="step_inner">
                                         <%--   <div class="step_inner">--%>
                                         <%--<span class="icon_step">1</span>--%>
                                         <asp:Button ID="Button_step1" runat="server" Text="1" CssClass="icon_step" BorderStyle="None"
@@ -155,7 +155,7 @@
                                                 MaxLength="500" ColumnWidth="100%" runat="server">
                                             </f:TextBox>
                                             <f:TextBox ID="XMSB_DWMC" Label="单位名称" Margin="0 0 2 0" Required="true" ShowRedStar="true"
-                                                MaxLength="500" ColumnWidth="100%" runat="server">
+                                                MaxLength="500" ColumnWidth="100%" runat="server" Readonly="true">
                                             </f:TextBox>
                                         </Items>
                                     </f:Panel>
@@ -332,7 +332,7 @@
                                                 <Items>
                                                     <f:TextArea ID="JSFA_SBLY" runat="server" Height="200px" Label="申报理由" Text="" ColumnWidth="98%"
                                                         Margin="10 5 10 0" EmptyText="请简要说明开展项目建设的必要性和可行性。（不超过500字）" Required="true"
-                                                        MaxLength="500" ShowRedStar="true">
+                                                        MaxLength="700" ShowRedStar="true">
                                                     </f:TextArea>
                                                 </Items>
                                             </f:Panel>
@@ -340,7 +340,7 @@
                                                 runat="server">
                                                 <Items>
                                                     <f:TextArea ID="JSFA_JSMB" runat="server" Height="200px" Label="建设目标" Text="" ColumnWidth="98%"
-                                                        MaxLength="500" Margin="10 5 10 0" EmptyText="请简要阐述项目建设总体目标。（不超过500字）" Required="true"
+                                                        MaxLength="700" Margin="10 5 10 0" EmptyText="请简要阐述项目建设总体目标。（不超过500字）" Required="true"
                                                         ShowRedStar="true">
                                                     </f:TextArea>
                                                 </Items>
@@ -349,7 +349,7 @@
                                                 runat="server">
                                                 <Items>
                                                     <f:TextArea ID="JSFA_JTJC" runat="server" Height="200px" Label="具体举措" Text="" ColumnWidth="98%"
-                                                        MaxLength="1000" Margin="10 5 10 0" EmptyText="请简要阐述建设内容及举措。（不超过1000字）" Required="true"
+                                                        MaxLength="1300" Margin="10 5 10 0" EmptyText="请简要阐述建设内容及举措。（不超过1000字）" Required="true"
                                                         ShowRedStar="true">
                                                     </f:TextArea>
                                                 </Items>
@@ -358,7 +358,7 @@
                                                 runat="server">
                                                 <Items>
                                                     <f:TextArea ID="JSFA_JFAP" runat="server" Height="200px" Label="经费安排" Text="" ColumnWidth="98%"
-                                                        MaxLength="500" Margin="10 5 10 0" EmptyText="请阐述项目总体需要经费、来源和主要用途。（不超过500字）"
+                                                        MaxLength="700" Margin="10 5 10 0" EmptyText="请阐述项目总体需要经费、来源和主要用途。（不超过500字）"
                                                         Required="true" ShowRedStar="true">
                                                     </f:TextArea>
                                                 </Items>
@@ -367,7 +367,7 @@
                                                 runat="server">
                                                 <Items>
                                                     <f:TextArea ID="JSFA_SSJH" runat="server" Height="200px" Label="实施计划" Text="" ColumnWidth="98%"
-                                                        MaxLength="500" Margin="10 5 10 0" EmptyText="请简要阐述项目实施计划，执行周期为1年的项目需按季度列明实施计划，其他项目按照年度填写。（不超过500字）"
+                                                        MaxLength="700" Margin="10 5 10 0" EmptyText="请简要阐述项目实施计划，执行周期为1年的项目需按季度列明实施计划，其他项目按照年度填写。（不超过500字）"
                                                         Required="true" ShowRedStar="true">
                                                     </f:TextArea>
                                                 </Items>
@@ -399,7 +399,7 @@
                                                         runat="server">
                                                         <Items>
                                                             <f:TextArea ID="TextArea_jsmb" runat="server" Height="100px" Label="建设目标" Text=""
-                                                                MaxLength="500" ColumnWidth="80%" Margin="10 5 10 5" ShowRedStar="True">
+                                                                MaxLength="700" ColumnWidth="80%" Margin="10 5 10 5" ShowRedStar="True">
                                                             </f:TextArea>
                                                         </Items>
                                                     </f:Panel>
@@ -415,7 +415,7 @@
                                                         runat="server">
                                                         <Items>
                                                             <f:TextArea ID="TextArea_ysyd" runat="server" Height="200px" Label="验收要点" Text=""
-                                                                MaxLength="500" ColumnWidth="80%" Margin="0 5 10 5" ShowRedStar="True">
+                                                                MaxLength="700" ColumnWidth="80%" Margin="0 5 10 5" ShowRedStar="True">
                                                             </f:TextArea>
                                                         </Items>
                                                     </f:Panel>
@@ -507,8 +507,7 @@
                                                                         DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2"
                                                                         OnTextChanged="NumberBox_SQZXJF_TextChanged" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_KCJCJZLF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_KCJCJZLF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -522,8 +521,7 @@
                                                                         DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2"
                                                                         OnTextChanged="NumberBox_SQZXJF_TextChanged" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_YQSBJHCF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_YQSBJHCF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -537,8 +535,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_SQZXJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_WPRYJF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_WPRYJF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -552,8 +549,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_SQZXJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_CDF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_CDF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -567,8 +563,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_SQZXJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_CYF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_CYF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -582,8 +577,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_SQZXJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_ZSF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_ZSF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -597,24 +591,23 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_SQZXJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_JTF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="ZXJF_JTF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
                                                             <f:GroupPanel ID="GroupPanels22" Layout="Anchor" Title="<strong>经费概算合计</strong>"
                                                                 Margin="10 15 10 10" runat="server">
                                                                 <Items>
-                                                                    <f:TextArea ID="ZXJF_JFHJ_SYSM" runat="server" Label="具体使用说明" Text="" Margin="10 5 10 0"
+                                                                    <%--<f:TextArea ID="ZXJF_JFHJ_SYSM" runat="server" Label="具体使用说明" Text="" Margin="10 5 10 0"
                                                                         Required="true" ShowRedStar="true">
-                                                                    </f:TextArea>
+                                                                    </f:TextArea>--%>
                                                                     <f:NumberBox ID="ZXJF_JFHJ_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2"
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" Readonly="true"
                                                                         Enabled="false" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="ZXJF_JFHJ_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
+                                                                    <%--<f:TextArea ID="ZXJF_JFHJ_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
                                                                         Required="true" ShowRedStar="true">
-                                                                    </f:TextArea>
+                                                                    </f:TextArea>--%>
                                                                 </Items>
                                                             </f:GroupPanel>
                                                         </Items>
@@ -655,8 +648,7 @@
                                                                         DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2"
                                                                         OnTextChanged="NumberBox_PTJF_TextChanged" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_KCJCJZLF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_KCJCJZLF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -670,8 +662,7 @@
                                                                         DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2"
                                                                         OnTextChanged="NumberBox_PTJF_TextChanged" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_YQSBJHCF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_YQSBJHCF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -685,8 +676,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_PTJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_WPRYJF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_WPRYJF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -700,8 +690,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_PTJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_CDF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_CDF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -715,8 +704,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_PTJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_CYF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_CYF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -730,8 +718,7 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_PTJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_ZSF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_ZSF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
@@ -745,24 +732,23 @@
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" OnTextChanged="NumberBox_PTJF_TextChanged"
                                                                         AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_JTF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
-                                                                        Required="true" ShowRedStar="true">
+                                                                    <f:TextArea ID="PTJF_JTF_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0">
                                                                     </f:TextArea>
                                                                 </Items>
                                                             </f:GroupPanel>
                                                             <f:GroupPanel ID="GroupPanel26" Layout="Anchor" Title="<strong>经费概算合计</strong>" Margin="10 15 10 10"
                                                                 runat="server">
                                                                 <Items>
-                                                                    <f:TextArea ID="PTJF_JFHJ_SYSM" runat="server" Label="具体使用说明" Text="" Margin="10 5 10 0"
+                                                                    <%--<f:TextArea ID="PTJF_JFHJ_SYSM" runat="server" Label="具体使用说明" Text="" Margin="10 5 10 0"
                                                                         Required="true" ShowRedStar="true">
-                                                                    </f:TextArea>
+                                                                    </f:TextArea>--%>
                                                                     <f:NumberBox ID="PTJF_JFHJ_JFYS" runat="server" Label="经费预算(万元)" MinValue="0" DecimalPrecision="2"
                                                                         NoNegative="True" Required="true" ShowRedStar="True" Margin="5 0 5 2" Readonly="true"
                                                                         Enabled="false" AutoPostBack="true">
                                                                     </f:NumberBox>
-                                                                    <f:TextArea ID="PTJF_JFHJ_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
+                                                                    <%--<f:TextArea ID="PTJF_JFHJ_BZ" runat="server" Label="备注" Text="" Margin="10 5 10 0"
                                                                         Required="true" ShowRedStar="true">
-                                                                    </f:TextArea>
+                                                                    </f:TextArea>--%>
                                                                 </Items>
                                                             </f:GroupPanel>
                                                         </Items>

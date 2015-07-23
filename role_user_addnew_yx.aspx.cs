@@ -47,7 +47,7 @@ namespace XMGL.Web.admin
             }
             sdr.Dispose();
 
-            DataTable dt = DbHelperSQL.Query("select * FROM Users where  NOT exists (select user_uid from RoleUser where RoleId='" + ViewState["roleid"].ToString() + "' and  Users.user_uid=RoleUser.UserId) and xxdm='"+xxdm+"'  order by ActualName").Tables[0];
+            DataTable dt = DbHelperSQL.Query("select * FROM Users where  NOT exists (select user_uid from RoleUser where RoleId='" + ViewState["roleid"].ToString() + "'   and  Users.user_uid=RoleUser.UserId) and xxdm='" + xxdm + "' and user_uid!='" + userid + "'  order by ActualName").Tables[0];
             Grid1.DataSource = dt;
             Grid1.DataBind();
             pb.UpdateSelectedRowIndexArray(hfSelectedIDS, Grid1);

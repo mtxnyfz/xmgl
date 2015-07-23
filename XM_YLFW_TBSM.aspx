@@ -6,7 +6,8 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="../css/style_ylfw.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style_ylfw.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,7 +15,7 @@
   <p align="center"><strong>教育部办公厅 文化部办公厅 国家民委办公厅 <br />
     关于遴选第二批全国职业院校民族文化传承与创新示范专业点的通知 </strong></p>
   <p>　　各省、自治区、直辖市教育厅（教委）、文化厅（局）、民（宗）委（厅、局），新疆生产建设兵团教育局、文化局、民宗局： <br />
-    　　为贯彻落实中央民族工作会议、全国职业教育工作会议精神和《国务院关于加快发展现代职业教育的决定》，全面落实《教育部 文化部 国家民委关于推进职业院校民族文化传承与创新工作的意见》，加强职业院校民族文化类专业建设，推进民族文化传承与创新，教育部、文化部、国家民委决定遴选第二批全国职业院校民族文化传承与创新示范专业点。现就有关事项通知如下： <br />
+    　　为贯彻落实中央民族工作全国职业教育工作会议精神和《国务院关于加快发展现代职业教育的决定》，全面落实《教育部 文化部 国家民委关于推进职业院校民族文化传承与创新工作的意见》，加强职业院校民族文化类专业建设，推进民族文化传承与创新，教育部、文化部、国家民委决定遴选第二批全国职业院校民族文化传承与创新示范专业点。现就有关事项通知如下： <br />
     <strong>一、总体要求 </strong><br />
     　　通过开展职业院校民族文化传承与创新示范专业点遴选和建设工作，加强对职业院校学生的中华优秀传统文化教育，推动民族文化传承与创新；建设各民族共有精神家园，积极培养中华民族共同体意识；促进职业教育专业结构调整，优化专业布局，推动民族地区职业教育特色发展；加强专业建设，创新人才培养模式，提高民族文化相关专业学生，特别是民族地区学生的职业技能，培养大批高素质技术技能人才，为民族特色产业、文化产业发展提供有力的人才支撑。 <br />
     <strong>二、遴选条件 </strong><br />
@@ -36,7 +37,8 @@
   <p align="center">
     <input type="button" name="button" id="button" value="我已阅读完，下一步" runat="server" onserverclick="button_ServerClick" />
 </p>
-</div>    <div class="biao_nr" runat="server" id="div2">
+</div>
+    <div class="biao_nr" runat="server" id="div2">
   <p align="center"><strong>填表说明 </strong></p>
   <p align="center">
     <ol>
@@ -50,7 +52,8 @@
   <p align="center">
     <input type="button" name="button" id="Submit1" value="我已阅读完，开始填写数据"  runat="server" onserverclick="Submit1_ServerClick"/>
 </p>
-</div>
+</div>
+
     </form>
 </body>
 </html>

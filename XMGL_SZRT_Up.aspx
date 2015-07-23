@@ -312,15 +312,15 @@
                                                     <Items>
                                                         <f:Grid ID="Grid4" runat="server" BoxFlex="1" DataKeyNames="id" EnableCheckBoxSelect="True" EnableMultiSelect="False" EnableRowLines="True" ShowHeader="False" Title="Grid1">
                                                             <Columns>
-                                                                <f:BoundField ID="BoundField1" runat="server" ColumnID="Panel7_Grid4_ctl091" DataField="xm" HeaderText="项目成员姓名" Width="100px">
+                                                                <f:BoundField ID="BoundField1" runat="server" ColumnID="Panel7_Grid4_ctl091" DataField="CYXM" HeaderText="项目成员姓名" Width="100px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField2" runat="server" ColumnID="Panel7_Grid4_ctl101" DataField="bm" HeaderText="部门及职务" Width="150px">
+                                                                <f:BoundField ID="BoundField2" runat="server" ColumnID="Panel7_Grid4_ctl101" DataField="BMZW" HeaderText="部门及职务" Width="150px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField3" runat="server" ColumnID="Panel7_Grid4_ctl131" DataField="rwfg" HeaderText="任务分工" Width="150px">
+                                                                <f:BoundField ID="BoundField3" runat="server" ColumnID="Panel7_Grid4_ctl131" DataField="RWFG" HeaderText="任务分工" Width="150px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField4" runat="server" ColumnID="Panel7_Grid4_ctl141" DataField="sj" HeaderText="手机" Width="150px">
+                                                                <f:BoundField ID="BoundField4" runat="server" ColumnID="Panel7_Grid4_ctl141" DataField="SJ" HeaderText="手机" Width="150px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField5" runat="server" ColumnID="Panel7_Grid4_ctl151" DataField="dzyx" HeaderText="电子邮箱" Width="150px">
+                                                                <f:BoundField ID="BoundField5" runat="server" ColumnID="Panel7_Grid4_ctl151" DataField="DZYX" HeaderText="电子邮箱" Width="150px">
                                                                 </f:BoundField>
                                                             </Columns>
                                                             <Toolbars>
@@ -402,10 +402,10 @@
                                                     <Items>
                                                         <f:Grid runat="server" EnableRowLines="True" EnableCheckBoxSelect="True" EnableMultiSelect="False" DataKeyNames="id" Title="Grid1" ShowHeader="False" BoxFlex="1" ID="Grid1">
                                                           <Columns>
-                                                                <f:BoundField runat="server" DataField="kcmc" ColumnID="Panel7_Grid1_ctl091" HeaderText="课程名称" Width="100px" ID="BoundField6"></f:BoundField>
-                                                                <f:BoundField runat="server" DataField="kczynr" ColumnID="Panel7_Grid1_ctl101" HeaderText="课程主要内容" Width="150px" ID="BoundField7"></f:BoundField>
-                                                                <f:BoundField runat="server" DataField="kcdyzs" ColumnID="Panel7_Grid1_ctl131" HeaderText="课程对应的证书能力模块" Width="200px" ID="BoundField8"></f:BoundField>
-                                                                <f:BoundField runat="server" DataField="khfs" ColumnID="Panel7_Grid1_ctl141" HeaderText="考核方式" Width="150px" ID="BoundField9"></f:BoundField>
+                                                                <f:BoundField runat="server" DataField="RTKC_MC" ColumnID="Panel7_Grid1_ctl091" HeaderText="课程名称" Width="100px" ID="BoundField6"></f:BoundField>
+                                                                <f:BoundField runat="server" DataField="RTKC_NR" ColumnID="Panel7_Grid1_ctl101" HeaderText="课程主要内容" Width="150px" ID="BoundField7"></f:BoundField>
+                                                                <f:BoundField runat="server" DataField="RTKC_KCDYZS" ColumnID="Panel7_Grid1_ctl131" HeaderText="课程对应的证书能力模块" Width="200px" ID="BoundField8"></f:BoundField>
+                                                                <f:BoundField runat="server" DataField="RTKC_KHFS" ColumnID="Panel7_Grid1_ctl141" HeaderText="考核方式" Width="150px" ID="BoundField9"></f:BoundField>
                                                             </Columns>
                                                             <Toolbars>
                                                                 <f:Toolbar runat="server" ID="Toolbar2">
@@ -455,15 +455,15 @@
                                                     <Items>
                                                         <f:Grid ID="Grid2" runat="server" BoxFlex="1" DataKeyNames="id" EnableCheckBoxSelect="True" EnableMultiSelect="False" EnableRowLines="True" ShowHeader="False" Title="Grid1">
                                                             <Columns>
-                                                                <f:BoundField ID="BoundField10" runat="server" ColumnID="Panel7_Grid2_ctl091" DataField="xm" HeaderText="姓名" Width="100px">
+                                                                <f:BoundField ID="BoundField10" runat="server" ColumnID="Panel7_Grid2_ctl091" DataField="XM" HeaderText="姓名" Width="100px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField11" runat="server" ColumnID="Panel7_Grid2_ctl101" DataField="zc" HeaderText="职称" Width="150px">
+                                                                <f:BoundField ID="BoundField11" runat="server" ColumnID="Panel7_Grid2_ctl101" DataField="ZC" HeaderText="职称" Width="150px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField12" runat="server" ColumnID="Panel7_Grid2_ctl131" DataField="zjkc" HeaderText="主讲课程" Width="180px">
+                                                                <f:BoundField ID="BoundField12" runat="server" ColumnID="Panel7_Grid2_ctl131" DataField="ZJKC" HeaderText="主讲课程" Width="180px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField13" runat="server" ColumnID="Panel7_Grid2_ctl141" DataField="zyzgzs" HeaderText="职业资格证书" Width="260px">
+                                                                <f:BoundField ID="BoundField13" runat="server" ColumnID="Panel7_Grid2_ctl141" DataField="ZYZGZS" HeaderText="职业资格证书" Width="260px">
                                                                 </f:BoundField>
-                                                                <f:BoundField ID="BoundField14" runat="server" ColumnID="Panel7_Grid2_ctl142" DataField="zjz" HeaderText="专/兼职" Width="100px">
+                                                                <f:BoundField ID="BoundField14" runat="server" ColumnID="Panel7_Grid2_ctl142" DataField="ZJZ" HeaderText="专/兼职" Width="100px">
                                                                 </f:BoundField>
                                                             </Columns>
                                                             <Toolbars>
@@ -578,10 +578,10 @@
                                                             </Toolbars>
                                                             <Columns>
 
-                                                                <f:BoundField Width="200px" DataField="jsmb" HeaderText="建设目标" DataToolTipField="JSMB" ColumnID="Panel7_Grid3_ctl092" />
+                                                                <f:BoundField Width="200px" DataField="JSMB" HeaderText="建设目标" DataToolTipField="JSMB" ColumnID="Panel7_Grid3_ctl092" />
 
-                                                                <f:BoundField Width="120px" DataField="jhysrq" HeaderText="计划验收日期" DataToolTipField="JHYSRQ" ColumnID="Panel7_Grid3_ctl102" />
-                                                                <f:BoundField Width="230px" DataField="ysyd" DataToolTipField="YSYD" HeaderText="验收要点" ColumnID="Panel7_Grid3_ctl112" />
+                                                                <f:BoundField Width="120px" DataField="JHYSRQ" HeaderText="计划验收日期" DataToolTipField="JHYSRQ" ColumnID="Panel7_Grid3_ctl102" />
+                                                                <f:BoundField Width="230px" DataField="YSYD" DataToolTipField="YSYD" HeaderText="验收要点" ColumnID="Panel7_Grid3_ctl112" />
 
                                                             </Columns>
                                                         </f:Grid>
@@ -620,7 +620,7 @@
                                                     <Items>
                                                         <f:NumberBox ID="KCJCJFJE1" runat="server" Label="课程教材经费金额" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="100%" Margin="0 5 5 0" Readonly="false" Text="0" OnTextChanged="KCJCJFJE1_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea ID="KCJCJFGSYJ1" runat="server" Height="100px" Label="课程教材经费概算依据" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
-                                                        <f:TextArea ID="KCJCJFBZ1" runat="server" Height="100px" Label="课程教材经费备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
+                                                        <f:TextArea ID="KCJCJFBZ1" runat="server" Height="100px" Label="课程教材经费备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" ></f:TextArea>
 
                                                     </Items>
                                                 </f:Panel>
@@ -628,7 +628,7 @@
                                                     <Items>
                                                         <f:NumberBox ID="YQSBJE1" runat="server" Label="仪器设备经费金额" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="100%" Margin="0 5 5 0" Readonly="false" Text="0" OnTextChanged="YQSBJE1_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea ID="YQSBJFGSYJ1" runat="server" Height="100px" Label="仪器设备经费概算依据" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
-                                                        <f:TextArea ID="YQSBJFBZ1" runat="server" Height="100px" Label="仪器设备经费备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
+                                                        <f:TextArea ID="YQSBJFBZ1" runat="server" Height="100px" Label="仪器设备经费备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" ></f:TextArea>
 
                                                     </Items>
                                                 </f:Panel>
@@ -636,15 +636,15 @@
                                                     <Items>
                                                         <f:NumberBox ID="WPRYFYJE1" runat="server" Label="外聘人员费用金额" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="100%" Margin="0 5 5 0" Readonly="false" Text="0" OnTextChanged="WPRYFYJE1_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea ID="WPRYJFGSYJ1" runat="server" Height="100px" Label="外聘人员费用概算依据" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
-                                                        <f:TextArea ID="WPRYFYBZ1" runat="server" Height="100px" Label="外聘人员费用备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
+                                                        <f:TextArea ID="WPRYFYBZ1" runat="server" Height="100px" Label="外聘人员费用备注" Text="" ColumnWidth="50%" Margin="10 5 10 0"></f:TextArea>
 
                                                     </Items>
                                                 </f:Panel>
                                                 <f:Panel ID="Panel10" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
                                                     <Items>
-                                                        <f:NumberBox ID="YWFJE1" runat="server" Label="业务费（包括会议、差旅、印刷、交通等）金额" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="100%" Margin="0 5 5 0" Readonly="false" Text="0" OnTextChanged="YWFJE1_TextChanged" AutoPostBack="True"></f:NumberBox>
-                                                        <f:TextArea ID="YWFGSYJ1" runat="server" Height="100px" Label="业务费（包括会议、差旅、印刷、交通等）概算依据" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
-                                                        <f:TextArea ID="YWFBZ1" runat="server" Height="100px" Label="业务费（包括会议、差旅、印刷、交通等）备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
+                                                        <f:NumberBox ID="YWFJE1" runat="server" Label="业务费（包括差旅、印刷、交通等）金额" MinValue="0" DecimalPrecision="2" NoNegative="True" Required="true" ShowRedStar="True" ColumnWidth="100%" Margin="0 5 5 0" Readonly="false" Text="0" OnTextChanged="YWFJE1_TextChanged" AutoPostBack="True"></f:NumberBox>
+                                                        <f:TextArea ID="YWFGSYJ1" runat="server" Height="100px" Label="业务费（包括差旅、印刷、交通等）概算依据" Text="" ColumnWidth="50%" Margin="10 5 10 0" Required="true" ShowRedStar="true"></f:TextArea>
+                                                        <f:TextArea ID="YWFBZ1" runat="server" Height="100px" Label="业务费（包括差旅、印刷、交通等）备注" Text="" ColumnWidth="50%" Margin="10 5 10 0" ></f:TextArea>
 
                                                     </Items>
                                                 </f:Panel>
@@ -668,28 +668,28 @@
                                                     <Items>
                                                         <f:NumberBox runat="server" NoNegative="True" MinValue="0" Text="0" Required="True" Label="课程教材经费金额" ShowRedStar="True" Readonly="false" ColumnWidth="100%" Margin="0 5 5 0" ID="KCJCJFJE2" OnTextChanged="KCJCJFJE2_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea runat="server" Required="True" Label="课程教材经费概算依据" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="KCJCJFGSYJ2"></f:TextArea>
-                                                        <f:TextArea runat="server" Required="True" Label="课程教材经费备注" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="KCJCJFBZ2"></f:TextArea>
+                                                        <f:TextArea runat="server"  Label="课程教材经费备注"  Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="KCJCJFBZ2"></f:TextArea>
                                                     </Items>
                                                 </f:Panel>
                                                 <f:Panel runat="server" ShowHeader="False" ShowBorder="False" Layout="Column" CssClass="formitem" ID="Panel14">
                                                     <Items>
                                                         <f:NumberBox runat="server" NoNegative="True" MinValue="0" Text="0" Required="True" Label="仪器设备经费金额" ShowRedStar="True" Readonly="false" ColumnWidth="100%" Margin="0 5 5 0" ID="YQSBJE2" OnTextChanged="YQSBJE2_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea runat="server" Required="True" Label="仪器设备经费概算依据" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YQSBJFGSYJ2"></f:TextArea>
-                                                        <f:TextArea runat="server" Required="True" Label="仪器设备经费备注" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YQSBJFBZ2"></f:TextArea>
+                                                        <f:TextArea runat="server"  Label="仪器设备经费备注"  Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YQSBJFBZ2"></f:TextArea>
                                                     </Items>
                                                 </f:Panel>
                                                 <f:Panel runat="server" ShowHeader="False" ShowBorder="False" Layout="Column" CssClass="formitem" ID="Panel15">
                                                     <Items>
                                                         <f:NumberBox runat="server" NoNegative="True" MinValue="0" Text="0" Required="True" Label="外聘人员费用金额" ShowRedStar="True" Readonly="false" ColumnWidth="100%" Margin="0 5 5 0" ID="WPRYFYJE2" OnTextChanged="WPRYFYJE2_TextChanged" AutoPostBack="True"></f:NumberBox>
                                                         <f:TextArea runat="server" Required="True" Label="外聘人员费用概算依据" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="WPRYJFGSYJ2"></f:TextArea>
-                                                        <f:TextArea runat="server" Required="True" Label="外聘人员费用备注" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="WPRYFYBZ2"></f:TextArea>
+                                                        <f:TextArea runat="server"  Label="外聘人员费用备注"  Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="WPRYFYBZ2"></f:TextArea>
                                                     </Items>
                                                 </f:Panel>
                                                 <f:Panel runat="server" ShowHeader="False" ShowBorder="False" Layout="Column" CssClass="formitem" ID="Panel16">
                                                     <Items>
-                                                        <f:NumberBox runat="server" NoNegative="True" MinValue="0" Text="0" Required="True" Label="业务费（包括会议、差旅、印刷、交通等）金额" ShowRedStar="True" Readonly="false" ColumnWidth="100%" Margin="0 5 5 0" ID="YWFJE2" OnTextChanged="YWFJE2_TextChanged" AutoPostBack="True"></f:NumberBox>
-                                                        <f:TextArea runat="server" Required="True" Label="业务费（包括会议、差旅、印刷、交通等）概算依据" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YWFGSYJ2"></f:TextArea>
-                                                        <f:TextArea runat="server" Required="True" Label="业务费（包括会议、差旅、印刷、交通等）备注" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YWFBZ2"></f:TextArea>
+                                                        <f:NumberBox runat="server" NoNegative="True" MinValue="0" Text="0" Required="True" Label="业务费（包括差旅、印刷、交通等）金额" ShowRedStar="True" Readonly="false" ColumnWidth="100%" Margin="0 5 5 0" ID="YWFJE2" OnTextChanged="YWFJE2_TextChanged" AutoPostBack="True"></f:NumberBox>
+                                                        <f:TextArea runat="server" Required="True" Label="业务费（包括差旅、印刷、交通等）概算依据" ShowRedStar="True" Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YWFGSYJ2"></f:TextArea>
+                                                        <f:TextArea runat="server"  Label="业务费（包括差旅、印刷、交通等）备注"  Height="100px" ColumnWidth="50%" Margin="10 5 10 0" ID="YWFBZ2"></f:TextArea>
                                                     </Items>
                                                 </f:Panel>
                                                 <f:Panel runat="server" ShowHeader="False" ShowBorder="False" Layout="Column" CssClass="formitem" ID="Panel17">

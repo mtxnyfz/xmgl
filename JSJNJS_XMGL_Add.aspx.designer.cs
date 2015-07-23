@@ -1021,15 +1021,6 @@ namespace XMGL.Web.admin {
         protected global::FineUI.Panel Panel10;
         
         /// <summary>
-        /// txtJFYS_ZXJF_JFGSHJ_SM 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextBox txtJFYS_ZXJF_JFGSHJ_SM;
-        
-        /// <summary>
         /// txtJFYS_ZXJF_JFGSHJ_JFYS 控件。
         /// </summary>
         /// <remarks>
@@ -1037,15 +1028,6 @@ namespace XMGL.Web.admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUI.NumberBox txtJFYS_ZXJF_JFGSHJ_JFYS;
-        
-        /// <summary>
-        /// txtJFYS_ZXJF_JFGSHJ_BZ 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextBox txtJFYS_ZXJF_JFGSHJ_BZ;
         
         /// <summary>
         /// GroupPanel10 控件。
@@ -1336,15 +1318,6 @@ namespace XMGL.Web.admin {
         protected global::FineUI.Panel Panel17;
         
         /// <summary>
-        /// txtJFYS_XXPTJF_JFGSHJ_SM 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextBox txtJFYS_XXPTJF_JFGSHJ_SM;
-        
-        /// <summary>
         /// txtJFYS_XXPTJF_JFGSHJ_JFYS 控件。
         /// </summary>
         /// <remarks>
@@ -1352,15 +1325,6 @@ namespace XMGL.Web.admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUI.NumberBox txtJFYS_XXPTJF_JFGSHJ_JFYS;
-        
-        /// <summary>
-        /// txtJFYS_XXPTJF_JFGSHJ_BZ 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUI.TextBox txtJFYS_XXPTJF_JFGSHJ_BZ;
         
         /// <summary>
         /// Toolbar12 控件。
