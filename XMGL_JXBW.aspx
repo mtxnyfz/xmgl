@@ -117,7 +117,7 @@
                         <embed type="application/x-mplayer2" src="URL to video" name="MediaPlayer"
                             width="192" height="190" showcontrols="1" showstatusbar="0" showdisplay="0" autostart="0"> </embed>
 
-                    </object></center>
+                    </object></center><br />
 
 
 
