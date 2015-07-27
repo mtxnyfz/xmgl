@@ -302,6 +302,7 @@
             }
             else if ($("#select_id").val() == 'jxjhb') {
                 flag++;
+               
                 hiddenid = "Hidden7";
                 if (document.getElementById("thelist")) {
                     //$("#thelist").val('')
@@ -325,34 +326,36 @@
 
                     }
                 }
-                else if ($("#select_id").val() == 'qt') {
-                    flag++;
-                    hiddenid = "Hidden8";
-                    if (document.getElementById("thelist")) {
-                        //$("#thelist").val('')
-                        document.getElementById("thelist").innerHTML = "";
-                        var $list = $(document.getElementById("thelist"));
-
-                        var hdFileData8 = $("#" + hiddenid);
-                        var fileDataStr8 = hdFileData8.val();
-                        if (fileDataStr8) {
-                            jsonDatahid8 = JSON.parse(fileDataStr8);
-                            $.each(jsonDatahid8.fileList, function (index, fileData) {
-
-                                var newid = S4();
-                                fileData.queueId = newid;
-                                $list.append('<div id="' + newid + '" class="item">' +
-                                '<div class="info">' + fileData.name + '</div>' +
-                                '<div class="state">已上传</div>'
-                              );
-                            });
-
-
-                        }
-                    }
+               
                     $("#uploader").powerWebUpload({
                         hiddenInputId: "uploadhidden"
                     });
+            }
+            else if ($("#select_id").val() == 'qt') {
+                flag++;
+                
+                hiddenid = "Hidden8";
+                if (document.getElementById("thelist")) {
+                    //$("#thelist").val('')
+                    document.getElementById("thelist").innerHTML = "";
+                    var $list = $(document.getElementById("thelist"));
+
+                    var hdFileData8 = $("#" + hiddenid);
+                    var fileDataStr8 = hdFileData8.val();
+                    if (fileDataStr8) {
+                        jsonDatahid8 = JSON.parse(fileDataStr8);
+                        $.each(jsonDatahid8.fileList, function (index, fileData) {
+
+                            var newid = S4();
+                            fileData.queueId = newid;
+                            $list.append('<div id="' + newid + '" class="item">' +
+                            '<div class="info">' + fileData.name + '</div>' +
+                            '<div class="state">已上传</div>'
+                          );
+                        });
+
+
+                    }
                 }
                 $("#uploader").powerWebUpload({
                     hiddenInputId: "uploadhidden"
