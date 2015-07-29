@@ -51,9 +51,9 @@ namespace XMGL.Web.admin
                 }
                 sdr.Dispose();
                 //生成项目编码
-                ViewState["xmbh"] = AutoNumber("2015-08-");
-                jxbw_Model.XMBH = ViewState["xmbh"].ToString();
-                jxbw_bll.Add(jxbw_Model);
+                //ViewState["xmbh"] = AutoNumber("2015-08-");
+                //jxbw_Model.XMBH = ViewState["xmbh"].ToString();
+                //jxbw_bll.Add(jxbw_Model);
                 //sqlstr = "select * from XXJBQKB where XXDM='" + xxdm + "'";
                 //sdr = DbHelperSQL.ExecuteReader(sqlstr);
             }
@@ -62,7 +62,7 @@ namespace XMGL.Web.admin
         {
             try
             {
-                string sql = "SELECT  TOP (1)   XMBH  FROM  JXBW  WHERE   (XMBH LIKE '" + seed.Trim() + "%') ORDER BY XMBH DESC";
+                string sql = "SELECT  TOP (1)   XMBH  FROM  JXBW  WHERE   (XMBH LIKE '" + seed.Trim() + "%')  ORDER BY XMBH DESC";
                 string bm1 = "", bm2 = "", bm = "", tempbm = "";
                 SqlDataReader dr = DbHelperSQL.ExecuteReader(sql);
                 if (dr.Read())
@@ -247,6 +247,12 @@ namespace XMGL.Web.admin
         {
             try
             {
+                if (ViewState["xmbh"] == null)
+                {
+                    ViewState["xmbh"] = AutoNumber("2015-08-");
+                    jxbw_Model.XMBH = ViewState["xmbh"].ToString();
+                    jxbw_bll.Add(jxbw_Model);
+                }
                 bool IsAdd = false;
                 string xmbh = ViewState["xmbh"].ToString();
                 jxbw_Model = jxbw_bll._GetModel(xmbh);
@@ -254,9 +260,11 @@ namespace XMGL.Web.admin
                 {
                     IsAdd = true;
                     jxbw_Model = new Model.JXBW();
+                    ViewState["xmbh"] = AutoNumber("2015-08-");
+                    jxbw_Model.XMBH = ViewState["xmbh"].ToString();
                 }
                 //赋值
-                jxbw_Model.XMBH = xmbh;
+               
                 jxbw_Model.XXDM = ViewState["xxdm"].ToString();
                 jxbw_Model.XMMC = TextBox_xmmc.Text.Trim();
                 jxbw_Model.XXMC = TextBox_DWMC1.Text.Trim();

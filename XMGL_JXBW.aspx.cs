@@ -53,7 +53,7 @@ namespace XMGL.Web.admin
             DataTable dt = null;
 
 
-            sqlstr = "  select * from JXBW where user_uid='" + pb.GetIdentityId() + "' and SFSC!=1";
+            sqlstr = "  select * from JXBW where user_uid='" + pb.GetIdentityId() + "' and SFSC=0";
             dt = DbHelperSQL.Query(sqlstr).Tables[0];
             string[] arr = null;
              string tempstr="";;
