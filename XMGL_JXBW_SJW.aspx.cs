@@ -116,7 +116,7 @@ namespace XMGL.Web.admin
           
                 //sqlstr = "  select  a.ID, a.user_uid, a.XMBH,'一流专业建设' as XMDL,a.XMMC,a.SQZXJF,a.XXPTJF,a.ZT,XMFJ.XMKXXFXBGWJM,XMFJ.YXXSALWJM,XMFJ.XMYSMXWJM from ( select * from YLZY where  SFSC!=1 and ZT>=2 and XXDM='" + ViewState["xxdm"].ToString() + "') as a left join XMFJ  on   a.XMBH=XMFJ.XMBH order by XMBH";
             //sqlstr = "  select * from SZRT where SFSC!=1 and ZT>=2 and XXDM='" + ViewState["xxdm"].ToString() + "'";
-            sqlstr = "select * from JXBW WHERE  SFSC =0"; 
+            sqlstr = "select * from JXBW WHERE  SFSC =0 and ZT>=3 and ZT!=4 and ZT!=6"; 
                 DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
                 string[] arr = null;
                 string[] arr_temp = null;

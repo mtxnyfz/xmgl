@@ -22,7 +22,7 @@
                             <div class="content">
 
 
-                                <f:SimpleForm ID="SimpleForm_step2" BoxConfigAlign="Stretch" LabelAlign="Top" BodyPadding="5px" ShowBorder="false" ShowHeader="false" runat="server" Hidden="false">
+                                <f:SimpleForm ID="SimpleForm_step2" BoxConfigAlign="Stretch" LabelAlign="Top" BodyPadding="5px" ShowBorder="false" ShowHeader="false" runat="server" Hidden="false" Margin="0 0 5 0">
                                     <Items>
 
                                         <f:Panel ID="Panel2" Layout="Column" CssClass="formitem" ShowHeader="false" ShowBorder="false" runat="server">
@@ -217,7 +217,7 @@
                                         <f:Toolbar ID="Toolbar1" runat="server" ToolbarAlign="Right" Position="Bottom">
                                             <Items>
                                                 <%--<f:Button ID="Button9_s2" Text="下一步" ValidateForms="SimpleForm_step2" ValidateMessageBox="true" runat="server" OnClick="Button_step3_Click" Margin="10 5 10 0">--%>
-                                                <f:Button ID="Button3" Text="下一步" ValidateMessageBox="false" runat="server" Margin="10 5 10 0" OnClick="Button_step9_Click">
+                                                <f:Button ID="Button3" Text="下一步" ValidateMessageBox="false" runat="server" Margin="10 20 10 0" OnClick="Button_step9_Click">
                                                 </f:Button>
 
                                             </Items>

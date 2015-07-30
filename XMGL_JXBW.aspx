@@ -68,22 +68,22 @@
                         </f:TemplateField>
 
                        
-                        <f:TemplateField HeaderText="顶层设计" ColumnID="Panel7_Grid1_ctl18">
+                        <f:TemplateField HeaderText="顶层设计"  Width="200px" ColumnID="Panel7_Grid1_ctl18">
                             <ItemTemplate>
                                 <div><%# Eval("SP1")%></div>
                             </ItemTemplate>
                         </f:TemplateField>
-                        <f:TemplateField HeaderText="五年规划" ColumnID="Panel7_Grid1_ctl19">
+                        <f:TemplateField HeaderText="五年规划"  Width="200px" ColumnID="Panel7_Grid1_ctl19">
                             <ItemTemplate>
                                 <div><%# Eval("SP2")%></div>
                             </ItemTemplate>
                         </f:TemplateField>
-                        <f:TemplateField HeaderText="高职教师+课程名称" ColumnID="Panel7_Grid1_ctl20">
+                        <f:TemplateField HeaderText="高职教师课程"  Width="200px" ColumnID="Panel7_Grid1_ctl20">
                             <ItemTemplate>
                                 <div><%# Eval("SP3")%></div>
                             </ItemTemplate>
                         </f:TemplateField>
-                        <f:TemplateField HeaderText="中职教师+课程名称" ColumnID="Panel7_Grid1_ctl21">
+                        <f:TemplateField HeaderText="中职教师课程"  Width="200px" ColumnID="Panel7_Grid1_ctl21">
                             <ItemTemplate>
                                 <div><%# Eval("SP4")%></div>
                             </ItemTemplate>

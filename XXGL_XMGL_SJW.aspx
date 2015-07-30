@@ -53,9 +53,7 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%#Eval("ZT")%>'></asp:Label>
                             </ItemTemplate>
                         </f:TemplateField>
-                         <f:LinkButtonField ColumnID="xq1" CommandName="xq" HeaderText="操作" Text="查看项目申报书"  Width="150px" ToolTip="查看项目申报书"  />
-                        
-                        <f:LinkButtonField ColumnID="xq3" CommandName="th" HeaderText="操作" Text="退回到项目申报人" ToolTip="退回到项目申报人"  Width="150px"/>
+                      
                     </Columns>
                 </f:Grid>
 
