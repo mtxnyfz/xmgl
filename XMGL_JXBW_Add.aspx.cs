@@ -176,6 +176,12 @@ namespace XMGL.Web.admin
                 string bm = BM2.Text.Trim();
                 string sj = SJ2.Text.Trim();
                 string dzyx = DZYX2.Text.Trim();
+                if (ViewState["xmbh"] == null)
+                {
+                    ViewState["xmbh"] = AutoNumber("2015-08-");
+                    jxbw_Model.XMBH = ViewState["xmbh"].ToString();
+                    jxbw_bll.Add(jxbw_Model);
+                }
 
                 jxbwxmcy_model.XMBH = ViewState["xmbh"].ToString();
                 jxbwxmcy_model.CYXM = xm;
@@ -921,6 +927,7 @@ namespace XMGL.Web.admin
         protected void Grid1_Button1_Click(object sender, EventArgs e)
         {
             string extensions = "wmv";
+            string script = Window1.GetShowReference("upload.aspx?lx=sp3&extensions=" + extensions, "高职教师+课程名称", 700, 450);
             PageContext.RegisterStartupScript(Window1.GetShowReference("upload.aspx?lx=sp1&extensions=" + extensions, "视频上传", 700, 450));
         }
 
@@ -1114,6 +1121,7 @@ namespace XMGL.Web.admin
         protected void Grid3_Button1_Click(object sender, EventArgs e)
         {
             string extensions = "wmv";
+            string script = Window1.GetShowReference("upload.aspx?lx=sp3&extensions=" + extensions, "高职教师+课程名称", 700, 450);
             PageContext.RegisterStartupScript(Window1.GetShowReference("upload.aspx?lx=sp3&extensions=" + extensions, "高职教师+课程名称", 700, 450));
         }
 

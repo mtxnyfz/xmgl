@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="XMGL_JXBW_YXGL.aspx.cs" Inherits="XMGL.Web.admin.XMGL_JXBW_YXGL" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="XMGL_JXBW_SJW.aspx.cs" Inherits="XMGL.Web.admin.XMGL_JXBW_SJW" %>
 
 <!DOCTYPE html>
 
@@ -22,9 +22,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <f:PageManager ID="PageManager1" AutoSizePanelID="Panel7" runat="server" />
+    <f:PageManager ID="PageManager1"  runat="server"  AutoSizePanelID="Panel7"/>
         <f:Panel ID="Panel7" runat="server" BodyPadding="5px"
-            Title="申报项目管理(教学比武)" ShowBorder="false" ShowHeader="True" Layout="Fit"
+            Title="申报项目管理(教学比武)" ShowBorder="false" ShowHeader="True"   Layout="Fit" 
             BoxConfigAlign="Stretch">
              <Toolbars>
                         <f:Toolbar ID="Toolbar2" runat="server">
@@ -49,7 +49,7 @@
                 
                 <f:Grid ID="Grid1" Title="Grid1" PageSize="20" ShowBorder="true" BoxFlex="1" AllowPaging="true"
                     ShowHeader="false" runat="server" EnableCheckBoxSelect="True" EnableMultiSelect="false"
-                    DataKeyNames="ID,XMBH,ZT" OnPageIndexChange="Grid1_PageIndexChange" OnRowDataBound="Grid1_RowDataBound" OnRowCommand="Grid1_RowCommand">
+                    DataKeyNames="ID,XMBH,ZT" OnPageIndexChange="Grid1_PageIndexChange" OnRowDataBound="Grid1_RowDataBound" OnRowCommand="Grid1_RowCommand" >
                    
                     <Columns>
                        <f:RowNumberField ColumnID="Panel7_Grid1_ctl08" HeaderText="" />
@@ -113,54 +113,44 @@
                         <f:LinkButtonField ColumnID="xq3" CommandName="th" HeaderText="操作" Text="退回到项目申报人"  Width="150px" ToolTip="退回到项目申报人"  ConfirmText="确定退回？"/>
                     </Columns>
                 </f:Grid>
-               <%--  <f:ContentPanel runat="server" ID="ContentPanel" ShowBorder="false" ShowHeader="false">
-                    <center><br /><div id="div1"></div><br /><object id="MediaPlayer" width="600" height="450" classid="CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95"
-                        standby="Loading Windows Media Player components..." type="application/x-oleobject">
-
-                        <param name="FileName" value="">
-
-                        <param name="autostart" value="true">
-
-                        <param name="ShowControls" value="true">
-
-                        <param name="ShowStatusBar" value="false">
-
-                        <param name="ShowDisplay" value="false">
-
-                        <embed type="application/x-mplayer2" src="URL to video" name="MediaPlayer"
-                            width="192" height="190" showcontrols="1" showstatusbar="0" showdisplay="0" autostart="0"> </embed>
-
-                    </object></center><br />
-
-
-
-
-
-
-
-                </f:ContentPanel>--%>
+                
 
                   
             </Items>
         </f:Panel>
+       <%--  <f:Panel ID="Panel2" Title="面板三（Layout=Fit）" runat="server" Layout="Fit" Height="500px"  EnableCollapse="true"
+            BodyPadding="5px"  ShowBorder="false"
+            ShowHeader="false">
+             <Items>
+         <f:ContentPanel runat="server" ID="ContentPanel" ShowBorder="false" ShowHeader="false">
+                    <center><br /><div id="div1"></div><br />
+                         <object id="player" height="450" width="650" classid="CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6" > 
+<param name="AutoStart" value="true"/> <param name="url" value=""/><param name="enabled" value="true"/><param name="CurrentPosition" value="0"/><param name="uiMode" value="Full"/><param name="SendMouseClickEvents " value="true"/></object>
+                    </center><br />
 
 
+
+
+
+
+
+                </f:ContentPanel>
+                 </Items>
+             </f:Panel>--%>
 
         <f:Window ID="Window1" Title="导出结果" Hidden="true" EnableIFrame="true"
             EnableMaximize="true" Target="Top" EnableResize="true" runat="server" OnClose="Window1_Close"
-            IsModal="true" Width="600px" Height="450px">
+            IsModal="true" Width="800px" Height="650px">
           
         </f:Window>
 
     </form>
      <script type="text/javascript">
          function PlayWmv(url) {
-             //document.getElementById("div1").innerHTML = url;
-             //var MediaPlayer1 = document.getElementById('MediaPlayer');
-             //MediaPlayer1.FileName = 'http://www.gzgz.edu.sh.cn:808/pb/' + url;
+             
              var arr = url.split("_")
              var title = url.substring(arr[0].length + arr[1].length + 2)
-
+          
              F('Window1').f_show('/admin/videopaly.aspx?filename=' + url, title, 700, 600);
          }
 

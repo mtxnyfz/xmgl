@@ -10,7 +10,7 @@
 namespace XMGL.Web.admin {
     
     
-    public partial class XMGL_JXBW_YXGL {
+    public partial class XMGL_JXBW_SJW {
         
         /// <summary>
         /// Head1 控件。

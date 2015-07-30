@@ -56,29 +56,43 @@ namespace XMGL.Web.admin
             sqlstr = "  select * from JXBW where user_uid='" + pb.GetIdentityId() + "' and SFSC=0";
             dt = DbHelperSQL.Query(sqlstr).Tables[0];
             string[] arr = null;
-             string tempstr="";;
+            string[] arr_temp = null;
+            string tempstr = "";
+            string title = "";
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 arr = dt.Rows[i]["WORD1"].ToString().Split('|');
-                tempstr="";
+                tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
-                    if(j!=arr.Length-1)
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
+                    if (j != arr.Length - 1)
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a>";
                     //dt.Rows[i]["WORD1"]=dt.Rows[i]["WORD1"]
                 }
-                dt.Rows[i]["WORD1"]=tempstr;
+                dt.Rows[i]["WORD1"] = tempstr;
 
                 arr = dt.Rows[i]["WORD2"].ToString().Split('|');
-                tempstr="";
+                tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
-                    if(j!=arr.Length-1)
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
+                    if (j != arr.Length - 1)
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a>";
                     //dt.Rows[i]["WORD1"]=dt.Rows[i]["WORD1"]
                 }
                 dt.Rows[i]["WORD2"] = tempstr;
@@ -87,10 +101,16 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a>";
                     //dt.Rows[i]["WORD1"]=dt.Rows[i]["WORD1"]
                 }
                 dt.Rows[i]["WORD3"] = tempstr;
@@ -99,10 +119,16 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"upload/教学比武/" + arr[j] + "\" target=\"_blank\" title=\"" + title + "\">" + title + "</a>";
                     //dt.Rows[i]["WORD1"]=dt.Rows[i]["WORD1"]
                 }
                 dt.Rows[i]["WORD4"] = tempstr;
@@ -112,11 +138,17 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
-                   
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a>";
+
                 }
                 dt.Rows[i]["SP1"] = tempstr;
 
@@ -124,10 +156,16 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a>";
 
                 }
                 dt.Rows[i]["SP2"] = tempstr;
@@ -136,10 +174,16 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a>";
 
                 }
                 dt.Rows[i]["SP3"] = tempstr;
@@ -148,10 +192,16 @@ namespace XMGL.Web.admin
                 tempstr = "";
                 for (int j = 0; j < arr.Length; j++)
                 {
+                    title = "";
+                    if (arr[j].Trim() != "")
+                    {
+                        arr_temp = arr[j].Split('_');
+                        title = arr[j].Substring(arr_temp[0].Length + arr_temp[1].Length + 2);
+                    }
                     if (j != arr.Length - 1)
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a></br>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a></br>";
                     else
-                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + arr[j] + "\">" + arr[j] + "</a>";
+                        tempstr = tempstr + "<a href=\"#\" onclick=\"PlayWmv('" + arr[j] + "')\" title=\"" + title + "\">" + title + "</a>";
 
                 }
                 dt.Rows[i]["SP4"] = tempstr;

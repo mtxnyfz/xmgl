@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         <f:PageManager ID="PageManager1" AutoSizePanelID="Panel7" runat="server" AjaxAspnetControls="LinkButton1" />
         <f:Panel ID="Panel7" runat="server" BodyPadding="5px"
-            Title="申报项目管理" ShowBorder="false" ShowHeader="True" Layout="VBox"
+            Title="申报项目管理" ShowBorder="false" ShowHeader="True" Layout="Fit"
             BoxConfigAlign="Stretch">
             <Items>
 
@@ -100,7 +100,7 @@
                     </Columns>
                 </f:Grid>
 
-                <f:ContentPanel runat="server" ID="ContentPanel" ShowBorder="false" ShowHeader="false">
+               <%-- <f:ContentPanel runat="server" ID="ContentPanel" ShowBorder="false" ShowHeader="false">
                     <center><br /><div id="div1"></div><br /><object id="MediaPlayer" width="600" height="450" classid="CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95"
                         standby="Loading Windows Media Player components..." type="application/x-oleobject">
 
@@ -125,7 +125,7 @@
 
 
 
-                </f:ContentPanel>
+                </f:ContentPanel>--%>
             </Items>
         </f:Panel>
 
@@ -137,9 +137,13 @@
     </form>
     <script type="text/javascript">
         function PlayWmv(url) {
-            document.getElementById("div1").innerHTML = url;
-            var MediaPlayer1 = document.getElementById('MediaPlayer');
-            MediaPlayer1.FileName = 'http://www.gzgz.edu.sh.cn:808/pb/' + url;
+            //document.getElementById("div1").innerHTML = url;
+            //var MediaPlayer1 = document.getElementById('MediaPlayer');
+            //MediaPlayer1.FileName = 'http://www.gzgz.edu.sh.cn:808/pb/' + url;
+            var arr = url.split("_")
+            var title = url.substring(arr[0].length + arr[1].length + 2)
+
+            F('Window1').f_show('/admin/videopaly.aspx?filename=' + url, title, 700, 600);
         }
 
     </script>

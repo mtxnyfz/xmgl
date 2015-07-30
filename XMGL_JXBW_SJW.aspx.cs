@@ -24,39 +24,14 @@ using XMGL.BLL;
 
 namespace XMGL.Web.admin
 {
-    public partial class XMGL_JXBW_YXGL : System.Web.UI.Page
+    public partial class XMGL_JXBW_SJW : System.Web.UI.Page
     {
         PageBase1 pb = new PageBase1();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //if (Request.QueryString["xmld"] != null)
-                //    ViewState["xmld"] = Request.QueryString[0].ToString().Trim();
-                //else
-                //{
-                //    Alert.Show("非法的请求！", "系统提示", MessageBoxIcon.Warning);
-                //    return;
-                //}
-                //Button2.OnClientClick = Window1.GetShowReference("XMGL_Add.aspx", "退回申报项目");
-                string userid = pb.GetIdentityId();
-                string sqlstr = "select xxdm,xxmc from Users where user_uid='" + userid + "'";
-                SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
-                string xxdm = "", xxmc = "";
-                if (sdr.Read())
-                {
-                    xxdm = sdr["xxdm"].ToString().Trim();
-                    ViewState["xxdm"] = xxdm;
-                    xxmc = sdr["xxmc"].ToString().Trim();
-                    ViewState["xxmc"] = xxmc;
-                }
-                sdr.Dispose();
-                //databind_DropDownList1();
-                //databind_DropDownList2();
-                //ViewState["xmld"] = "所有";
-                //ViewState["xxdm"] = "所有";
-                databind();
-
+               
                 //string userid = pb.GetIdentityId();
                 //string sqlstr = "select xxdm,xxmc from Users where user_uid='" + userid + "'";
                 //SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
@@ -65,9 +40,14 @@ namespace XMGL.Web.admin
                 //{
                 //    xxdm = sdr["xxdm"].ToString().Trim();
                 //    ViewState["xxdm"] = xxdm;
-                  
+                //    xxmc = sdr["xxmc"].ToString().Trim();
+                //    ViewState["xxmc"] = xxmc;
                 //}
                 //sdr.Dispose();
+               
+                databind();
+
+               
             }
         }
 
@@ -136,7 +116,7 @@ namespace XMGL.Web.admin
           
                 //sqlstr = "  select  a.ID, a.user_uid, a.XMBH,'一流专业建设' as XMDL,a.XMMC,a.SQZXJF,a.XXPTJF,a.ZT,XMFJ.XMKXXFXBGWJM,XMFJ.YXXSALWJM,XMFJ.XMYSMXWJM from ( select * from YLZY where  SFSC!=1 and ZT>=2 and XXDM='" + ViewState["xxdm"].ToString() + "') as a left join XMFJ  on   a.XMBH=XMFJ.XMBH order by XMBH";
             //sqlstr = "  select * from SZRT where SFSC!=1 and ZT>=2 and XXDM='" + ViewState["xxdm"].ToString() + "'";
-            sqlstr = "select * from JXBW WHERE  SFSC != 1 and ZT>=2 and XXMC='" + ViewState["xxmc"].ToString() + "'"; 
+            sqlstr = "select * from JXBW WHERE  SFSC =0"; 
                 DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
                 string[] arr = null;
                 string[] arr_temp = null;
@@ -546,10 +526,8 @@ namespace XMGL.Web.admin
 
 
 
-        
-            if (lb.Text.Trim() == "2")
-                lb.Text = "未提交";
-            else if (lb.Text.Trim() == "3")
+
+            if (lb.Text.Trim() == "3")
                 lb.Text = "市教委审核中";
             else if (lb.Text.Trim() == "4")
                 lb.Text = "院校退回";
