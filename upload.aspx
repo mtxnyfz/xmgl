@@ -74,8 +74,8 @@
             $("#select_id").append("<option value='xz'>请选择视频分类</option>");
             $("#select_id").append("<option value='dcsj'>顶层设计</option>");
             $("#select_id").append("<option value='wngh'>五年规划</option>");
-            $("#select_id").append("<option value='gzkcmc'>高职教师课程名称</option>");
-            $("#select_id").append("<option value='zzkcmc'>中职教师课程名称</option>");
+            $("#select_id").append("<option value='gzkcmc'>高职教师课程</option>");
+            $("#select_id").append("<option value='zzkcmc'>中职教师课程</option>");
         }
         else {
             $("#select_id").append("<option value='xz'>请选择资料分类</option>");
