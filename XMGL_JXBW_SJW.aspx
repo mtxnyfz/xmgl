@@ -103,7 +103,7 @@
                             </ItemTemplate>
                         </f:TemplateField>
                        
-                         <f:TemplateField HeaderText="状态" ColumnID="Panel7_Grid1_ctl17">
+                         <f:TemplateField HeaderText="状态" ColumnID="Panel7_Grid1_ctl17" Hidden="true">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%#Eval("ZT")%>'></asp:Label>
                             </ItemTemplate>
