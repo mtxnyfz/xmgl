@@ -111,7 +111,7 @@ namespace XMGL.Web.admin
                         dr = dt_sp1.NewRow();
                         dr["id"] = Guid.NewGuid().ToString();
                         dr["filename"] = arr[j];
-                        dr["lx"] = "书面提纲";
+                        dr["lx"] = "书面提交材料";
                         dr["lxzm"] = "smtg";
                         dt_sp1.Rows.Add(dr);
                     }
@@ -213,7 +213,7 @@ namespace XMGL.Web.admin
                         dr = dt_sp2.NewRow();
                         dr["id"] = Guid.NewGuid().ToString();
                         dr["filename"] = arr[j];
-                        dr["lx"] = "高职教师课程名称";
+                        dr["lx"] = "高职教师课程";
                         dr["lxzm"] = "gzkcmc";
                         dt_sp2.Rows.Add(dr);
                     }
@@ -230,7 +230,7 @@ namespace XMGL.Web.admin
                         dr = dt_sp2.NewRow();
                         dr["id"] = Guid.NewGuid().ToString();
                         dr["filename"] = arr[j];
-                        dr["lx"] = "中职教师课程名称";
+                        dr["lx"] = "中职教师课程";
                         dr["lxzm"] = "zzkcmc";
                         dt_sp2.Rows.Add(dr);
                     }
@@ -440,7 +440,11 @@ namespace XMGL.Web.admin
                 Alert.Show("数据保存失败，请检查数据正确性！");
                 return;
             }
-
+            else
+            {
+                Session.Remove("sp1");
+                Session.Remove("wd");
+            }
             string xmbh = ViewState["xmbh"].ToString();
             jxbw_Model = jxbw_bll._GetModel(xmbh);
 

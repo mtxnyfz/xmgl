@@ -50,6 +50,10 @@ namespace XMGL.Web.admin
                     TextBox_DWMC1.Text = xxmc;
                 }
                 sdr.Dispose();
+                if (Session["sp1"]!=null)
+                Session.Remove("sp1");
+                if (Session["wd"] != null)
+                Session.Remove("wd");
                 //生成项目编码
                 //ViewState["xmbh"] = AutoNumber("2015-08-");
                 //jxbw_Model.XMBH = ViewState["xmbh"].ToString();
@@ -956,10 +960,10 @@ namespace XMGL.Web.admin
                     {
                         if (dt.Rows[i][0].ToString() == selectedID)
                         {
-                            if (File.Exists(Server.MapPath("upload/教学比武/" + dt.Rows[i][1].ToString())))
-                            {
-                                File.Delete(Server.MapPath("upload/教学比武/" + dt.Rows[i][1].ToString()));
-                            }
+                            //if (File.Exists(Server.MapPath("upload/教学比武/" + dt.Rows[i][1].ToString())))
+                            //{
+                            //    File.Delete(Server.MapPath("upload/教学比武/" + dt.Rows[i][1].ToString()));
+                            //}
                             dt.Rows.Remove(dt.Rows[i]);
 
                             break;
@@ -992,10 +996,10 @@ namespace XMGL.Web.admin
                     {
                         if (dt.Rows[i][0].ToString() == selectedID)
                         {
-                            if (File.Exists(@"E:\video\" + dt.Rows[i][1].ToString()))
-                            {
-                                File.Delete(@"E:\video\" + dt.Rows[i][1].ToString());
-                            }
+                            //if (File.Exists(@"E:\video\" + dt.Rows[i][1].ToString()))
+                            //{
+                            //    File.Delete(@"E:\video\" + dt.Rows[i][1].ToString());
+                            //}
                             dt.Rows.Remove(dt.Rows[i]);
                            
                             break;

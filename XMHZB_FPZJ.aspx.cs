@@ -54,60 +54,36 @@ namespace XMGL.Web.admin
 
         protected void databind(string pxfs,string sbzt)
         {
-            //string sqlstr = "select b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC!=1  and ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-             string sqlstr ="";
-             DataTable dt1 = null, dt2 = null, dt3 = null, dt4 = null, dt4_t1 = null, dt4_t2 = null, dt4_t3 = null, dt5 = null, dt6 = null, dt7 = null;
-            //if (sbzt == "全部")
-            //{
-            //    sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC!=1   ) as a,XXJBQKB as b where  a.XXDM=b.XXDM";
-            //    dt1 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-            //    sqlstr = "select a.XMBH as XMBH, b.XXMC AS XXMC, '双证融通' as XMDLMC,a.XMMC as XMMC,a.XMFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,XMFZR_XM, JFYS_SQJF as SQZXJF,JFYS_XXPTJF as XXPTJF from SZRT where  SFSC!=1   ) as a,XXJBQKB as b  where  a.XXDM=b.XXDM";
-            //    dt2 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-            //    sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '产教研协同基地' as XMDLMC,a.JDMC as XMMC,a.JDFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,JDMC,JDFZRXX_XM, ZXJF_SQZXJF as SQZXJF,XXPTJF_XXPTJF as XXPTJF from CJYXTJD_XM where  SFSC!=1   ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-            //    dt3 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-
-
-            //    sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '通用类' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from TYL_XM where  SFSC!=1   ) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-            //    dt7 = DbHelperSQL.Query(sqlstr).Tables[0];
-            //}
-            //else if (sbzt == "1")
-            //{
-            //    sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC!=1 and  ZT>1 and ZT!=4 and ZT!=6   ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-            //    dt1 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-            //    sqlstr = "select  a.XMBH as XMBH, b.XXMC AS XXMC, '双证融通' as XMDLMC,a.XMMC as XMMC,a.XMFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,XMFZR_XM, JFYS_SQJF as SQZXJF,JFYS_XXPTJF as XXPTJF from SZRT where  SFSC!=1  and  ZT>1 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-            //    dt2 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-            //    sqlstr = "select  a.XMBH as XMBH,  b.XXMC AS XXMC, '产教研协同基地' as XMDLMC,a.JDMC as XMMC,a.JDFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,JDMC,JDFZRXX_XM, ZXJF_SQZXJF as SQZXJF,XXPTJF_XXPTJF as XXPTJF from CJYXTJD_XM where  SFSC!=1  and  ZT>1 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-            //    dt3 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-            //    sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '通用类' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from TYL_XM where   SFSC!=1  and  ZT>1 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-            //    dt4 = DbHelperSQL.Query(sqlstr).Tables[0];
-            //}
-          
-                sqlstr = "select  a.XMBH as XMBH,  b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC!=1 and  ZT>=3 and ZT!=4 and ZT!=6   ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
-                dt1 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-                sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '双证融通' as XMDLMC,a.XMMC as XMMC,a.XMFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,XMFZR_XM, JFYS_SQJF as SQZXJF,JFYS_XXPTJF as XXPTJF from SZRT where  SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b  where a.XXDM=b.XXDM";
-                dt2 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-                sqlstr = "select  a.XMBH as XMBH, b.XXMC AS XXMC, '产教研协同基地' as XMDLMC,a.JDMC as XMMC,a.JDFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,JDMC,JDFZRXX_XM, ZXJF_SQZXJF as SQZXJF,XXPTJF_XXPTJF as XXPTJF from CJYXTJD_XM where  SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b  where a.XXDM=b.XXDM";
-                dt3 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-                sqlstr = "select a.XMBH,a.DWMC AS XXMC,a.XMDLMC,a.XMMC,'' as ZYFZR_XM,a.SQZXJF,a.XXPTJF,a.XMZJF from (select SZPX_XMSB.XMBH,SZPX_XMSB.DWMC,'师资培训' as XMDLMC ,SZPX_XMSB.XMMC,SZPX_JFYS.JFYS as SQZXJF ,0.0 as XXPTJF,SZPX_JFYS.JFYS as XMZJF from SZPX_XMSB,SZPX_JFYS where SZPX_XMSB.XMBH=SZPX_JFYS.XMBH and SZPX_JFYS.JFLX='ZXJF' and SZPX_XMSB.SFSC!=1 and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-                dt4 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-                sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '技术技能竞赛' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from JSJNJS_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-                dt5 = DbHelperSQL.Query(sqlstr).Tables[0];
-                sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '信息管理平台' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from XXGLPT_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-                dt6 = DbHelperSQL.Query(sqlstr).Tables[0];
-
-                sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '通用类' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from TYL_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.DWMC=b.XXMC";
-                dt7 = DbHelperSQL.Query(sqlstr).Tables[0];
             
+             string sqlstr ="";
+             DataTable dt1 = null, dt2 = null, dt3 = null, dt4 = null, dt4_t1 = null, dt4_t2 = null, dt4_t3 = null, dt5 = null, dt6 = null, dt7 = null,dt8=null;
+
+             sqlstr = "select  a.XMBH as XMBH,  b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC=2  ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
+             dt1 = DbHelperSQL.Query(sqlstr).Tables[0];
+             //sqlstr = "select  a.XMBH as XMBH,  b.XXMC AS XXMC, '一流专业建设' as XMDLMC,a.XMMC as XMMC,a.ZYFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,ZYFZR_XM, SQZXJF as SQZXJF,XXPTJF as XXPTJF from YLZY where  SFSC!=1 and  ZT>=3 and ZT!=4 and ZT!=6   ) as a,XXJBQKB as b where a.XXDM=b.XXDM";
+             //dt1 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                //sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '双证融通' as XMDLMC,a.XMMC as XMMC,a.XMFZR_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,XMMC,XMFZR_XM, JFYS_SQJF as SQZXJF,JFYS_XXPTJF as XXPTJF from SZRT where  SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b  where a.XXDM=b.XXDM";
+                //dt2 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                //sqlstr = "select  a.XMBH as XMBH, b.XXMC AS XXMC, '产教研协同基地' as XMDLMC,a.JDMC as XMMC,a.JDFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, XXDM,JDMC,JDFZRXX_XM, ZXJF_SQZXJF as SQZXJF,XXPTJF_XXPTJF as XXPTJF from CJYXTJD_XM where  SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b  where a.XXDM=b.XXDM";
+                //dt3 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                //sqlstr = "select a.XMBH,a.DWMC AS XXMC,a.XMDLMC,a.XMMC,'' as ZYFZR_XM,a.SQZXJF,a.XXPTJF,a.XMZJF from (select SZPX_XMSB.XMBH,SZPX_XMSB.DWMC,'师资培训' as XMDLMC ,SZPX_XMSB.XMMC,SZPX_JFYS.JFYS as SQZXJF ,0.0 as XXPTJF,SZPX_JFYS.JFYS as XMZJF from SZPX_XMSB,SZPX_JFYS where SZPX_XMSB.XMBH=SZPX_JFYS.XMBH and SZPX_JFYS.JFLX='ZXJF' and SZPX_XMSB.SFSC!=1 and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
+                //dt4 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                //sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '技术技能竞赛' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from JSJNJS_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
+                //dt5 = DbHelperSQL.Query(sqlstr).Tables[0];
+                //sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '信息管理平台' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from XXGLPT_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6) as a,XXJBQKB as b where a.DWMC=b.XXMC";
+                //dt6 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                //sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '通用类' as XMDLMC,a.XMMC as XMMC,a.XMFZRXX_XM as ZYFZR_XM, a.SQZXJF as SQZXJF,a.XXPTJF as XXPTJF,(a.SQZXJF+a.XXPTJF) as XMZJF from (select XMBH, DWMC,XMMC,XMFZRXX_XM, JFYS_ZXJF as SQZXJF,JFYS_XXPTJF as XXPTJF from TYL_XM where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.DWMC=b.XXMC";
+                //dt7 = DbHelperSQL.Query(sqlstr).Tables[0];
+
+                sqlstr = "select a.XMBH as XMBH,  b.XXMC AS XXMC, '教学比武' as XMDLMC,a.XMMC as XMMC,a.XMFZR_XM as ZYFZR_XM from (select XMBH, XXMC,XMMC,XMFZR_XM  from JXBW where   SFSC!=1  and  ZT>=3 and ZT!=4 and ZT!=6 ) as a,XXJBQKB as b where a.XXMC=b.XXMC";
+                dt8 = DbHelperSQL.Query(sqlstr).Tables[0];
+            
+
 
             DataRow dr = null;
             if (dt2 != null)
@@ -116,12 +92,7 @@ namespace XMGL.Web.admin
                 {
                     if (dt1 != null)
                     {
-                        //dr = dt2.NewRow();
-                        //for (int j = 0; j < dt2.Columns.Count; j++)
-                        //{
-                        //    dr[j] = dt2.Rows[i][j];
-                        //}
-                        //dt1.Rows.Add(dt2.Rows[i]);
+                       
                         dt1.ImportRow(dt2.Rows[i]);
                     }
                 }
@@ -133,12 +104,7 @@ namespace XMGL.Web.admin
                 {
                     if (dt1 != null)
                     {
-                        //dr = dt3.NewRow();
-                        //for (int j = 0; j < dt3.Columns.Count; j++)
-                        //{
-                        //    dr[j] = dt3.Rows[i][j];
-                        //}
-                        //dt1.Rows.Add(dt3.Rows[i]);
+                       
                         dt1.ImportRow(dt3.Rows[i]);
                     }
                 }
@@ -191,6 +157,18 @@ namespace XMGL.Web.admin
                     }
                 }
             }
+
+            if (dt8 != null)
+            {
+                for (int i = 0; i < dt8.Rows.Count; i++)
+                {
+                    if (dt1 != null)
+                    {
+
+                        dt1.ImportRow(dt8.Rows[i]);
+                    }
+                }
+            }
             dt1=NweDataTable(dt1, ViewState["zt"].ToString());
 
             string sortField = Grid1.SortField;
@@ -199,35 +177,7 @@ namespace XMGL.Web.admin
             view1.Sort = String.Format("{0} {1}", sortField, sortDirection);
             Grid1.DataSource = view1;
             Grid1.DataBind();
-            //DataTable dt = null;
-            //if (pxfs == "xxmc")
-            //{
-               
-            //    DataView dv = dt1.Copy().DefaultView;
-            //    dv.Sort = "XXMC asc,XMDLMC asc";
-            //    dt = dv.ToTable();
-            //    Grid1.DataSource = dt;
-            //    Grid1.DataBind();
-              
-            //    Grid1.Hidden = false;
-            //    Grid2.Hidden = true;
-            //    pb.UpdateSelectedRowIndexArray(hfSelectedIDS1, Grid1);
-               
-            //}
-            //else
-            //{
-            //    DataView dv = dt1.Copy().DefaultView;
-             
-            //    dv.Sort = "XMDLMC asc";
-            //    dt = dv.ToTable();
-            //    Grid2.DataSource = dt;
-            //    Grid2.DataBind();
-              
-            //    Grid1.Hidden = true;
-            //    Grid2.Hidden = false;
-            //    pb.UpdateSelectedRowIndexArray(hfSelectedIDS2, Grid2);
-               
-            //}
+           
             
            
         }

@@ -42,7 +42,7 @@
                         <f:BoundField Width="100px" DataField="XMBH" HeaderText="项目编号" ColumnID="Panel7_Grid1_ctl09" />
                         <f:BoundField Width="100px" DataField="XXMC" HeaderText="学校名称" ColumnID="Panel7_Grid1_ctl89" DataToolTipField="XXMC" />
                         <f:BoundField Width="200px" DataField="XMMC" HeaderText="项目名称" ColumnID="Panel7_Grid1_ctl11" DataToolTipField="XMMC" />
-                        <f:TemplateField HeaderText="“书面提纲" Width="200px" ColumnID="Panel7_Grid1_ctl15">
+                        <f:TemplateField HeaderText="书面提交材料" Width="200px" ColumnID="Panel7_Grid1_ctl15">
                             <ItemTemplate>
                                 <div><%# Eval("WORD1")%></div>
                             </ItemTemplate>
@@ -54,7 +54,7 @@
                             </ItemTemplate>
 
                         </f:TemplateField>
-                        <f:TemplateField HeaderText="教学计划" Width="200px" ColumnID="Panel7_Grid1_ctl116">
+                        <%--<f:TemplateField HeaderText="教学计划" Width="200px" ColumnID="Panel7_Grid1_ctl116">
                             <ItemTemplate>
                                 <div><%# Eval("WORD3")%></div>
                             </ItemTemplate>
@@ -65,9 +65,10 @@
                                  <div><%# Eval("WORD4")%></div>
                             </ItemTemplate>
 
-                        </f:TemplateField>
+                        </f:TemplateField>--%>
 
-                       
+                           <f:GroupField HeaderText="视 频" TextAlign="Center" ID="ctl18" ColumnID="Panel3_Grid3_ctl18">
+                    <Columns>
                         <f:TemplateField HeaderText="顶层设计"  Width="200px" ColumnID="Panel7_Grid1_ctl18">
                             <ItemTemplate>
                                 <div><%# Eval("SP1")%></div>
@@ -88,7 +89,8 @@
                                 <div><%# Eval("SP4")%></div>
                             </ItemTemplate>
                         </f:TemplateField>
-                       
+                        </Columns>
+                </f:GroupField>
                          <f:TemplateField HeaderText="状态" ColumnID="Panel7_Grid1_ctl17">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%#Eval("ZT")%>'></asp:Label>

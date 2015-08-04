@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="XMGL_JXBW_SJW.aspx.cs" Inherits="XMGL.Web.admin.XMGL_JXBW_SJW" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="XMGL_JXBW_ZJ.aspx.cs" Inherits="XMGL.Web.admin.XMGL_JXBW_ZJ" %>
 
 <!DOCTYPE html>
 
@@ -24,7 +24,7 @@
     <form id="form1" runat="server">
     <f:PageManager ID="PageManager1"  runat="server"  AutoSizePanelID="Panel7"/>
         <f:Panel ID="Panel7" runat="server" BodyPadding="5px"
-            Title="申报项目管理(教学比武)" ShowBorder="false" ShowHeader="True"   Layout="Fit" 
+            Title="申报项目查看(教学比武)" ShowBorder="false" ShowHeader="True"   Layout="Fit" 
             BoxConfigAlign="Stretch">
              <Toolbars>
                         <f:Toolbar ID="Toolbar2" runat="server">
@@ -53,7 +53,7 @@
                    
                     <Columns>
                        <f:RowNumberField ColumnID="Panel7_Grid1_ctl08" HeaderText="" />
-                         <f:BoundField Width="100px" DataField="XMBH" HeaderText="项目编号" ColumnID="Panel7_Grid1_ctl09" />
+                       <%--  <f:BoundField Width="100px" DataField="XMBH" HeaderText="项目编号" ColumnID="Panel7_Grid1_ctl09" />--%>
                         <f:BoundField Width="100px" DataField="XXMC" HeaderText="学校名称" ColumnID="Panel7_Grid1_ctl89" DataToolTipField="XXMC" />
                         <f:BoundField Width="200px" DataField="XMMC" HeaderText="项目名称" ColumnID="Panel7_Grid1_ctl11" DataToolTipField="XMMC" />
                         <f:TemplateField HeaderText="书面提交材料" Width="200px" ColumnID="Panel7_Grid1_ctl15">
