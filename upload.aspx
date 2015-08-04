@@ -79,10 +79,10 @@
         }
         else {
             $("#select_id").append("<option value='xz'>请选择资料分类</option>");
-            $("#select_id").append("<option value='smtg'>书面提纲</option>");
+            $("#select_id").append("<option value='smtg'>书面提交材料</option>");
             $("#select_id").append("<option value='zyrcpyfa'>专业人才培养方案</option>");
-            $("#select_id").append("<option value='jxjhb'>教学计划表</option>");
-            $("#select_id").append("<option value='qt'>其它</option>");
+            //$("#select_id").append("<option value='jxjhb'>教学计划表</option>");
+            //$("#select_id").append("<option value='qt'>其它</option>");
           
         }
         var jsonDatahid1 = {
