@@ -385,6 +385,36 @@ namespace XMGL.Web.admin
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            List<string> ids = null;
+            SyncSelectedRowIndexArrayToHiddenField(hfSelectedIDS2, Grid2);
+            ids = pb.GetSelectedIDsFromHiddenField(hfSelectedIDS2);
+            string sqlstr = "";
+            DataTable dt = null;
+            string user_uid = "", Password = "", Name = "", mobile = "";
+            SqlDataReader sdr = null;
+            int flag = 1, ysh = 0, state = 0;
+            if (ids != null)
+            {
+                if (ids.Count > 0)
+                {
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        user_uid = ids[i];
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+               
+
+                sqlstr = "select a.Experts_ID,a.Experts_Name,a.Experts_Sex,a.Experts_Mobil,a.ZJLX_Name,b.JSRQ from (select Experts_ID, Experts_Name,Experts_Sex,Experts_Mobil,ZJLX_Name from XMGL_ZJB,XMGL_ZJLXB where XMGL_ZJLXB.ZJLX_ID=XMGL_ZJB.Experts_ZJLX) as a,XM_ZJSZ as b where a.Experts_ID=b.ZJID and b.XMBH='" + ViewState["xmbh"].ToString() + "'";
+
+                dt = DbHelperSQL.Query(sqlstr).Tables[0];
+            }
             Alert.Show("开发中。。。");
         }
 

@@ -103,6 +103,24 @@ namespace XMGL.Web.admin {
         protected global::FineUI.TextBox TextBox_rpwd;
         
         /// <summary>
+        /// FormRow8 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow8;
+        
+        /// <summary>
+        /// TextBox_mobile 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUI.TextBox TextBox_mobile;
+        
+        /// <summary>
         /// FormRow5 控件。
         /// </summary>
         /// <remarks>

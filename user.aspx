@@ -41,8 +41,8 @@
                  <f:BoundField DataField="Name" Width="120px" HeaderText="用户名" />
                <%--  <f:BoundField DataField="ActualName" Width="100px" HeaderText="姓名" />--%>
                    <f:BoundField DataField="xxmc" Width="300px" HeaderText="所属院校" />
-                   <%-- <f:BoundField DataField="tel" Width="100px" HeaderText="联系电话" />
-                     <f:BoundField DataField="mobile" Width="100px" HeaderText="手机号码" />--%>
+                   <%-- <f:BoundField DataField="tel" Width="100px" HeaderText="联系电话" />--%>
+                     <f:BoundField DataField="mobile" Width="100px" HeaderText="手机号码" />
                       <f:WindowField ColumnID="upuser" TextAlign="Center" Text="修改"  Title="用户资料修改"
                         WindowID="Window1" DataIFrameUrlFields="Id" DataIFrameUrlFormatString="~/admin/user_up.aspx?Id={0}"
                         Width="150px"  />

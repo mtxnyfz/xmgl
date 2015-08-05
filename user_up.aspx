@@ -60,14 +60,14 @@
                   
              </Items>
               </f:FormRow>
-         <%--   <f:FormRow ID="FormRow7" runat="server">
+          <%--  <f:FormRow ID="FormRow7" runat="server">
             <Items>
                  
                      <f:TextBox ID="TextBox_tel" runat="server" Label="联系电话" Text="">
                 </f:TextBox>
                   
              </Items>
-             </f:FormRow>
+             </f:FormRow>--%>
               <f:FormRow ID="FormRow8" runat="server">
             <Items>
                  
@@ -75,7 +75,7 @@
                 </f:TextBox>
                   
              </Items>
-             </f:FormRow>--%>
+             </f:FormRow>
              <f:FormRow ID="FormRow5" runat="server">
             <Items>
                  

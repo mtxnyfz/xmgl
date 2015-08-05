@@ -41,7 +41,7 @@ namespace XMGL.Web.admin
                         //TextBox_name.Text = sdr["ActualName"].ToString().Trim();
                         TextBox_lgname.Text = sdr["Name"].ToString().Trim();
                         //TextBox_tel.Text = sdr["tel"].ToString().Trim();
-                        //TextBox_mobile.Text = sdr["mobile"].ToString().Trim();
+                        TextBox_mobile.Text = sdr["mobile"].ToString().Trim();
                         TextBox_pwd.Text = sdr["Password"].ToString().Trim();
                         TextBox_rpwd.Text = sdr["Password"].ToString().Trim();
                         dp_setvalue(DropDownList_xb, sdr["xxdm"].ToString().Trim());
@@ -100,7 +100,7 @@ namespace XMGL.Web.admin
             Ssxb_mc = DropDownList_xb.SelectedText.Trim();
             Ssxb_dm = DropDownList_xb.SelectedValue.Trim();
             //tel = TextBox_tel.Text.Trim();
-            //mobile = TextBox_mobile.Text.Trim();
+            mobile = TextBox_mobile.Text.Trim();
             //if (UserId == "")
             //{
             //    Alert.Show("教工号为必填项！", "提示", Alert.DefaultMessageBoxIcon);
@@ -173,7 +173,7 @@ namespace XMGL.Web.admin
 
             //sqlstr = "insert into Users(user_uid,UserId,Name,Password,Ssxb_dm,Ssxb_mc,tel) values('" + user_uid + "','" + UserId + "','" + Name + "','" + Password + "','" + Ssxb_dm + "','" + Ssxb_mc + "','" + tel + "')";
 
-            sqlstr = "update Users set Name='" + Name + "',Password='" + Password + "',xxdm='" + Ssxb_dm + "',xxmc='" + Ssxb_mc + "'  where Id=" + Convert.ToInt32(HiddenField_id.Text.Trim());
+            sqlstr = "update Users set Name='" + Name + "',Password='" + Password + "',xxdm='" + Ssxb_dm + "',xxmc='" + Ssxb_mc + "',mobile='"+mobile+"'  where Id=" + Convert.ToInt32(HiddenField_id.Text.Trim());
             int state = DbHelperSQL.ExecuteSql(sqlstr);
             if (state != 0)
             {
