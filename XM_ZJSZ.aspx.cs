@@ -21,7 +21,7 @@ using System.Text.RegularExpressions;
 using Maticsoft.DBUtility;
 using Aspose.Cells;
 using XMGL.BLL;
-
+using System.Collections;
 
 namespace XMGL.Web.admin
 {
@@ -390,32 +390,119 @@ namespace XMGL.Web.admin
             ids = pb.GetSelectedIDsFromHiddenField(hfSelectedIDS2);
             string sqlstr = "";
             DataTable dt = null;
+            DateTime jsrq ;
             string user_uid = "", Password = "", Name = "", mobile = "";
+            string message = "";
+            string[] arr_mb = { "" };
+            ArrayList list1 = new ArrayList();  
+            SMS.MobileSMS ms =null;
             SqlDataReader sdr = null;
             int flag = 1, ysh = 0, state = 0;
+            sqlstr = "select a.Experts_ID,a.Experts_Name,a.Experts_Sex,a.Experts_Mobil,a.ZJLX_Name,b.JSRQ from (select Experts_ID, Experts_Name,Experts_Sex,Experts_Mobil,ZJLX_Name from XMGL_ZJB,XMGL_ZJLXB where XMGL_ZJLXB.ZJLX_ID=XMGL_ZJB.Experts_ZJLX) as a,XM_ZJSZ as b where a.Experts_ID=b.ZJID and b.XMBH='" + ViewState["xmbh"].ToString() + "'";
+
+            dt = DbHelperSQL.Query(sqlstr).Tables[0];
             if (ids != null)
             {
                 if (ids.Count > 0)
                 {
                     for (int i = 0; i < ids.Count; i++)
                     {
-                        user_uid = ids[i];
+                        user_uid = ids[i].Trim();
+                        for (int j = 0; j < dt.Rows.Count; j++)
+                        {
+                            if (user_uid == dt.Rows[j]["Experts_ID"].ToString().Trim())
+                            {
+                                arr_mb[0] = dt.Rows[j]["Experts_Mobil"].ToString().Trim();
+                                jsrq = Convert.ToDateTime(dt.Rows[j]["JSRQ"].ToString().Trim()).AddDays(1);
+                                message = dt.Rows[j]["Experts_Name"].ToString().Trim() + "专家，您好！现有“" + ViewState["xmmc"].ToString() + "”项目需要您参与相关的评审工作，请使用用户名：" + dt.Rows[j]["Experts_Name"].ToString().Trim() + ",及登记的手机号：" + arr_mb[0] + "，于" + jsrq.ToString("yyyy-MM-dd") + "前登录“http://www.gzgz.edu.sh.cn/login_zj.aspx”,完成相关工作。过时将不能登录系统评审。感谢您对我们工作的支持。(上海市教委高教处)";
+                                ms = new SMS.MobileSMS();
+                                if (ms.SendSms(arr_mb, message))
+                                {
+                                   
+                                   
+
+                                }
+                                else
+                                {
+                                    list1.Add(dt.Rows[j]["Experts_Name"].ToString().Trim());
+                                }
+                                break;
+                            }
+                        }
                     }
                 }
                 else
                 {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
 
+                            user_uid = dt.Rows[j]["Experts_ID"].ToString().Trim();
+                            arr_mb[0] = dt.Rows[j]["Experts_Mobil"].ToString().Trim();
+                            jsrq = Convert.ToDateTime(dt.Rows[j]["JSRQ"].ToString().Trim()).AddDays(1);
+                            message = dt.Rows[j]["Experts_Name"].ToString().Trim() + "专家，您好！现有“" + ViewState["xmmc"].ToString() + "”项目需要您参与相关的评审工作，请使用用户名：" + dt.Rows[j]["Experts_Name"].ToString().Trim() + ",及登记的手机号：" + arr_mb[0] + "，于" + jsrq.ToString("yyyy-MM-dd") + "前登录“http://www.gzgz.edu.sh.cn/login_zj.aspx”,完成相关工作。过时将不能登录系统评审。感谢您对我们工作的支持。(上海市教委高教处)";
+                            ms = new SMS.MobileSMS();
+                            if (ms.SendSms(arr_mb, message))
+                            {
+
+
+
+                            }
+                            else
+                            {
+                                list1.Add(dt.Rows[j]["Experts_Name"].ToString().Trim());
+                            }
+                          
+                        
+                    }
                 }
             }
             else
             {
-               
 
-                sqlstr = "select a.Experts_ID,a.Experts_Name,a.Experts_Sex,a.Experts_Mobil,a.ZJLX_Name,b.JSRQ from (select Experts_ID, Experts_Name,Experts_Sex,Experts_Mobil,ZJLX_Name from XMGL_ZJB,XMGL_ZJLXB where XMGL_ZJLXB.ZJLX_ID=XMGL_ZJB.Experts_ZJLX) as a,XM_ZJSZ as b where a.Experts_ID=b.ZJID and b.XMBH='" + ViewState["xmbh"].ToString() + "'";
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
 
-                dt = DbHelperSQL.Query(sqlstr).Tables[0];
+                    user_uid = dt.Rows[j]["Experts_ID"].ToString().Trim();
+                    arr_mb[0] = dt.Rows[j]["Experts_Mobil"].ToString().Trim();
+                    jsrq = Convert.ToDateTime(dt.Rows[j]["JSRQ"].ToString().Trim()).AddDays(1);
+                    message = dt.Rows[j]["Experts_Name"].ToString().Trim() + "专家，您好！现有“" + ViewState["xmmc"].ToString() + "”项目需要您参与相关的评审工作，请使用用户名：" + dt.Rows[j]["Experts_Name"].ToString().Trim() + ",及登记的手机号：" + arr_mb[0] + "，于" + jsrq.ToString("yyyy-MM-dd") + "前登录“http://www.gzgz.edu.sh.cn/login_zj.aspx”,完成相关工作。过时将不能登录系统评审。感谢您对我们工作的支持。(上海市教委高教处)";
+                    ms = new SMS.MobileSMS();
+                    if (ms.SendSms(arr_mb, message))
+                    {
+
+
+
+                    }
+                    else
+                    {
+                        list1.Add(dt.Rows[j]["Experts_Name"].ToString().Trim());
+                    }
+                   
+
+                }
+             
             }
-            Alert.Show("开发中。。。");
+            if (list1.Count > 0)
+            {
+                string err = "";
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    if (i != list1.Count - 1)
+                    {
+                        err = err + list1[i].ToString() + ",";
+                    }
+                    else
+                    {
+                        err = err + list1[i].ToString();
+                    }
+                }
+                Alert.Show("以下专家发送短信失败："+err);
+
+            }
+            else
+            {
+                Alert.Show("短信已发送");
+            }
         }
 
         protected void TextBox_key_TextChanged(object sender, EventArgs e)
