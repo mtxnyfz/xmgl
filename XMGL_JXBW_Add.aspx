@@ -227,7 +227,7 @@
 
                                 <f:SimpleForm ID="SimpleForm_step9" BoxConfigAlign="Stretch" LabelAlign="Top" BodyPadding="5px" ShowBorder="false" ShowHeader="false" runat="server" Hidden="true">
                                     <Items>
-                                        <f:GroupPanel ID="GroupPanel2" Layout="Anchor" Title="<strong>上传书面资料（包括书面提纲、专业人才培养方案及教学计划表等的word文档）</strong>" runat="server">
+                                        <f:GroupPanel ID="GroupPanel2" Layout="Anchor" Title="<strong>上传书面资料（包括书面提纲、专业人才培养方案及教学计划表等的word,ppt,excel文档）</strong>" runat="server">
                                             <Items>
                                                 <f:Panel ID="Panel56" Layout="Fit" CssClass="formitem" ShowHeader="true" ShowBorder="false" runat="server" Title="已上传资料文件列表"   Width="600px" Margin="10 5 10 10">
                                                     <Items>

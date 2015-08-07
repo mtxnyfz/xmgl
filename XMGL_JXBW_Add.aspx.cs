@@ -924,7 +924,7 @@ namespace XMGL.Web.admin
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-            string extensions = "doc,docx";
+            string extensions = "doc,docx,pptx,ppt,pdf,xlsx,xls";
             PageContext.RegisterStartupScript(Window1.GetShowReference("upload.aspx?lx=wd&extensions=" + extensions, "书面资料上传", 700, 450));
         }
 
