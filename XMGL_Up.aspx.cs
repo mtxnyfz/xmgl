@@ -128,7 +128,7 @@ namespace XMGL.Web.admin
             ZYMC.Items.Add("请选择", "请选择");
 
 
-            string sqlstr = "select ID, ZYDM,ZYMC from YLZY where XMBH='" + ViewState["xmbh"].ToString() + "'";
+            string sqlstr = "select ID, ZYDM,ZYMC from YLZY where XMBH='" + ViewState["xmbh"].ToString() + "' and XMMC is not null";
             BLL.YLZY YLZY_Bll = new BLL.YLZY();
             Model.YLZY YLZY_Model = null;
             Model.JFYS JFYS_Model = null;
@@ -230,7 +230,7 @@ namespace XMGL.Web.admin
 
 
 
-                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSMB] as jsmb,[YQWCSJ] as yqwcsj,[YSYD] as ysyd   from [YSZB] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
+                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSMB] as jsmb,[YQWCSJ] as yqwcsj,[YSYD] as ysyd   from [YSZB] where [XMBH]='" + ViewState["xmbh"].ToString() + "' order by ID";
                     dt = DbHelperSQL.Query(sqlstr).Tables[0];
                     Grid3.DataSource = dt;
                     Grid3.DataBind();

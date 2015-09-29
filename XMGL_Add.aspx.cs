@@ -80,7 +80,8 @@ namespace XMGL.Web.admin
                 sdr.Dispose();
                 TextBox_xxmc.Text = xxmc;
                 databind_zymc();
-
+                sqlstr = " delete from [YLZY] where XMMC is null or XMMC=''";
+                DbHelperSQL.ExecuteSql(sqlstr);
                 ViewState["xmbh"] = AutoNumber("2015-01-");
                 //直接将编号插入数据库
                 ylzy_model.XMBH = ViewState["xmbh"].ToString();

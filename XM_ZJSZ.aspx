@@ -136,7 +136,7 @@
                                 </f:Button>
                          <f:ToolbarSeparator ID="ToolbarSeparator5" runat="server" >
                                 </f:ToolbarSeparator>
-                          <f:Button ID="Button4" Text="短信通知" runat="server"  OnClick="Button4_Click" ConfirmText="确定此操作？">
+                          <f:Button ID="Button4" Text="短信通知(默认不勾选任何专家的情况下则发送短信到以下列表所有专家手机)" runat="server"  OnClick="Button4_Click" ConfirmText="确定此操作？">
                                 </f:Button>
                     </Items>
                 </f:Toolbar>
