@@ -205,5 +205,171 @@ namespace XMGL.Web.admin
             Alert.Show("操作成功！", "提示", Alert.DefaultMessageBoxIcon);
 
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string UserId = "", Name = "", Password = "", xxmc = "", xxdm = "", user_uid = "", tel = "", ActualName = "";
+
+            string sqlstr = "select XXDM,XXMC,LXRXM,LXRSJ from XXJBQKB where XXMC!='市教委'";
+            DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    sqlstr = "delete from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["LXRXM"].ToString().Trim() + "'";
+            //    DbHelperSQL.ExecuteSql(sqlstr);
+            //    user_uid = Guid.NewGuid().ToString();
+            //    Password = "111111";
+            //    if (Password == "")
+            //    {
+            //        Password = "111111";
+            //    }
+            //    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','yxgl" + dt.Rows[i]["XXDM"].ToString().Trim() + "','yxgl" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+            //    int state = DbHelperSQL.ExecuteSql(sqlstr);
+            //}
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                sqlstr = "select * from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzcjy'";
+                SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
+                if (sdr.Read())
+                {
+
+                    sdr.Dispose();
+                    //sdr.Close();
+
+                }
+                else
+                {
+                    sdr.Dispose();
+
+                    user_uid = Guid.NewGuid().ToString();
+                    Password = "111111";
+                    if (Password == "")
+                    {
+                        Password = "111111";
+                    }
+                    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzcjy','" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzcjy','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+                    int state = DbHelperSQL.ExecuteSql(sqlstr);
+
+                    sqlstr = "insert into RoleUser(RoleId,UserId) values('20','" + user_uid + "')";
+                    DbHelperSQL.ExecuteSql(sqlstr);
+
+                }
+
+
+                sqlstr = "select * from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzshy'";
+                 sdr = DbHelperSQL.ExecuteReader(sqlstr);
+                if (sdr.Read())
+                {
+
+                    sdr.Dispose();
+                    //sdr.Close();
+
+                }
+                else
+                {
+                    sdr.Dispose();
+
+                    user_uid = Guid.NewGuid().ToString();
+                    Password = "111111";
+                    if (Password == "")
+                    {
+                        Password = "111111";
+                    }
+                    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzshy','" + dt.Rows[i]["XXDM"].ToString().Trim() + "kzshy','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+                    int state = DbHelperSQL.ExecuteSql(sqlstr);
+
+
+                    sqlstr = "insert into RoleUser(RoleId,UserId) values('21','" + user_uid + "')";
+                    DbHelperSQL.ExecuteSql(sqlstr);
+
+                }
+
+
+            }
+            Grid1_databind();
+            Alert.Show("操作成功！", "提示", Alert.DefaultMessageBoxIcon);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            string UserId = "", Name = "", Password = "", xxmc = "", xxdm = "", user_uid = "", tel = "", ActualName = "";
+
+            string sqlstr = "select XXDM,XXMC,LXRXM,LXRSJ from XXJBQKB where XXMC!='市教委'";
+            DataTable dt = DbHelperSQL.Query(sqlstr).Tables[0];
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    sqlstr = "delete from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["LXRXM"].ToString().Trim() + "'";
+            //    DbHelperSQL.ExecuteSql(sqlstr);
+            //    user_uid = Guid.NewGuid().ToString();
+            //    Password = "111111";
+            //    if (Password == "")
+            //    {
+            //        Password = "111111";
+            //    }
+            //    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','yxgl" + dt.Rows[i]["XXDM"].ToString().Trim() + "','yxgl" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+            //    int state = DbHelperSQL.ExecuteSql(sqlstr);
+            //}
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                sqlstr = "select * from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbcjy'";
+                SqlDataReader sdr = DbHelperSQL.ExecuteReader(sqlstr);
+                if (sdr.Read())
+                {
+
+                    sdr.Dispose();
+                    //sdr.Close();
+
+                }
+                else
+                {
+                    sdr.Dispose();
+
+                    user_uid = Guid.NewGuid().ToString();
+                    Password = "111111";
+                    if (Password == "")
+                    {
+                        Password = "111111";
+                    }
+                    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbcjy','" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbcjy','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+                    int state = DbHelperSQL.ExecuteSql(sqlstr);
+
+                    sqlstr = "insert into RoleUser(RoleId,UserId) values('22','" + user_uid + "')";
+                    DbHelperSQL.ExecuteSql(sqlstr);
+
+                }
+
+
+                sqlstr = "select * from Users where xxdm='" + dt.Rows[i]["XXDM"].ToString().Trim() + "' and Name='" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbshy'";
+                sdr = DbHelperSQL.ExecuteReader(sqlstr);
+                if (sdr.Read())
+                {
+
+                    sdr.Dispose();
+                    //sdr.Close();
+
+                }
+                else
+                {
+                    sdr.Dispose();
+
+                    user_uid = Guid.NewGuid().ToString();
+                    Password = "111111";
+                    if (Password == "")
+                    {
+                        Password = "111111";
+                    }
+                    sqlstr = "insert into Users(user_uid,UserId,Name,Password,xxdm,xxmc,tel,ActualName) values('" + user_uid + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbshy','" + dt.Rows[i]["XXDM"].ToString().Trim() + "zlnbshy','" + Password + "','" + dt.Rows[i]["XXDM"].ToString().Trim() + "','" + dt.Rows[i]["XXMC"].ToString().Trim() + "','" + tel + "','" + ActualName + "')";
+                    int state = DbHelperSQL.ExecuteSql(sqlstr);
+
+
+                    sqlstr = "insert into RoleUser(RoleId,UserId) values('23','" + user_uid + "')";
+                    DbHelperSQL.ExecuteSql(sqlstr);
+
+                }
+
+
+            }
+            Grid1_databind();
+            Alert.Show("操作成功！", "提示", Alert.DefaultMessageBoxIcon);
+        }
     }
 }

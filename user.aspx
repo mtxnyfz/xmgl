@@ -24,7 +24,14 @@
                      <f:Button ID="Button1" runat="server" Icon="Add" EnablePostBack="true" 
                                         Text="一键添加院校管理员" OnClick="Button1_Click">
                                     </f:Button>
+                     <f:Button ID="Button2" runat="server" Icon="Add" EnablePostBack="true" 
+                                        Text="一键添加高职考证用户" OnClick="Button2_Click">
+                                    </f:Button>
+                    <f:Button ID="Button3" runat="server" Icon="Add" EnablePostBack="true" 
+                                        Text="一键添加质量年报用户" OnClick="Button3_Click" >
+                                    </f:Button>
                     <f:ToolbarFill ID="ToolbarFill1" runat="server">
+                           
                     </f:ToolbarFill>
                    
                 </Items>
