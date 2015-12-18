@@ -350,7 +350,7 @@ namespace XMGL.Web.admin
 
         public void BindGridJSXX()//绑定页面上gird2教师信息列表
         {
-            Grid2.DataSource = JSXX_bll.GetList(string.Format("XMBH='{0}'", ViewState["xmbh"].ToString()));
+            Grid2.DataSource = JSXX_bll.GetList(string.Format("XMBH='{0}' and XXDM='" + ViewState["xxdm"].ToString().Trim() + "'", ViewState["xmbh"].ToString()));
             Grid2.DataBind();
         }
 
@@ -380,13 +380,13 @@ namespace XMGL.Web.admin
 
         public void BindTextZRJS()//绑定页面上专任教师数合计
         {
-            List<JSXX> ds = JSXX_bll.GetModelList(string.Format("XMBH='{0}' and ZZJZ={1}", ViewState["xmbh"].ToString(), 1));
+            List<JSXX> ds = JSXX_bll.GetModelList(string.Format("XMBH='{0}' and ZZJZ={1} and XXDM='" + ViewState["xxdm"].ToString().Trim() + "'", ViewState["xmbh"].ToString(), 1));
             ZRJSS.Text = ds.Count().ToString();
         }
 
         public void BindTextJZJS()//绑定页面上兼职教师数合计
         {
-            List<JSXX> ds = JSXX_bll.GetModelList(string.Format("XMBH='{0}' and ZZJZ={1}", ViewState["xmbh"].ToString(), 2));
+            List<JSXX> ds = JSXX_bll.GetModelList(string.Format("XMBH='{0}' and ZZJZ={1} and XXDM='" + ViewState["xxdm"].ToString().Trim() + "'", ViewState["xmbh"].ToString(), 2));
             JZJSS.Text = ds.Count().ToString();
         }
 

@@ -222,7 +222,7 @@ namespace XMGL.Web.admin
 
                     bind_zsyjqk1();
 
-                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSXM] as jsxm,[CSNY] as csny,[ZZJZ] as zjz,[SFSS] as sfss,[XL] as xl,[XW] as xw,[ZCDJ] as zcdj  from [JSXX] where [XMBH]='" + ViewState["xmbh"].ToString() + "'";
+                    sqlstr = "select  CAST([ID] as nvarchar(50)) as id,[JSXM] as jsxm,[CSNY] as csny,[ZZJZ] as zjz,[SFSS] as sfss,[XL] as xl,[XW] as xw,[ZCDJ] as zcdj  from [JSXX] where [XMBH]='" + ViewState["xmbh"].ToString() + "' and XXDM='" + ViewState["xxdm"].ToString().Trim()+ "'";
                     dt = DbHelperSQL.Query(sqlstr).Tables[0];
                     Grid2.DataSource = dt;
                     Grid2.DataBind();
@@ -2069,7 +2069,8 @@ namespace XMGL.Web.admin
             //    return;
             //}
             Session["dr"] = null;
-            PageContext.RegisterStartupScript(Window1.GetShowReference("jsxx_Add.aspx?_zrjss=" + _zrjss + "&_jzjss=" + _jzjss, "添加教师基本信息", 700, 450));
+            PageContext.RegisterStartupScript(Window1.GetShowReference("jsxx_Add1.aspx?_zrjss=" + _zrjss + "&_jzjss=" + _jzjss, "添加教师基本信息", 700, 450));
+            //PageContext.RegisterStartupScript(Window1.GetShowReference("jsxx_Add.aspx?XMBH=" + ViewState["xmbh"].ToString(), "添加教师基本信息", 700, 450));
         }
 
 
